@@ -1,0 +1,4867 @@
+-- Gui to Lua press f9
+-- Version: 3.2
+
+-- Instances:
+
+local MainlyGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local QuandaleDingleGui = Instance.new("TextLabel")
+local Main = Instance.new("Frame")
+local InfJump = Instance.new("TextButton")
+local Noclip = Instance.new("TextButton")
+local WalkSpeed = Instance.new("TextButton")
+local JumpPower = Instance.new("TextButton")
+local InstantReset = Instance.new("TextButton")
+local Fly = Instance.new("TextButton")
+local FEScripts = Instance.new("Frame")
+local Tall = Instance.new("TextButton")
+local MainButton = Instance.new("TextButton")
+local FEScriptsButton = Instance.new("TextButton")
+local AboutThisScript = Instance.new("Frame")
+local IMPORTANT = Instance.new("TextLabel")
+local VARSION = Instance.new("TextLabel")
+local Announcements = Instance.new("TextLabel")
+local AboutThisScriptButton = Instance.new("TextButton")
+local ChatScriptsButton = Instance.new("TextButton")
+local ChatScripts = Instance.new("Frame")
+local Trashtalk = Instance.new("TextButton")
+local EmojiTrashTalk = Instance.new("TextButton")
+local FAX = Instance.new("TextButton")
+local BTOOLS = Instance.new("TextButton")
+local walkspeedorjumppower = Instance.new("TextButton")
+local ChatBypass = Instance.new("TextButton")
+local Parkour = Instance.new("TextButton")
+local Floppa = Instance.new("TextButton")
+local ExtendBody = Instance.new("TextButton")
+local AmongUs = Instance.new("TextButton")
+local Invisibility = Instance.new("TextButton")
+local CAP = Instance.new("TextButton")
+local hideframe = Instance.new("Frame")
+local HIDEGUIBUTTON = Instance.new("TextButton")
+
+--Properties:
+
+MainlyGui.Name = "MainlyGui"
+MainlyGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+MainlyGui.ResetOnSpawn = false
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = MainlyGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(134, 187, 255)
+MainFrame.Position = UDim2.new(0.499661177, 0, 0.125441551, 0)
+MainFrame.Size = UDim2.new(0, 350, 0, 532)
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+QuandaleDingleGui.Name = "QuandaleDingleGui"
+QuandaleDingleGui.Parent = MainFrame
+QuandaleDingleGui.BackgroundColor3 = Color3.fromRGB(86, 44, 255)
+QuandaleDingleGui.Size = UDim2.new(0, 350, 0, 55)
+QuandaleDingleGui.Font = Enum.Font.FredokaOne
+QuandaleDingleGui.Text = "Guandale Dingle Gui"
+QuandaleDingleGui.TextColor3 = Color3.fromRGB(0, 0, 0)
+QuandaleDingleGui.TextScaled = true
+QuandaleDingleGui.TextSize = 50.000
+QuandaleDingleGui.TextWrapped = true
+
+Main.Name = "Main"
+Main.Parent = MainFrame
+Main.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+Main.Position = UDim2.new(0, 0, 0.103383459, 0)
+Main.Size = UDim2.new(0, 350, 0, 326)
+Main.Visible = false
+
+InfJump.Name = "InfJump"
+InfJump.Parent = Main
+InfJump.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+InfJump.Position = UDim2.new(0.0714285746, 0, 0.0237546079, 0)
+InfJump.Size = UDim2.new(0, 135, 0, 50)
+InfJump.ZIndex = 2
+InfJump.Font = Enum.Font.PatrickHand
+InfJump.Text = "Infinite Jump"
+InfJump.TextColor3 = Color3.fromRGB(0, 0, 0)
+InfJump.TextSize = 40.000
+InfJump.MouseButton1Down:connect(function()
+	local Player = game:GetService'Players'.LocalPlayer;
+	local UIS = game:GetService'UserInputService';
+
+	_G.JumpHeight = 50;
+
+	function Action(Object, Function) if Object ~= nil then Function(Object); end end
+
+	UIS.InputBegan:connect(function(UserInput)
+		if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+			Action(Player.Character.Humanoid, function(self)
+				if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+					Action(self.Parent.HumanoidRootPart, function(self)
+						self.Velocity = Vector3.new(0, _G.JumpHeight, 0);
+					end)
+				end
+			end)
+		end
+	end)
+end)
+
+
+
+Noclip.Name = "Noclip"
+Noclip.Parent = Main
+Noclip.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Noclip.Position = UDim2.new(0.54285717, 0, 0.0237546079, 0)
+Noclip.Size = UDim2.new(0, 135, 0, 50)
+Noclip.ZIndex = 2
+Noclip.TextScaled = true
+Noclip.Font = Enum.Font.PatrickHand
+Noclip.Text = "Noclip keybind = E"
+Noclip.TextColor3 = Color3.fromRGB(0, 0, 0)
+Noclip.TextSize = 40.000
+Noclip.MouseButton1Down:connect(function()
+	game:GetService('RunService').Stepped:connect(function()
+		if noclip then
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		end
+	end)
+	plr = game.Players.LocalPlayer
+	mouse = plr:GetMouse()
+	mouse.KeyDown:connect(function(key)
+
+		if key == "e" then
+			noclip = not noclip
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		end
+	end)
+	noclip.Text = "Loaded!"
+	noclip.TextColor3 = Color3.fromRGB(0, 255, 50)
+	wait(2)
+	noclip.TextColor3 = Color3.fromRGB(0, 0, 0)
+	noclip.Text = "NoClip"
+end)
+BTOOLS.Name = "BTOOLS"
+BTOOLS.Parent = Main
+BTOOLS.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+BTOOLS.Position = UDim2.new(0.305714309, 0, 0.585218787, 0)
+BTOOLS.Size = UDim2.new(0, 135, 0, 50)
+BTOOLS.ZIndex = 2
+BTOOLS.Font = Enum.Font.PatrickHand
+BTOOLS.Text = "BTOOLS"
+BTOOLS.TextColor3 = Color3.fromRGB(0, 0, 0)
+BTOOLS.TextSize = 40.000
+BTOOLS.MouseButton1Down:connect(function()
+local tool1 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool2 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool3 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool4 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool5 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+tool1.BinType = "Clone"
+tool2.BinType = "GameTool"
+tool3.BinType = "Hammer"
+tool4.BinType = "Script"
+tool5.BinType = "Grab"
+end)
+
+walkspeedorjumppower.Name = "walkspeedorjumppower"
+walkspeedorjumppower.Parent = Main
+walkspeedorjumppower.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+walkspeedorjumppower.Position = UDim2.new(0.305714309, 0, 0.213381365, 0)
+walkspeedorjumppower.Size = UDim2.new(0, 135, 0, 50)
+walkspeedorjumppower.ZIndex = 2
+walkspeedorjumppower.Font = Enum.Font.PatrickHand
+walkspeedorjumppower.Text = "WalkSpeed And JumpPower GUI"
+walkspeedorjumppower.TextColor3 = Color3.fromRGB(0, 0, 0)
+walkspeedorjumppower.TextScaled = true
+walkspeedorjumppower.TextSize = 40.000
+walkspeedorjumppower.TextWrapped = true
+walkspeedorjumppower.MouseButton1Down:connect(function()
+    -- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local WALKSPEEDANDJUMPPOWER = Instance.new("ScreenGui")
+local WallMainFrame = Instance.new("Frame")
+local WalkSpeedBox = Instance.new("TextBox")
+local WalkSpeedButton = Instance.new("TextButton")
+local JumpPowerBox = Instance.new("TextBox")
+local JumpPowerButton = Instance.new("TextButton")
+local HideFrame = Instance.new("Frame")
+local Hidewalkspeedgui = Instance.new("TextButton")
+
+--Properties:
+
+WALKSPEEDANDJUMPPOWER.Name = "WALKSPEEDANDJUMPPOWER"
+WALKSPEEDANDJUMPPOWER.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+WALKSPEEDANDJUMPPOWER.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+WallMainFrame.Name = "WallMainFrame"
+WallMainFrame.Parent = WALKSPEEDANDJUMPPOWER
+WallMainFrame.BackgroundColor3 = Color3.fromRGB(128, 124, 255)
+WallMainFrame.Position = UDim2.new(0.788488388, 0, 0.390444815, 0)
+WallMainFrame.Size = UDim2.new(0, 278, 0, 320)
+WallMainFrame.Active = true
+WallMainFrame.Draggable = true
+
+WalkSpeedBox.Name = "WalkSpeedBox"
+WalkSpeedBox.Parent = WallMainFrame
+WalkSpeedBox.BackgroundColor3 = Color3.fromRGB(255, 235, 82)
+WalkSpeedBox.Position = UDim2.new(0.140287772, 0, 0.634375036, 0)
+WalkSpeedBox.Size = UDim2.new(0, 200, 0, 50)
+WalkSpeedBox.Font = Enum.Font.SciFi
+WalkSpeedBox.Text = "Walk Speed"
+WalkSpeedBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+WalkSpeedBox.TextSize = 40.000
+WalkSpeedBox.TextWrapped = true
+
+WalkSpeedButton.Name = "WalkSpeedButton"
+WalkSpeedButton.Parent = WallMainFrame
+WalkSpeedButton.BackgroundColor3 = Color3.fromRGB(255, 42, 117)
+WalkSpeedButton.Position = UDim2.new(0.194244608, 0, 0.815625012, 0)
+WalkSpeedButton.Size = UDim2.new(0, 170, 0, 50)
+WalkSpeedButton.Font = Enum.Font.FredokaOne
+WalkSpeedButton.Text = "Submit"
+WalkSpeedButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+WalkSpeedButton.TextSize = 40.000
+
+JumpPowerBox.Name = "JumpPowerBox"
+JumpPowerBox.Parent = WallMainFrame
+JumpPowerBox.BackgroundColor3 = Color3.fromRGB(255, 235, 82)
+JumpPowerBox.Position = UDim2.new(0.140287772, 0, 0.10937506, 0)
+JumpPowerBox.Size = UDim2.new(0, 200, 0, 50)
+JumpPowerBox.Font = Enum.Font.SciFi
+JumpPowerBox.Text = "Jump Power"
+JumpPowerBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+JumpPowerBox.TextSize = 40.000
+
+JumpPowerButton.Name = "JumpPowerButton"
+JumpPowerButton.Parent = WallMainFrame
+JumpPowerButton.BackgroundColor3 = Color3.fromRGB(255, 42, 117)
+JumpPowerButton.Position = UDim2.new(0.194244608, 0, 0.300000012, 0)
+JumpPowerButton.Size = UDim2.new(0, 170, 0, 50)
+JumpPowerButton.Font = Enum.Font.FredokaOne
+JumpPowerButton.Text = "Submit"
+JumpPowerButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+JumpPowerButton.TextSize = 40.000
+
+HideFrame.Name = "HideFrame"
+HideFrame.Parent = WALKSPEEDANDJUMPPOWER
+HideFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HideFrame.Position = UDim2.new(0, 0, 0.719934106, 0)
+HideFrame.Size = UDim2.new(0, 128, 0, 36)
+
+Hidewalkspeedgui.Name = "Hidewalkspeedgui"
+Hidewalkspeedgui.Parent = HideFrame
+Hidewalkspeedgui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Hidewalkspeedgui.Size = UDim2.new(0, 176, 0, 36)
+Hidewalkspeedgui.Font = Enum.Font.FredokaOne
+Hidewalkspeedgui.Text = "hide speed/power gui"
+Hidewalkspeedgui.TextColor3 = Color3.fromRGB(0, 0, 0)
+Hidewalkspeedgui.TextScaled = true
+Hidewalkspeedgui.TextSize = 14.000
+Hidewalkspeedgui.TextWrapped = true
+
+
+
+-- Scripts:
+
+WalkSpeedButton.MouseButton1Click:connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tostring(WallMainFrame.WalkSpeedBox.Text)
+end)
+JumpPowerButton.MouseButton1Click:connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = tostring(WallMainFrame.JumpPowerBox.Text)
+end)
+
+local function dawgdawg_fake_script()
+	local script = Instance.new('LocalScript', Hidewalkspeedgui)
+	
+	local player = game.Players.LocalPlayer
+
+	script.Parent.MouseButton1Click:connect(function()
+		if player.PlayerGui.WALKSPEEDANDJUMPPOWER.WallMainFrame.Visible == true then
+			player.PlayerGui.WALKSPEEDANDJUMPPOWER.WallMainFrame.Visible = false
+			player.PlayerGui.WALKSPEEDANDJUMPPOWER.HideFrame["Hidewalkspeedgui"].Text = "SHOW Speed/Jump GUI"
+		else
+			player.PlayerGui.WALKSPEEDANDJUMPPOWER.WallMainFrame.Visible = true
+			player.PlayerGui.WALKSPEEDANDJUMPPOWER.HideFrame["Hidewalkspeedgui"].Text = "HIDE Speed/Jump GUI"
+		end
+	end)
+end
+coroutine.wrap(dawgdawg_fake_script)()
+end)
+
+InstantReset.Name = "InstantReset"
+InstantReset.Parent = Main
+InstantReset.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+InstantReset.Position = UDim2.new(0.54285717, 0, 0.388899773, 0)
+InstantReset.Size = UDim2.new(0, 135, 0, 50)
+InstantReset.ZIndex = 2
+InstantReset.Font = Enum.Font.PatrickHand
+InstantReset.Text = "Click This Once Then Press R without even esc+r+entering for instant reset"
+InstantReset.TextColor3 = Color3.fromRGB(0, 0, 0)
+InstantReset.TextScaled = true
+InstantReset.TextSize = 40.000
+InstantReset.TextWrapped = true
+InstantReset.MouseButton1Down:connect(function()
+	local player = game.Players.LocalPlayer
+	local mouse = player:GetMouse()
+	local char = player.Character
+	local h = char:WaitForChild("Humanoid")
+	mouse.KeyUp:connect(function(key)
+		if key == "r" then
+			h.Health = 0
+		end
+	end)
+end)
+
+
+
+Fly.Name = "Fly"
+Fly.Parent = Main
+Fly.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Fly.Position = UDim2.new(0.0685714558, 0, 0.388899773, 0)
+Fly.Size = UDim2.new(0, 135, 0, 50)
+Fly.ZIndex = 2
+Fly.Font = Enum.Font.PatrickHand
+Fly.Text = "Fly"
+Fly.TextColor3 = Color3.fromRGB(0, 0, 0)
+Fly.TextSize = 40.000
+Fly.MouseButton1Down:connect(function()
+	repeat wait() 
+	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+	local mouse = game.Players.LocalPlayer:GetMouse() 
+	repeat wait() until mouse
+	local plr = game.Players.LocalPlayer 
+	local torso = plr.Character.Head 
+	local flying = false
+	local deb = true 
+	local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+	local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+	local maxspeed = 400 
+	local speed = 5000 
+
+	function Fly() 
+		local bg = Instance.new("BodyGyro", torso) 
+		bg.P = 9e4 
+		bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+		bg.cframe = torso.CFrame 
+		local bv = Instance.new("BodyVelocity", torso) 
+		bv.velocity = Vector3.new(0,0.1,0) 
+		bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+		repeat wait() 
+			plr.Character.Humanoid.PlatformStand = true 
+			if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+				speed = speed+.5+(speed/maxspeed) 
+				if speed > maxspeed then 
+					speed = maxspeed 
+				end 
+			elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+				speed = speed-1 
+				if speed < 0 then 
+					speed = 0 
+				end 
+			end 
+			if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+			elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+			else 
+				bv.velocity = Vector3.new(0,0.1,0) 
+			end 
+			bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+		until not flying 
+		ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		speed = 0 
+		bg:Destroy() 
+		bv:Destroy() 
+		plr.Character.Humanoid.PlatformStand = false 
+	end 
+	mouse.KeyDown:connect(function(key) 
+		if key:lower() == "f" then 
+			if flying then flying = false 
+			else 
+				flying = true 
+				Fly() 
+			end 
+		elseif key:lower() == "w" then 
+			ctrl.f = 1 
+		elseif key:lower() == "s" then 
+			ctrl.b = -1 
+		elseif key:lower() == "a" then 
+			ctrl.l = -1 
+		elseif key:lower() == "d" then 
+			ctrl.r = 1 
+		end 
+	end) 
+	mouse.KeyUp:connect(function(key) 
+		if key:lower() == "w" then 
+			ctrl.f = 0 
+		elseif key:lower() == "s" then 
+			ctrl.b = 0 
+		elseif key:lower() == "a" then 
+			ctrl.l = 0 
+		elseif key:lower() == "d" then 
+			ctrl.r = 0 
+		end 
+	end)
+	Fly()
+	fly.Text = "Loaded!"
+	fly.TextColor3 = Color3.fromRGB(0, 255, 50)
+	wait(2)
+	fly.TextColor3 = Color3.fromRGB(0, 0, 0)
+	fly.Text = "Fly"
+end)
+
+FEScripts.Name = "FEScripts"
+FEScripts.Parent = MainFrame
+FEScripts.BackgroundColor3 = Color3.fromRGB(112, 114, 255)
+FEScripts.Position = UDim2.new(0, 0, 0.103383459, 0)
+FEScripts.Size = UDim2.new(0, 350, 0, 326)
+FEScripts.Visible = false
+
+Tall.Name = "Tall"
+Tall.Parent = FEScripts
+Tall.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Tall.Position = UDim2.new(-0.00285714283, 0, -0.000670778216, 0)
+Tall.Size = UDim2.new(0, 351, 0, 50)
+Tall.ZIndex = 2
+Tall.Font = Enum.Font.PatrickHand
+Tall.Text = "TALL[R15 ALL MAX only 0 PORPOTIONS"
+Tall.TextColor3 = Color3.fromRGB(0, 0, 0)
+Tall.TextScaled = true
+Tall.TextSize = 40.000
+Tall.TextWrapped = true
+Tall.MouseButton1Down:connect(function()
+	--Shit ass script made by failedmite57926
+
+	local LocalPlayer = game:GetService("Players").LocalPlayer
+	local Character = LocalPlayer.Character
+	local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+
+	function rm()
+		for i,v in pairs(Character:GetDescendants()) do
+			if v:IsA("BasePart") then
+				if v.Name == "Handle" or v.Name == "Head" then
+					if Character.Head:FindFirstChild("OriginalSize") then
+						Character.Head.OriginalSize:Destroy()
+					end
+				else
+					for i,cav in pairs(v:GetDescendants()) do
+						if cav:IsA("Attachment") then
+							if cav:FindFirstChild("OriginalPosition") then
+								cav.OriginalPosition:Destroy()  
+							end
+						end
+					end
+					v:FindFirstChild("OriginalSize"):Destroy()
+					if v:FindFirstChild("AvatarPartScaleType") then
+						v:FindFirstChild("AvatarPartScaleType"):Destroy()
+					end
+				end
+			end
+		end
+	end
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
+	wait(1)
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
+	wait(1)
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("BodyWidthScale"):Destroy()
+	wait(1)
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("BodyDepthScale"):Destroy()
+	wait(1)
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("HeadScale"):Destroy()
+	wait(1)
+end)
+
+MainButton.Name = "MainButton"
+MainButton.Parent = MainFrame
+MainButton.BackgroundColor3 = Color3.fromRGB(165, 255, 228)
+MainButton.Position = UDim2.new(0, 0, 0.905121088, 0)
+MainButton.Size = UDim2.new(0, 175, 0, 50)
+MainButton.ZIndex = 2
+MainButton.Font = Enum.Font.PatrickHand
+MainButton.Text = "Main"
+MainButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+MainButton.TextScaled = true
+MainButton.TextSize = 40.000
+MainButton.TextWrapped = true
+
+FEScriptsButton.Name = "FEScriptsButton"
+FEScriptsButton.Parent = MainFrame
+FEScriptsButton.BackgroundColor3 = Color3.fromRGB(165, 255, 228)
+FEScriptsButton.Position = UDim2.new(0.5, 0, 0.905132413, 0)
+FEScriptsButton.Size = UDim2.new(0, 175, 0, 50)
+FEScriptsButton.ZIndex = 2
+FEScriptsButton.Font = Enum.Font.PatrickHand
+FEScriptsButton.Text = "FeScripts"
+FEScriptsButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+FEScriptsButton.TextScaled = true
+FEScriptsButton.TextSize = 40.000
+FEScriptsButton.TextWrapped = true
+
+AboutThisScript.Name = "AboutThisScript"
+AboutThisScript.Parent = MainFrame
+AboutThisScript.BackgroundColor3 = Color3.fromRGB(190, 255, 228)
+AboutThisScript.Position = UDim2.new(0, 0, 0.10154552, 0)
+AboutThisScript.Size = UDim2.new(0, 350, 0, 327)
+AboutThisScript.Visible = false
+
+IMPORTANT.Name = "IMPORTANT"
+IMPORTANT.Parent = AboutThisScript
+IMPORTANT.BackgroundColor3 = Color3.fromRGB(255, 44, 146)
+IMPORTANT.Size = UDim2.new(0, 350, 0, 67)
+IMPORTANT.Font = Enum.Font.SourceSans
+IMPORTANT.Text = "Made By Kazuya#8624 aka. TANGINAMO123"
+IMPORTANT.TextColor3 = Color3.fromRGB(0, 0, 0)
+IMPORTANT.TextScaled = true
+IMPORTANT.TextSize = 50.000
+IMPORTANT.TextWrapped = true
+
+VARSION.Name = "VARSION"
+VARSION.Parent = AboutThisScript
+VARSION.BackgroundColor3 = Color3.fromRGB(255, 44, 146)
+VARSION.Position = UDim2.new(0.319999993, 0, 0.275229365, 0)
+VARSION.Size = UDim2.new(0, 125, 0, 50)
+VARSION.Font = Enum.Font.SourceSans
+VARSION.Text = "V1.2.5"
+VARSION.TextColor3 = Color3.fromRGB(0, 0, 0)
+VARSION.TextScaled = true
+VARSION.TextSize = 50.000
+VARSION.TextWrapped = true
+
+FAX.Name = "FAX"
+FAX.Parent = ChatScripts
+FAX.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+FAX.Position = UDim2.new(0.304714292, 0, 0.451785922, 0)
+FAX.Size = UDim2.new(0, 135, 0, 50)
+FAX.ZIndex = 2
+FAX.Font = Enum.Font.PatrickHand
+FAX.Text = "fax keybind = m"
+FAX.TextColor3 = Color3.fromRGB(0, 0, 0)
+FAX.TextScaled = true
+FAX.TextSize = 40.000
+FAX.TextWrapped = true
+FAX.MouseButton1Down:connect(function()
+	local words = {
+		'ur a legit fax dude',
+		'Legit FAX',
+		'fax on top',
+		'faxinator',
+		'fax',
+		'sheeesh fax',
+		'i just gotta say its FAX',
+		'All FAX',
+		'Fax Detected 100%',
+		'HUGE FAX DAWG',
+		'i hear a FAX',
+		'ultimate Fax',
+		'respect fax guy',
+
+	}
+
+
+	local player = game.Players.LocalPlayer
+	local keybind = 'm'
+
+	local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+	player:GetMouse().KeyDown:connect(function(key)
+		if key == keybind then
+			event:FireServer(words[math.random(#words)], "All")
+		end
+	end)
+end)
+
+Announcements.Name = "Announcements"
+Announcements.Parent = AboutThisScript
+Announcements.BackgroundColor3 = Color3.fromRGB(255, 44, 146)
+Announcements.Position = UDim2.new(0, 0, 0.519877672, 0)
+Announcements.Size = UDim2.new(0, 350, 0, 157)
+Announcements.Font = Enum.Font.SourceSans
+Announcements.Text = "NEW SCRIPTS BUTTON IN THE NEXT UPDATE ALOT OF SHITS AND IT WILL BE GOOD TRUST ME EXCEPT THE FUCKING ANTI BAN IT HAS NO ANTI BAN IF ITS DETECTED UR GG"
+Announcements.TextColor3 = Color3.fromRGB(0, 0, 0)
+Announcements.TextScaled = true
+Announcements.TextSize = 50.000
+Announcements.TextWrapped = true
+
+AboutThisScriptButton.Name = "AboutThisScriptButton"
+AboutThisScriptButton.Parent = MainFrame
+AboutThisScriptButton.BackgroundColor3 = Color3.fromRGB(165, 255, 228)
+AboutThisScriptButton.Position = UDim2.new(0, 0, 0.716953635, 0)
+AboutThisScriptButton.Size = UDim2.new(0, 350, 0, 50)
+AboutThisScriptButton.ZIndex = 2
+AboutThisScriptButton.Font = Enum.Font.PatrickHand
+AboutThisScriptButton.Text = "About the Script"
+AboutThisScriptButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+AboutThisScriptButton.TextSize = 55.000
+AboutThisScriptButton.TextWrapped = true
+
+ChatScriptsButton.Name = "ChatScriptsButton"
+ChatScriptsButton.Parent = MainFrame
+ChatScriptsButton.BackgroundColor3 = Color3.fromRGB(165, 255, 228)
+ChatScriptsButton.Position = UDim2.new(0, 0, 0.811136127, 0)
+ChatScriptsButton.Size = UDim2.new(0, 350, 0, 50)
+ChatScriptsButton.ZIndex = 2
+ChatScriptsButton.Font = Enum.Font.PatrickHand
+ChatScriptsButton.Text = "Chat Scripts/With Keybinds"
+ChatScriptsButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+ChatScriptsButton.TextScaled = true
+ChatScriptsButton.TextSize = 40.000
+ChatScriptsButton.TextWrapped = true
+
+ChatBypass.Name = "ChatBypass"
+ChatBypass.Parent = FEScripts
+ChatBypass.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+ChatBypass.Position = UDim2.new(0.494285703, 0, -0.000670778216, 0)
+ChatBypass.Size = UDim2.new(0, 176, 0, 50)
+ChatBypass.ZIndex = 2
+ChatBypass.Font = Enum.Font.PatrickHand
+ChatBypass.Text = "CHAT BYPASS [USE ALT U MIGHT GET BANNED FOR THIS]"
+ChatBypass.TextColor3 = Color3.fromRGB(0, 0, 0)
+ChatBypass.TextScaled = true
+ChatBypass.TextSize = 40.000
+ChatBypass.TextWrapped = true
+ChatBypass.MouseButton1Down:connect(function()
+    loadstring(game:HttpGet("https://the-shed.xyz/roblox/scripts/ChatBypass", true))()
+end)
+
+Parkour.Name = "Parkour"
+Parkour.Parent = FEScripts
+Parkour.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Parkour.Position = UDim2.new(0.00285712793, 0, 0.152703464, 0)
+Parkour.Size = UDim2.new(0, 176, 0, 50)
+Parkour.ZIndex = 2
+Parkour.Font = Enum.Font.PatrickHand
+Parkour.Text = "Parkour PRESS F9 FOR CONTROLS"
+Parkour.TextColor3 = Color3.fromRGB(0, 0, 0)
+Parkour.TextScaled = true
+Parkour.TextSize = 40.000
+Parkour.TextWrapped = true
+Parkour.MouseButton1Down:connect(function()
+    print("Parkour Key's")
+print("double space for double jump")
+print("double space in wall for wall run")
+print("space in wall so u can go upwards")
+    _G.MiztReanimSettings = {
+    PermanentDeath = false,
+    NoHeadPermanentDeath = false,
+    Noclip = true,
+    HatReanimate = false,
+    SemiHatReanimate = false,
+    UseMizaruTorso = false,
+    FlingActive = false,
+    AlignMethod = true,
+    Netless = true,
+    ActiveLegacyNet = true,
+    NetlessVelocity = {0,0,-50}
+}
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Sylixe/Scripts/main/MiztReanimate.lua',true))()
+--[[
+parkour controls: Double Space: Flip
+Space On Wall: Wall Run Up
+Double-space on Wall (While running past it): Wall Run
+Ctrl: Crouch
+Alt: Slide
+]]--
+local player = game:service("Players").LocalPlayer
+local mouse = player:GetMouse()
+local cam = workspace.CurrentCamera
+local char = player.Character.Dummy.Dummy
+local Torsoz = char:findFirstChild("Torso")
+local RA = char:findFirstChild("Right Arm")
+local LA = char:findFirstChild("Left Arm")
+local RL = char:findFirstChild("Right Leg")
+local LL = char:findFirstChild("Left Leg")
+local H = char:findFirstChild("Head")
+local Hu = char:findFirstChild("Humanoid")
+local RS = Torsoz:findFirstChild("Right Shoulder")
+local LS = Torsoz:findFirstChild("Left Shoulder")
+local RH = Torsoz:findFirstChild("Right Hip")
+local LH = Torsoz:findFirstChild("Left Hip")
+local N = Torsoz:findFirstChild("Neck")
+local NV = Vector3.new(0,0,0)
+local FOV = 70
+local Shift, Space, Sitting = false,false,false
+local GravPoint = 0
+local Diving = false
+local DivingCooldown = 0
+local DivingDir = NV
+local DivingCF = CFrame.new(0,0,0)
+local DivingBG, DivingBV
+local HWallRunning = false
+local HWRGravDrop = false
+local HWRLastPart
+local HWRCooldown = 0
+local HWRDir
+local VWallRunning = false
+local VWRLastPart
+local VWRCooldown = 0
+local VWRLeft,VWRRight = false,false
+local Sliding = false
+local SlideCooldown = 0
+local Standing = true
+local Action = "Standing"
+local animplus = true
+local animspeed = 0
+local animangle = 0.01
+local Joint1, Joint2, Joint3, Joint4, Joint5
+ 
+for i, v in pairs(char:children()) do
+if (v.className == "LocalScript" and v.Name == "ParkourSkrip") or v.className == "NumberValue" or v.className == "BoolValue" or v.className == "Model" or v.Name == "Animate" then
+v:remove()
+end
+end
+ 
+local loadids = {112474909, 112474911, 112474909}
+ 
+local stamina = 10000
+local maxstamina = 10000
+local defsprint = 28
+local sprint = defsprint  
+ 
+local pause = Instance.new("BoolValue", char)
+pause.Name = "Pause"
+pause.Value = false
+local flow = Instance.new("NumberValue", char)
+flow.Name = "Flow"
+flow.Value = 0
+local flowcooldown = 0
+ 
+local m = Instance.new("Model", char)
+m.Name = "FlowChainPartz"
+ 
+local P = Instance.new("Part")
+P.Name = "TrailPart"
+P.formFactor = "Custom"
+P.Size = Vector3.new(0.2,0.2,0.2)
+P.Locked = true
+P.Anchored = true
+P.CanCollide = false
+P.TopSurface = 0
+P.BottomSurface = 0
+ 
+script.Name = "ParkourSkrip"
+ 
+local hue = 0
+ 
+function HSV(H,S,V)
+H = H % 360
+local C = V * S
+local H2 = H/60
+local X = C * (1 - math.abs((H2 %2) -1))
+local color = Color3.new(0,0,0)
+if H2 <= 0 then
+color = Color3.new(C,0,0)
+elseif 0 <= H2 and H2 <= 1 then
+color = Color3.new(C,X,0)
+elseif 1 <= H2 and H2 <= 2 then
+color = Color3.new(X,C,0)
+elseif 2 <= H2 and H2 <= 3 then
+color = Color3.new(0,C,X)
+elseif 3 <= H2 and H2 <= 4 then
+color = Color3.new(0,X,C)
+elseif 4 <= H2 and H2 <= 5 then
+color = Color3.new(X,0,C)
+elseif 5 <= H2 and H2 <= 6 then
+color = Color3.new(C,0,X)
+end
+local m = V - C
+return Color3.new(color.r + m, color.g + m, color.b + m)
+end
+ 
+function GetWeld(weld)
+if weld:findFirstChild("XAngle") == nil then
+local a = Instance.new("NumberValue", weld)
+a.Name = "XAngle"
+end
+if weld:findFirstChild("YAngle") == nil then
+local a = Instance.new("NumberValue", weld)
+a.Name = "YAngle"
+end
+if weld:findFirstChild("ZAngle") == nil then
+local a = Instance.new("NumberValue", weld)
+a.Name = "ZAngle"
+end
+return weld.C0.p, Vector3.new(weld.XAngle.Value, weld.YAngle.Value, weld.ZAngle.Value)
+end
+ 
+function SetWeld(weld, i, loops, origpos,origangle, nextpos,nextangle)
+if weld:findFirstChild("XAngle") == nil then
+local a = Instance.new("NumberValue", weld)
+a.Name = "XAngle"
+end
+if weld:findFirstChild("YAngle") == nil then
+local a = Instance.new("NumberValue", weld)
+a.Name = "YAngle"
+end
+if weld:findFirstChild("ZAngle") == nil then
+local a = Instance.new("NumberValue", weld)
+a.Name = "ZAngle"
+end
+ 
+local tox,toy,toz = 0,0,0
+if origangle.x > nextangle.x then
+tox = -math.abs(origangle.x - nextangle.x) /loops*i
+else
+tox = math.abs(origangle.x - nextangle.x) /loops*i
+end
+if origangle.y > nextangle.y then
+toy = -math.abs(origangle.y - nextangle.y) /loops*i
+else
+toy = math.abs(origangle.y - nextangle.y) /loops*i
+end
+if origangle.z > nextangle.z then
+toz = -math.abs(origangle.z - nextangle.z) /loops*i
+else
+toz = math.abs(origangle.z - nextangle.z) /loops*i
+end
+ 
+local tox2,toy2,toz2 = 0,0,0
+if origpos.x > nextpos.x then
+tox2 = -math.abs(origpos.x - nextpos.x) /loops*i
+else
+tox2 = math.abs(origpos.x - nextpos.x) /loops*i
+end
+if origpos.y > nextpos.y then
+toy2 = -math.abs(origpos.y - nextpos.y) /loops*i
+else
+toy2 = math.abs(origpos.y - nextpos.y) /loops*i
+end
+if origpos.z > nextpos.z then
+toz2 = -math.abs(origpos.z - nextpos.z) /loops*i
+else
+toz2 = math.abs(origpos.z - nextpos.z) /loops*i
+end
+ 
+weld.XAngle.Value = origangle.x + tox
+weld.YAngle.Value = origangle.y + toy
+weld.ZAngle.Value = origangle.z + toz
+weld.C0 = CFrame.new(origpos.x + tox2,origpos.y + toy2,origpos.z + toz2) * CFrame.Angles(origangle.x + tox,origangle.y + toy,origangle.z + toz)
+end
+ 
+function LoadTextures()
+local pls = game:service("ContentProvider")
+for i, v in pairs(loadids) do
+pls:Preload("http://www.roblox.com/asset/?id="..v)
+wait(0.04)
+end
+end
+LoadTextures()
+ 
+function CreateGui()
+for i, v in pairs(player.PlayerGui:children()) do
+if v.className == "ScreenGui" and v.Name == "staminaGui" then
+v:remove()
+end
+end
+local g = Instance.new("ScreenGui", player.PlayerGui)
+g.Name = "staminaGui"
+ 
+local c = Instance.new("Frame", g)
+c.Visible = false
+c.Size = UDim2.new(0,86,0,320)
+c.BackgroundTransparency = 1
+c.Position = UDim2.new(1,-96,0.5,-160)
+c.Name = "Container"
+ 
+local t = Instance.new("TextLabel", c)
+t.Size = UDim2.new(0,0,-0.1,0)
+t.Position = UDim2.new(0.3,0,0.5,0)
+t.TextXAlignment = "Right"
+t.Font = "ArialBold"
+t.TextTransparency = 0.1
+t.TextColor3 = Color3.new(0,0.6,0.8)
+t.TextStrokeColor3 = Color3.new(0,0.2,0.8)
+t.TextStrokeTransparency = 0.3
+t.FontSize = 6
+t.BackgroundTransparency = 1
+local t2 = t:Clone()
+t2.Parent = c
+t2.Size = UDim2.new(0,0,0.1,0)
+local l = t:Clone()
+l.Parent = c
+l.Size = UDim2.new(0,0,0,0)
+l.Text = "-----"
+ 
+local f1 = Instance.new("Frame", c)
+f1.Name = "Backing"
+f1.ClipsDescendants = true
+f1.Size = UDim2.new(1,0,0,0)
+f1.BackgroundColor3 = Color3.new(0.8,0,0)
+f1.BackgroundTransparency = 1
+local f1img = Instance.new("ImageLabel", f1)
+f1img.BackgroundTransparency = 1
+f1img.Image = "http://www.roblox.com/asset/?id=112474909"
+f1img.Size = UDim2.new(1,0,0,c.Size.Y.Offset)
+ 
+local f2 = Instance.new("Frame", c)
+f2.Name = "Overlay"
+f2.ClipsDescendants = true
+f2.Size = UDim2.new(1,0,1,0)
+f2.BackgroundColor3 = Color3.new(0,0,0.8)
+f2.BackgroundTransparency = 1
+local f2img = Instance.new("ImageLabel", f2)
+f2img.BackgroundTransparency = 1
+f2img.Image = "http://www.roblox.com/asset/?id=112474911"
+f2img.Size = UDim2.new(1,0,0,c.Size.Y.Offset)
+ 
+function Calculate()
+local ysize = c.Size.Y.Offset
+local per = (stamina/maxstamina) * c.Size.Y.Offset
+local rem = (-(stamina/maxstamina-1)) * c.Size.Y.Offset
+f1.Size = UDim2.new(1,0,0,rem)
+f2.Size = UDim2.new(1,0,0,per)
+f2.Position = UDim2.new(0,0,0,rem)
+f2img.Position = UDim2.new(0,0,0,-rem)
+t.Text = math.floor(stamina)
+t2.Text = maxstamina
+end
+Calculate()
+ 
+wait(0.01)
+c.Visible = true
+end
+CreateGui()
+ 
+player.CharacterAdded:connect(function()
+char = player.Character
+Torsoz = char:findFirstChild("Torso")
+RA = char:findFirstChild("Right Arm")
+LA = char:findFirstChild("Left Arm")
+RL = char:findFirstChild("Right Leg")
+LL = char:findFirstChild("Left Leg")
+H = char:findFirstChild("Head")
+Hu = char:findFirstChild("Humanoid")
+RS = Torsoz:findFirstChild("Right Shoulder")
+LS = Torsoz:findFirstChild("Left Shoulder")
+RH = Torsoz:findFirstChild("Right Hip")
+LH = Torsoz:findFirstChild("Left Hip")
+N = Torsoz:findFirstChild("Neck")
+stamina = maxstamina
+CreateGui()
+end)
+ 
+function RAY(pos, dir, startpos, endpos, distleft, collidedlist)
+collidedlist = collidedlist or {char}
+startpos = startpos or pos
+distleft = distleft or dir.unit * dir.magnitude
+endpos = endpos or pos + distleft
+local ray = Ray.new(pos, distleft)
+local hitz,enz = workspace:FindPartOnRayWithIgnoreList(ray, collidedlist)
+--[[
+local p = P:Clone()
+p.Parent = char
+p.Size = Vector3.new(0.4,0.4,0.4)
+p.BrickColor = BrickColor.new("Lime green")
+p.CanCollide = false
+p.CFrame = CFrame.new(enz)
+p.Transparency = 0.3
+]]
+if hitz ~= nil then
+if hitz.CanCollide == false then
+table.insert(collidedlist, hitz)
+local newpos = enz
+local newdistleft = distleft - (dir.unit * (pos - newpos).magnitude)
+if newdistleft ~= NV then
+return RAY(newpos-(dir*0.01), dir, startpos, endpos, newdistleft+(dir*0.01), collidedlist)
+end
+end
+end
+ 
+return hitz, enz, ray
+end
+ 
+function Sit()
+Standing = false
+local hitz,enz = RAY(Torsoz.Position, Vector3.new(0,-4.1,0))
+local tordir = Vector3.new(Torsoz.CFrame.lookVector.x,0,Torsoz.CFrame.lookVector.z)
+if (hitz ~= nil and hitz.CanCollide == true) then
+local cf = CFrame.new(enz+Vector3.new(0,1.28,0), enz+Vector3.new(0,1.28,0)+tordir) * CFrame.Angles(math.pi/6,0,0)
+local hitz2,enz2 = RAY(enz+Vector3.new(0,2.25,0), tordir*-2.2)
+Hu.PlatformStand = true
+Torsoz.CFrame = cf
+local bp = Instance.new("BodyPosition", Torsoz)
+bp.Name = "StaminaBodyObject"
+bp.maxForce = Vector3.new(1/0,1/0,1/0)
+bp.D = 100
+bp.position = cf.p
+local bg = Instance.new("BodyGyro", Torsoz)
+bg.Name = "StaminaBodyObject"
+bg.maxTorque = Vector3.new(1/0,1/0,1/0)
+bg.cframe = cf
+bg.D = 100
+SetWeld(Joint1,1,1, NV,NV, Vector3.new(0.34,-1,0.2), Vector3.new((math.pi/2)-(math.pi/6),0,math.pi/8))
+SetWeld(Joint2,1,1, NV,NV, Vector3.new(-0.34,-1,0.2), Vector3.new((math.pi/2)-(math.pi/6),0,-math.pi/8))
+ 
+if hitz2 ~= nil and hitz2.CanCollide == true then
+Joint3.C0 = CFrame.new(0.9,0.4,-0.45) * CFrame.Angles(0,math.pi/2.13,0) * CFrame.Angles(math.pi/2.3,0,0)
+Joint4.C0 = CFrame.new(-0.9,0.4,-0.4) * CFrame.Angles(0,-math.pi/2.05,0) * CFrame.Angles(math.pi/2.3,0,0)
+Joint5.C0 = CFrame.new(0,1,0) * CFrame.Angles(-math.pi/8.8,0,0)
+else
+SetWeld(Joint3,1,1, NV,NV, Vector3.new(1.4,0.4,0.1), Vector3.new(-(math.pi/6)-(math.pi/10),0,math.pi/9))
+SetWeld(Joint4,1,1, NV,NV, Vector3.new(-1.4,0.4,0.1), Vector3.new(-(math.pi/6)-(math.pi/10),0,-math.pi/9))
+SetWeld(Joint5,1,1, NV,NV, Vector3.new(0,1,0), Vector3.new(-math.pi/12,0,0))
+end
+ 
+Sitting = true
+Action = "Sitting"
+end
+end
+ 
+ 
+function Stand()
+Hu.PlatformStand = false
+if Sitting == true then
+local tordir = Torsoz.Position + (Torsoz.CFrame.lookVector*10000)
+local cf = CFrame.new(Torsoz.Position + Vector3.new(0,1.8,0), Vector3.new(tordir.x,Torsoz.Position.y,tordir.z))
+Torsoz.CFrame = cf
+end
+for i, v in pairs(Torsoz:children()) do
+if v.Name == "StaminaBodyObject" then
+v:remove()
+end
+end
+RH.Part0 = nil
+LH.Part0 = nil
+RS.Part0 = nil
+LS.Part0 = nil
+Joint1.Part0 = Torsoz
+Joint1.Part1 = RL
+Joint1.C0 = CFrame.new(0.5,-1,0)
+Joint1.C1 = CFrame.new(0,1,0)
+Joint2.Part0 = Torsoz
+Joint2.Part1 = LL
+Joint2.C0 = CFrame.new(-0.5,-1,0)
+Joint2.C1 = CFrame.new(0,1,0)
+Joint3.Part0 = Torsoz
+Joint3.Part1 = RA
+Joint3.C0 = CFrame.new(1.5,0.5,0)
+Joint3.C1 = CFrame.new(0,0.5,0)
+Joint4.Part0 = Torsoz
+Joint4.Part1 = LA
+Joint4.C0 = CFrame.new(-1.5,0.5,0)
+Joint4.C1 = CFrame.new(0,0.5,0)
+Joint5.Part0 = Torsoz
+Joint5.Part1 = H
+Joint5.C0 = CFrame.new(0,1,0)
+Joint5.C1 = CFrame.new(0,-0.5,0)
+Sitting = false
+Diving = false
+Standing = true
+Action = "Standing"
+end
+ 
+--------------------------------------- Dive ----------------------------------
+ 
+function Dive()
+stamina = stamina - 10
+flow.Value = flow.Value + 10
+if flow.Value > 100 then
+flow.Value = 100
+end
+Standing = false
+local dir = Vector3.new(Torsoz.CFrame.lookVector.x,0,Torsoz.CFrame.lookVector.z)
+GravPoint = 18
+DivingDir = dir
+local cf = CFrame.new(Torsoz.Position, dir+Vector3.new(0,Torsoz.Position.y,0))
+DivingCF = cf
+DivingDir = dir
+Hu.PlatformStand = true
+local bv = Instance.new("BodyVelocity", Torsoz)
+bv.Name = "StaminaBodyObject"
+bv.maxForce = Vector3.new(1/0,1/0,1/0)
+bv.velocity = Vector3.new(DivingDir.x*24,GravPoint,DivingDir.z*24)
+DivingBV = bv
+local bg = Instance.new("BodyGyro", Torsoz)
+bg.Name = "StaminaBodyObject"
+bg.maxTorque = Vector3.new(1/0,1/0,1/0)
+bg.cframe = CFrame.new(Torsoz.Position, Torsoz.Position+bv.velocity) * CFrame.Angles(-math.pi/2,0,0)
+bg.D = 100
+DivingBG = bg
+ 
+local joint = Joint3
+joint.C1 = CFrame.new(0,0.5,0)
+local joint2 = Joint4
+joint2.C1 = CFrame.new(0,0.5,0)
+local joint3 = Joint1
+joint3.C1 = CFrame.new(0,1,0)
+local joint4 = Joint2
+joint4.C1 = CFrame.new(0,1,0)
+ 
+local joint5 = Joint5
+ 
+Diving = true
+Action = "Diving"
+ 
+for i = 1, 8 do
+SetWeld(joint,i,8, Vector3.new(1.5,0.5,0), NV, Vector3.new(1.45,0.5,0.1), Vector3.new(-0.2,-math.pi/9,math.pi/13))
+SetWeld(joint2,i,8, Vector3.new(-1.5,0.5,0), NV, Vector3.new(-1.45,0.5,0.1), Vector3.new(-0.2,math.pi/9,-math.pi/13))
+SetWeld(joint3,i,8, Vector3.new(0.5,-1,0), NV, Vector3.new(0.5,-1,0.03), Vector3.new(-0.2,-math.pi/10,math.pi/14))
+SetWeld(joint4,i,8, Vector3.new(-0.5,-1,0), NV, Vector3.new(-0.5,-1,0.03), Vector3.new(-0.2,math.pi/10,-math.pi/14))
+SetWeld(joint5,i,8, Vector3.new(0,1,0), NV, Vector3.new(0,1,0), Vector3.new(0.45,0,0))
+wait(0.025)
+end
+ 
+local counter = 0
+while Diving == true do
+counter = counter + 1
+bg.Parent = Torsoz
+local hitz, enz = RAY(Torsoz.Position, bv.velocity.unit*4.6)
+if hitz ~= nil and hitz.CanCollide == true then
+local hitz2, enz2 = RAY(Torsoz.Position, Vector3.new(0,-4,0))
+if hitz2 ~= nil then
+Diving = "Rolling"
+Action = "DiveRolling"
+else
+Torsoz.CFrame = Torsoz.CFrame * CFrame.new(0,-0.3,0)
+Torsoz.Velocity = NV
+flow.Value = 0
+break
+end
+end
+if counter > 190 then
+break
+end
+wait(0.02)
+end
+ 
+bv.velocity = (dir*20) + Vector3.new(0,-0.5,0)
+ 
+local bgcf = bg.cframe
+local haslanded = false
+local count = 0
+ 
+while haslanded == false do
+bg.cframe = bgcf * CFrame.Angles(-0.3*count,0,0)
+local hitz, enz = RAY(Torsoz.Position, ((Torsoz.CFrame*CFrame.new(0,-1,0)).p - Torsoz.CFrame.p).unit*1.6)
+if hitz ~= nil and hitz.CanCollide == true then
+haslanded = true
+end
+local hitz2, enz2 = RAY(Torsoz.Position, Vector3.new(0,-3.8,0))
+if hitz2 == nil then
+Torsoz.Velocity = NV
+break
+elseif haslanded == true then
+local bp = Instance.new("BodyPosition", Torsoz)
+bp.Name = "StaminaJumpFix"
+bp.maxForce = Vector3.new(0,1/0,0)
+bp.P = 7000
+bp.position = enz2 + Vector3.new(0,2.8,0)
+game:service("Debris"):AddItem(bp, 0.3)
+else
+bv.velocity = (dir*20) + Vector3.new(0,-(Torsoz.Position - enz2).magnitude*3,0)
+ 
+end
+count = count + 1
+if count <= 6 then
+local i = count
+local j1,j1a = GetWeld(joint)
+local j2,j2a = GetWeld(joint2)
+local j3,j3a = GetWeld(joint3)
+local j4,j4a = GetWeld(joint4)
+local j5,j5a = GetWeld(joint5)
+SetWeld(joint,i,6, j1,j1a, Vector3.new(1.35,0.5,-0.2), Vector3.new(math.pi/2.6,0,-math.pi/5.8))
+SetWeld(joint2,i,6, j2,j2a, Vector3.new(-1.35,0.5,-0.2), Vector3.new(math.pi/2.6,0,math.pi/5.8))
+SetWeld(joint3,i,6, j3,j3a, Vector3.new(0.51,0.4,-0.6), Vector3.new(-0.1,0,0.05))
+SetWeld(joint4,i,6, j4,j4a, Vector3.new(-0.51,0.4,-0.6), Vector3.new(-0.1,0,-0.05))
+SetWeld(joint5,i,6, j5,j5a, Vector3.new(0,1,0), Vector3.new(-0.4,0,0))
+elseif count >= 50 then
+break
+end
+wait(0.02)
+end
+ 
+Torsoz.Velocity = NV
+ 
+Stand()
+DivingCooldown = 9
+end
+ 
+function FindSurface(part, position)
+local obj = part.CFrame:pointToObjectSpace(position)
+local siz = part.Size/2
+for i,v in pairs(Enum.NormalId:GetEnumItems()) do
+local vec = Vector3.FromNormalId(v)
+local wvec = part.CFrame:vectorToWorldSpace(vec)
+local vz = (obj)/(siz*vec)
+if (math.abs(vz.X-1) < 0.01 or math.abs(vz.Y-1) < 0.01 or math.abs(vz.Z-1) < 0.01) then
+return wvec,vec
+end
+end
+if part.className == "WedgePart" then
+return part.CFrame:vectorToWorldSpace(Vector3.new(0,0.707,-0.707)), Vector3.new(0,0.707,-0.707)
+end
+end
+ 
+function HWallRun(part, pos, side)
+if (part.className == "Part" and part.Shape == Enum.PartType.Block) or part.className ~= "Part" then
+flow.Value = flow.Value + 9
+Standing = false
+HWallRunning = true
+Action = "HWallRunning"
+GravPoint = 10
+HWRLastPart = part
+local dir, dirc = FindSurface(part, pos)
+towall = -dir
+dir = (CFrame.new(NV, dir) * CFrame.Angles(0,side,0)).lookVector
+ 
+local bv = Instance.new("BodyVelocity", Torsoz)
+bv.Name = "StaminaBodyObject"
+bv.maxForce = Vector3.new(1/0,1/0,1/0)
+bv.P = 9000
+bv.velocity = (dir*(sprint-0.5)) + Vector3.new(0,GravPoint,0)
+local bg = Instance.new("BodyGyro", Torsoz)
+bg.Name = "StaminaBodyObject"
+bg.maxTorque = Vector3.new(1/0,1/0,1/0)
+bg.cframe = CFrame.new(Torsoz.Position+(towall*-2), Torsoz.Position) * CFrame.Angles(0,-side,-side/4.2)
+bg.D = 100
+ 
+local sid = Instance.new("Snap")
+ 
+local joint1 = Joint3
+if side == -math.pi/2 then
+SetWeld(joint1,1,1, NV,NV, Vector3.new(1.5,0.5,0), Vector3.new(math.pi/1.3,0.1,math.pi/2.5))
+else
+sid = joint1
+SetWeld(joint1,1,1, NV,NV, Vector3.new(1.4,0.6,0), Vector3.new(-math.pi/12,0,math.pi/7))
+end
+local j1c0 = joint1.C0
+ 
+local joint2 = Joint4
+if side == math.pi/2 then
+SetWeld(joint2,1,1, NV,NV, Vector3.new(-1.5,0.5,0), Vector3.new(math.pi/1.3,-0.1,-math.pi/2.5))
+else
+sid = joint2
+SetWeld(joint2,1,1, NV,NV, Vector3.new(-1.4,0.6,0), Vector3.new(-math.pi/12,0,-math.pi/7))
+end
+local j2c0 = joint2.C0
+ 
+local joint3 = Joint1
+joint3.C1 = CFrame.new(0,1,0)
+if side == -math.pi/2 then
+SetWeld(joint3,1,1, NV,NV, Vector3.new(0.5,-0.38,-0.3), Vector3.new(0,math.pi/2,0.14))
+else
+SetWeld(joint3,1,1, NV,NV, Vector3.new(0.5,-0.8,-0.2), Vector3.new(0,math.pi/2,0.2))
+end
+ 
+local joint4 = Joint2
+joint4.C1 = CFrame.new(0,1,0)
+if side == -math.pi/2 then
+SetWeld(joint4,1,1, NV,NV, Vector3.new(-0.5,-0.8,-0.2), Vector3.new(0,0,0.2))
+else
+SetWeld(joint4,1,1, NV,NV, Vector3.new(-0.5,-0.38,-0.3), Vector3.new(0,0,0.14))
+end
+ 
+local joint5 = Joint5
+SetWeld(joint5,1,1,NV,NV,Vector3.new(0,0.9,0),Vector3.new(0,0,side/7))
+ 
+Torsoz.CFrame = CFrame.new(pos+(towall*-2), pos) * CFrame.Angles(0,-side,-side/2.2)
+bg.cframe = CFrame.new(pos+(towall*-2), pos) * CFrame.Angles(0,-side,-side/2.2)
+ 
+local aniangle = 0
+local aniplus = true
+local aniangle2 = 0
+local aniplus2 = true
+ 
+local prevpart = part
+HWRLastPart = part
+while HWallRunning == true do
+ 
+if aniangle > math.pi then
+aniplus = false
+elseif aniangle < -math.pi then
+aniplus = true  
+end
+if aniplus == true then
+aniangle = aniangle + 0.95
+elseif aniplus == false then
+aniangle = aniangle - 0.95
+end
+ 
+if aniangle2 > math.pi then
+aniplus2 = false
+elseif aniangle2 < -math.pi then
+aniplus2 = true  
+end
+if aniplus2 == true then
+aniangle2 = aniangle2 + 0.23
+elseif aniplus2 == false then
+aniangle2 = aniangle2 - 0.23
+end
+ 
+Hu.PlatformStand = true
+local hitz, enz = RAY(Torsoz.Position, Vector3.new(0,-3,0))
+local hitz2, enz2 = RAY(Torsoz.Position, towall*3.4)
+ 
+--- if player ends wall run on ground
+if hitz ~= nil and hitz.CanCollide == true then
+bg.cframe = CFrame.new(enz2+(towall*-2), enz2) * CFrame.Angles(0,-side,0)
+local offset = (bg.cframe.p.y+enz2.y) - bg.cframe.p.y
+Torsoz.CFrame = CFrame.new(Vector3.new(bg.cframe.p.x,offset,bg.cframe.p.z), enz2) * CFrame.Angles(0,-side,0)
+Torsoz.Velocity = NV
+break
+end
+ 
+---- if new wall found --------
+if hitz2 ~= nil and hitz2.CanCollide == true then
+if hitz2 ~= prevpart then
+local direct = CFrame.new(Torsoz.Position, Torsoz.Position+dir) * CFrame.Angles(0,side,0)
+local hitz3, enz3 = RAY(Torsoz.Position, (direct * CFrame.Angles(0,-side/2.3,0)).lookVector*4)
+if hitz3 ~= nil then
+Torsoz.CFrame = CFrame.new(enz2+(towall*-2), enz2) * CFrame.Angles(0,-side*1.1,-side/2.2)
+bg.cframe = CFrame.new(enz2+(towall*-2), enz2) * CFrame.Angles(0,-side*1.1,-side/2.2)
+dir, dirc = FindSurface(hitz2, enz2)
+towall = -dir
+dir = (CFrame.new(NV, dir) * CFrame.Angles(0,side,0)).lookVector
+prevpart = hitz2
+HWRLastPart = hitz2
+else
+---- if player fails to find new wall to run on
+Torsoz.CFrame = CFrame.new(Torsoz.Position, Torsoz.Position+dir)
+bg.cframe = CFrame.new(Torsoz.Position, Torsoz.Position+dir)
+Torsoz.Velocity = NV
+HWRCooldown = 5
+break
+end
+end
+--- continue to wall run
+Torsoz.CFrame = CFrame.new(enz2+(towall*-2), enz2) * CFrame.Angles(0,-side,-side/2.2)
+bg.cframe = CFrame.new(enz2+(towall*-2), enz2) * CFrame.Angles(0,-side,-side/2.2)
+else
+---- if player ends wall run at end of wall
+Torsoz.CFrame = CFrame.new(Torsoz.Position, Torsoz.Position+dir)
+bg.cframe = CFrame.new(Torsoz.Position, Torsoz.Position+dir)
+Torsoz.Velocity = NV
+HWRCooldown = 5
+break
+end
+ 
+local hitz3, enz3 = RAY(Torsoz.Position, Torsoz.CFrame.lookVector*2)
+if hitz3 ~= nil and hitz3.CanCollide == true then
+Torsoz.CFrame = CFrame.new(Torsoz.Position, Torsoz.Position+dir)
+bg.cframe = CFrame.new(Torsoz.Position, Torsoz.Position+dir)
+Torsoz.Velocity = NV
+HWRCooldown = 5
+break
+end
+ 
+bv.Parent = Torsoz
+bv.velocity = (dir*(sprint-0.5)) + Vector3.new(0,GravPoint,0)
+bg.cframe = bg.cframe * CFrame.Angles(aniangle/80,aniangle/80,0)
+Torsoz.CFrame = Torsoz.CFrame * CFrame.Angles(aniangle/80,aniangle/80,0)
+local j3,j3a = GetWeld(joint3)
+local j4,j4a = GetWeld(joint4)
+SetWeld(joint3,1,1, j3,j3a, j3,Vector3.new(-0.2+(aniangle/4),0,0))
+SetWeld(joint4,1,1, j4,j4a, j4,Vector3.new(-0.2+(-aniangle/4),0,0))
+if side == math.pi/2 then
+local j1,j1a = GetWeld(joint1)
+SetWeld(joint1,1,1, j1,j1a, j1, Vector3.new(0,0,0.8+(aniangle2/14)))
+else
+local j2,j2a = GetWeld(joint2)
+SetWeld(joint2,1,1, j2,j2a, j2, Vector3.new(0,0,-0.8-(aniangle2/14)))
+end
+ 
+wait(0.025)
+if GravPoint < -100 then
+bg.cframe = CFrame.new(enz2+(towall*-2), enz2) * CFrame.Angles(0,-side,0)
+local offset = math.abs((bg.cframe.p.y+enz2.y) - bg.cframe.p.y)
+Torsoz.CFrame = CFrame.new(Vector3.new(bg.cframe.p.x,offset,bg.cframe.p.z), enz2) * CFrame.Angles(0,-side,0)
+break
+end
+ 
+end
+ 
+if HWallRunning == "Jumping" then
+HWRCooldown = 6
+joint1.C1 = CFrame.new(0,0.5,0)
+ 
+joint2.C1 = CFrame.new(0,0.5,0)
+if side == -math.pi/2 then
+joint2.C0 = CFrame.new(-1.35,0.5,0) * CFrame.Angles(0,side/2.4,-math.pi/3)
+else
+joint2.C0 = CFrame.new(-1.35,0.5,0) * CFrame.Angles(0,side/2.4,-math.pi/4)
+end
+ 
+joint3.C1 = CFrame.new(0,1,0)
+if side == -math.pi/2 then
+joint3.C0 = CFrame.new(0.5,-0.8,0) * CFrame.Angles(0,math.pi+(side/2.4),-math.pi/4)
+else
+joint3.C0 = CFrame.new(0.5,-0.8,0) * CFrame.Angles(0,(side/2.4),math.pi/4)
+end
+joint4.MaxVelocity = 10
+joint4.DesiredAngle = 0
+joint4.C1 = CFrame.new(0,1,0)
+if side == -math.pi/2 then
+joint4.C0 = CFrame.new(-0.5,-0.8,0) * CFrame.Angles(0,math.pi+(side/2.4),math.pi/4)
+else
+joint4.C0 = CFrame.new(-0.5,-0.8,0) * CFrame.Angles(0,(side/2.4),-math.pi/4)
+end
+ 
+local joint5 = Joint5
+joint5.C1 = CFrame.new(0,-0.5,0) * CFrame.Angles(0,side/2.4,0)
+joint5.C0 = CFrame.new(0,1,0)
+ 
+local j1,j1a = GetWeld(joint1)
+local j2,j2a = GetWeld(joint2)
+local j3,j3a = GetWeld(joint3)
+local j4,j4a = GetWeld(joint4)
+local j5,j5a = GetWeld(joint5)
+ 
+GravPoint = 26
+local collidecount = 0
+local bgangle = side/2
+local count = 1
+local dir2 = (CFrame.new(NV, dir) * CFrame.Angles(0,-side/2.4,0)).lookVector
+HWRDir = dir2
+bv.velocity = (dir2*(sprint+5)) + Vector3.new(0,GravPoint,0)
+while HWallRunning == "Jumping" do
+local hitz, enz = RAY(Torsoz.Position, Vector3.new(0,-4,0))
+local hitz2, enz2 = RAY(Torsoz.Position, dir2*1.4)
+if hitz ~= nil and hitz.CanCollide == true then
+local offset = math.abs(enz.y - Torsoz.CFrame.p.y)
+Torsoz.CFrame = CFrame.new(enz+Vector3.new(0,2.9,0), enz+Vector3.new(0,2.9,0)+dir2)
+Torsoz.Velocity = NV
+break
+end
+ 
+if hitz2 ~= nil and hitz2.CanCollide == true then
+collidecount = collidecount + 1
+if collidecount == 4 then
+Torsoz.CFrame = CFrame.new(Torsoz.Position, Torsoz.Position+dir2) * CFrame.new(0,0,0.4)
+Torsoz.Velocity = Vector3.new(0,Torsoz.Velocity.y,0)
+HWRCooldown = 5
+VWRCooldown = 5
+wait(0.02)
+break
+end
+end
+ 
+if side/2 > 0 then
+if bgangle > 0.2 then
+bgangle = bgangle - 0.055
+end
+else
+if bgangle < -0.2 then
+bgangle = bgangle + 0.055
+end
+end
+ 
+if count <= 5 then
+if side == -math.pi/2 then
+SetWeld(joint1,count,5, j1,j1a, Vector3.new(1.35,0.5,0), Vector3.new(0,side/2.4,math.pi/4))
+SetWeld(joint2,count,5, j2,j2a, Vector3.new(-1.35,0.5,0), Vector3.new(0,side/2.4,-math.pi/3))
+SetWeld(joint3,count,5, j3,j3a, Vector3.new(0.5,-0.8,0), Vector3.new(0,-side/1.7,0))
+joint3.C0 = joint3.C0 * CFrame.Angles((-math.pi/4)/5*count,0,0)
+SetWeld(joint4,count,5, j4,j4a, Vector3.new(-0.5,-0.8,0), Vector3.new(0,-side/1.7,0))
+joint4.C0 = joint4.C0 * CFrame.Angles((math.pi/4)/5*count,0,0)
+else
+SetWeld(joint1,count,5, j1,j1a, Vector3.new(1.35,0.5,0), Vector3.new(0,side/2.4,math.pi/3))
+SetWeld(joint2,count,5, j2,j2a, Vector3.new(-1.35,0.5,0), Vector3.new(0,side/2.4,-math.pi/4))
+SetWeld(joint3,count,5, j3,j3a, Vector3.new(0.5,-0.8,0), Vector3.new(0,-side/1.7,0))
+joint3.C0 = joint3.C0 * CFrame.Angles((math.pi/4)/5*count,0,0)
+SetWeld(joint4,count,5, j4,j4a, Vector3.new(-0.5,-0.8,0), Vector3.new(0,-side/1.7,0))
+joint4.C0 = joint4.C0 * CFrame.Angles((-math.pi/4)/5*count,0,0)
+end
+ 
+count = count + 1
+end
+ 
+bg.Parent = Torsoz
+bg.cframe = CFrame.new(NV, dir) * CFrame.Angles(0,side/15,-bgangle)
+bv.velocity = (dir2*(sprint+5)) + Vector3.new(0,GravPoint,0)
+if collidecount ~= 0 then
+bv.velocity = Vector3.new(0,bv.velocity.y,0)
+end
+if GravPoint < -120 then
+break
+end
+wait(0.025)
+end
+end
+ 
+Hu.PlatformStand = false
+bv:remove()
+ 
+HWRGravDrop = false
+Stand()
+HWallRunning = false
+end
+end
+ 
+function VWR(part, pos)
+if (part.className == "Part" and part.Shape == Enum.PartType.Block) or part.className ~= "Part" then
+print("VWR Activated")
+flow.Value = flow.Value + 9
+Standing = false
+VWallRunning = true
+Action = "VWallRunning"
+GravPoint = 0
+local percent = 1
+VWRLastPart = part
+local dir, dirc = FindSurface(part, pos)
+towall = -dir
+dir = (CFrame.new(NV, -dir) * CFrame.Angles(math.pi/2,0,0)).lookVector
+--[[
+local p = P:Clone()
+p.Parent = char
+p.Size = Vector3.new(2,2,2)
+p.BrickColor = BrickColor.new("Lime green")
+p.CanCollide = false
+p.CFrame = part.CFrame * CFrame.new(dirc*5)
+p.Transparency = 0.3
+]]
+local bv = Instance.new("BodyVelocity", Torsoz)
+bv.Name = "StaminaBodyObject"
+bv.maxForce = Vector3.new(1/0,1/0,1/0)
+bv.P = 9000
+bv.velocity = (dir*(sprint-1))*percent
+ 
+local bg = Instance.new("BodyGyro", Torsoz)
+bg.Name = "StaminaBodyObject"
+bg.maxTorque = Vector3.new(1/0,1/0,1/0)
+bg.D = 100
+local posi = pos + (-towall*1.8)
+bg.cframe = CFrame.new(posi, posi+towall) * CFrame.Angles((math.pi/5),0,0)
+Torsoz.CFrame = CFrame.new(posi, posi+towall) * CFrame.Angles((math.pi/5),0,0)
+ 
+local joint1 = Joint3
+SetWeld(joint1,1,1, NV,NV, Vector3.new(1.4,0.45,-0.1), Vector3.new(-math.pi/3.2,0,math.pi/8))
+ 
+local joint2 = Joint4
+SetWeld(joint2,1,1, NV,NV, Vector3.new(-1.4,0.45,-0.1), Vector3.new(-math.pi/3.2,0,-math.pi/8))
+ 
+local joint3 = Joint1
+SetWeld(joint3,1,1, NV,NV, Vector3.new(0.48,-0.6,-0.1), Vector3.new(0,math.pi/2,0))
+joint3.C1 = CFrame.new(0,0.7,0.2) * CFrame.Angles(0,math.pi/2,0)
+ 
+local joint4 = Joint2
+SetWeld(joint4,1,1, NV,NV, Vector3.new(-0.48,-0.6,-0.1), Vector3.new(0,math.pi/2,0))
+joint4.C1 = CFrame.new(0,0.7,0.2) * CFrame.Angles(0,math.pi/2,0)
+ 
+local joint5 = Joint5
+SetWeld(joint5,1,1, NV,NV, Vector3.new(0,1,0), Vector3.new(math.pi/20,0,0))
+ 
+local aniangle = 0
+local aniplus = true
+ 
+while VWallRunning == true do
+local hitz, enz = RAY(Torsoz.Position, towall*2.1)
+local hitz2, enz2 = RAY(Torsoz.Position, (CFrame.new(NV,towall)*CFrame.Angles(math.pi/2,0,0)).lookVector*2.4)
+ 
+if aniangle > math.pi then
+aniplus = false
+elseif aniangle < -math.pi then
+aniplus = true  
+end
+if aniplus == true then
+aniangle = aniangle + (1.3*(percent+0.2))
+elseif aniplus == false then
+aniangle = aniangle - (1.3*(percent+0.2))
+end
+ 
+bv.velocity = (dir*(sprint-1))*percent
+if VWRLeft == true then
+bv.velocity = bv.velocity + ((CFrame.new(NV, towall) * CFrame.Angles(0,math.pi/2,0)).lookVector * (11*percent+5))
+end
+if VWRRight == true then
+bv.velocity = bv.velocity - ((CFrame.new(NV, towall) * CFrame.Angles(0,math.pi/2,0)).lookVector * (11*percent+5))
+end
+ 
+bg.cframe = CFrame.new(posi, posi+towall) * CFrame.Angles((math.pi/5),0,0) * CFrame.Angles(0,aniangle/60,0)
+ 
+SetWeld(joint1,1,1, NV,NV, Vector3.new(1.4,0.45,-0.1), Vector3.new(-math.pi/3.2,aniangle/52,(math.pi/8)+(aniangle/30)))
+SetWeld(joint2,1,1, NV,NV, Vector3.new(-1.4,0.45,-0.1), Vector3.new(-math.pi/3.2,aniangle/52,(-math.pi/8)+(-aniangle/30)))
+SetWeld(joint3,1,1, NV,NV, Vector3.new(0.51,-0.75,-(aniangle/30)), Vector3.new(0,math.pi/2,(aniangle/8)-0.3))
+SetWeld(joint4,1,1, NV,NV, Vector3.new(-0.51,-0.75,(aniangle/30)), Vector3.new(0,math.pi/2,(-aniangle/8)-0.3))
+ 
+if hitz == nil then
+local lv = Torsoz.Position + (Torsoz.CFrame.lookVector*100)
+Torsoz.CFrame = CFrame.new(Torsoz.Position, Vector3.new(lv.x,Torsoz.Position.y,lv.z))
+break
+end
+ 
+if hitz2 ~= nil then
+percent = 0
+VWallRunning = "Falling"
+Action = "VWRFalling"
+GravPoint = -7
+break
+end
+ 
+wait(0.02)
+percent = percent - 0.028
+if percent <= 0.15 then
+VWallRunning = "Falling"
+Action = "VWRFalling"
+end
+end
+ 
+-------------------------- Falling from VWR ------------------------------
+if VWallRunning == "Falling" then
+GravPoint = GravPoint - 1
+local dirpos = (-towall *5) + Vector3.new(0,GravPoint,0)
+bv.velocity = CFrame.new(NV, dirpos).lookVector * dirpos.magnitude
+ 
+local j1,j1a = GetWeld(joint1)
+local j2,j2a = GetWeld(joint2)
+local j3,j3a = GetWeld(joint3)
+local j4,j4a = GetWeld(joint4)
+local j5,j5a = GetWeld(joint5)
+ 
+local counter = 0
+while VWallRunning == "Falling" do
+counter = counter + 1
+local hitz, enz = RAY(H.Position, Vector3.new(0,-2.4,0))
+ 
+dirpos = (-towall *5) + Vector3.new(0,GravPoint,0)
+bv.velocity = CFrame.new(NV, dirpos).lookVector * dirpos.magnitude
+if VWRLeft == true then
+bv.velocity = bv.velocity + ((CFrame.new(NV, towall) * CFrame.Angles(0,math.pi/2,0)).lookVector * 9)
+end
+if VWRRight == true then
+bv.velocity = bv.velocity - ((CFrame.new(NV, towall) * CFrame.Angles(0,math.pi/2,0)).lookVector * 9)
+end
+bg.cframe = CFrame.new(NV, (-towall*30) + Vector3.new(0,GravPoint,0)) * CFrame.Angles(-math.pi/2.55,math.pi,0)
+ 
+if counter <= 35 then
+SetWeld(joint1,counter,35, j1,j1a, Vector3.new(1.4,0.45,-0.1), Vector3.new(math.pi/9,0,math.pi/9))
+SetWeld(joint2,counter,35, j2,j2a, Vector3.new(-1.4,0.45,-0.1), Vector3.new(math.pi/9,0,-math.pi/9))
+SetWeld(joint3,counter,35, j3,j3a, Vector3.new(0.5,-0.75,0), Vector3.new(0,math.pi/2,math.pi/9))
+joint3.C1 = CFrame.new(0,0.7 + (0.3/35*counter),0.2 - (0.2/35*counter)) * CFrame.Angles(0,math.pi/2,0)
+SetWeld(joint4,counter,35, j4,j4a, Vector3.new(-0.5,-0.75,0), Vector3.new(0,math.pi/2,math.pi/9))
+joint4.C1 = CFrame.new(0,0.7 + (0.3/35*counter),0.2 - (0.2/35*counter)) * CFrame.Angles(0,math.pi/2,0)
+SetWeld(joint5,counter,35, j5,j5a, Vector3.new(0,1,0), Vector3.new(-math.pi/6,0,0))
+end
+ 
+if hitz ~= nil then
+bv:remove()
+Torsoz.CFrame = CFrame.new(enz+Vector3.new(0,2,0), (enz+Vector3.new(0,2,0)) + ((-towall*25) + Vector3.new(0,GravPoint,0))) * CFrame.Angles(-math.pi/2.55,math.pi,0)
+Torsoz.Velocity = NV
+Torsoz.RotVelocity = NV
+local bp = Instance.new("BodyPosition", Torsoz)
+bp.maxForce = Vector3.new(1/0,1/0,1/0)
+bp.position = Torsoz.CFrame.p
+game:service("Debris"):AddItem(bp, 0.16)
+flow.Value = 0
+break
+end
+ 
+if GravPoint > - 180 then
+GravPoint = GravPoint - 1.9
+end
+if counter > 200 then
+break
+end
+wait(0.02)
+end
+ 
+local bp = Instance.new("BodyPosition")
+ 
+local counter2 = counter
+local bgangleplus = 0
+ 
+local j1,j1a = GetWeld(joint1)
+local j2,j2a = GetWeld(joint2)
+local j3,j3a = GetWeld(joint3)
+local j4,j4a = GetWeld(joint4)
+local j5,j5a = GetWeld(joint5)
+ 
+local landingpos
+ 
+while VWallRunning == "BackflipFromFall" do
+counter2 = counter2 + 1
+local hitz, enz = RAY(H.Position+Vector3.new(0,2,0), Vector3.new(0,-4.4,0))
+ 
+if counter2 - counter < 13 then
+bgangleplus = bgangleplus - ((math.pi*1.1)/13)
+end
+if counter2 - counter <= 13 then
+SetWeld(joint1,counter2-counter,13, j1,j1a, Vector3.new(1.4,0.5,0.1), Vector3.new(math.pi/2,0.1,math.pi/2))
+SetWeld(joint2,counter2-counter,13, j2,j2a, Vector3.new(-1.4,0.5,0.1), Vector3.new(math.pi/2,-0.1,-math.pi/2))
+SetWeld(joint3,counter2-counter,13, j3,j3a, Vector3.new(0.52,-0.3,-0.65), Vector3.new(0,math.pi/2,0))
+SetWeld(joint4,counter2-counter,13, j4,j4a, Vector3.new(-0.51,-0.9,-0.05), Vector3.new(0,math.pi/2,0))
+SetWeld(joint5,counter2-counter,13, j5,j5a, Vector3.new(0,0.9,0), Vector3.new(-math.pi/7,0,0))
+end
+ 
+dirpos = (-towall *5) + Vector3.new(0,GravPoint,0)
+--bv.velocity = Vector3.new(0,-2,0)
+bv.velocity = CFrame.new(NV, dirpos).lookVector * dirpos.magnitude
+if VWRLeft == true then
+bv.velocity = bv.velocity + ((CFrame.new(NV, towall) * CFrame.Angles(0,math.pi/2,0)).lookVector * 9)
+end
+if VWRRight == true then
+bv.velocity = bv.velocity - ((CFrame.new(NV, towall) * CFrame.Angles(0,math.pi/2,0)).lookVector * 9)
+end
+bg.cframe = CFrame.new(NV, (-towall*30) + Vector3.new(0,GravPoint,0)) * CFrame.Angles((-math.pi/2.4) + bgangleplus,math.pi,0)
+ 
+if hitz ~= nil then
+bv:remove()
+landingpos = enz - (towall*1.3)
+if counter2 - counter > 8 then
+bp = Instance.new("BodyPosition", Torsoz)
+bp.maxForce = Vector3.new(1/0,1/0,1/0)
+bp.position = enz+Vector3.new(0,2.4,0) + (-towall*1)
+VWallRunning = "LandingFall"
+else
+Torsoz.CFrame = bg.cframe + (enz+Vector3.new(0,2.3,0))
+Torsoz.Velocity = NV
+Torsoz.RotVelocity = NV
+local bp = Instance.new("BodyPosition", Torsoz)
+bp.maxForce = Vector3.new(1/0,1/0,1/0)
+bp.position = Torsoz.CFrame.p
+game:service("Debris"):AddItem(bp, 0.14)
+flow.Value = 0
+end
+break
+end
+ 
+if GravPoint > - 180 then
+GravPoint = GravPoint - 1.9
+end
+if counter2 > 200 then
+break
+end
+wait(0.02)
+end
+ 
+if VWallRunning == "LandingFall" then
+print("Landing")
+ 
+joint3.C1 = CFrame.new(0,1,0) * CFrame.Angles(0,math.pi/2,0)
+joint4.C1 = CFrame.new(0,1,0) * CFrame.Angles(0,math.pi/2,0)
+local j1,j1a = GetWeld(joint1)
+local j2,j2a = GetWeld(joint2)
+local j3,j3a = GetWeld(joint3)
+local j4,j4a = GetWeld(joint4)
+local j5,j5a = GetWeld(joint5)
+ 
+local a
+local mesh
+if GravPoint < -70 then
+a = P:Clone()
+a.Parent = Torsoz
+a.Name = "AirLandingEffect"
+a.BrickColor = BrickColor.new("Medium stone grey")
+a.Transparency = 0.3
+a.CFrame = CFrame.new(landingpos+Vector3.new(0,0.4,0))
+mesh = Instance.new("SpecialMesh", a)
+mesh.MeshId = "http://www.roblox.com/asset/?id=20329976"
+mesh.Scale = Vector3.new(0,0,0)
+end
+ 
+local bgcf = CFrame.new(NV, Vector3.new(towall.x,0,towall.z))
+bg.cframe = bgcf * CFrame.Angles(-math.pi/7,0,0)
+local bgval = math.pi/7/2
+ 
+for i = 1, 6 do
+Hu.PlatformStand = true
+SetWeld(joint1,i,6, j1,j1a, Vector3.new(1.2,0.5,0.2), Vector3.new(math.pi/2,0.5,math.pi/1.2))
+SetWeld(joint2,i,6, j2,j2a, Vector3.new(-1.2,0.5,0.2), Vector3.new(math.pi/2,-0.5,-math.pi/1.2))
+SetWeld(joint3,i,6, j3,j3a, Vector3.new(0.51,-0.3,-0.8), Vector3.new(0,math.pi/2,-math.pi/7))
+SetWeld(joint4,i,6, j4,j4a, Vector3.new(-0.51,-0.8,-0.7), Vector3.new(0,math.pi/2,-math.pi/3))
+SetWeld(joint5,i,6, j5,j5a, Vector3.new(0,0.85,0), Vector3.new(-math.pi/8,0,0))
+bp.position = bp.position + Vector3.new(0,-0.07,0)
+bg.cframe = bgcf * CFrame.Angles((-bgval*2) + (bgval/6*i),0,0)
+Torsoz.CFrame = bg.cframe + bp.position
+if a ~= nil then
+mesh.Scale = mesh.Scale + Vector3.new(1.3,0.35,1.3)
+a.Transparency = 0.3 + (0.7/6*i)
+end
+wait(0.02)
+end
+if a ~= nil then
+a:remove()
+end
+local j1,j1a = GetWeld(joint1)
+local j2,j2a = GetWeld(joint2)
+local j3,j3a = GetWeld(joint3)
+local j4,j4a = GetWeld(joint4)
+local j5,j5a = GetWeld(joint5)
+for i = 1, 6 do
+Hu.PlatformStand = true
+SetWeld(joint1,i,6, j1,j1a, Vector3.new(1.5,0.5,0), Vector3.new(0,0,0))
+SetWeld(joint2,i,6, j2,j2a, Vector3.new(-1.5,0.5,0), Vector3.new(0,0,0))
+SetWeld(joint3,i,6, j3,j3a, Vector3.new(0.5,-1,0), Vector3.new(0,math.pi/2,0))
+SetWeld(joint4,i,6, j4,j4a, Vector3.new(-0.5,-1,0), Vector3.new(0,math.pi/2,0))
+SetWeld(joint5,i,6, j5,j5a, Vector3.new(0,1,0), Vector3.new(0,0,0))
+bp.position = bp.position + Vector3.new(0,0.1,0)
+bg.cframe = bgcf * CFrame.Angles(-bgval + (bgval/6*i),0,0)
+Torsoz.CFrame = bg.cframe + bp.position
+wait(0.02)
+end
+ 
+bp:remove()
+end
+ 
+end
+ 
+bv:remove()
+bg:remove()
+VWallRunning = false
+Stand()
+end
+end
+ 
+function Slide(pos)
+flow.Value = flow.Value + 6
+Action = "Sliding"
+Sliding = true
+GravPoint = Torsoz.Velocity.y
+local spd = Vector3.new(Torsoz.Velocity.x,0,Torsoz.Velocity.z).magnitude + 10
+local dir = Vector3.new(Torsoz.Velocity.x,0,Torsoz.Velocity.z).unit
+ 
+local bv = Instance.new("BodyVelocity", Torsoz)
+bv.maxForce = Vector3.new(1/0,1/0,1/0)
+bv.velocity = dir*spd
+local bg = Instance.new("BodyGyro", Torsoz)
+bg.maxTorque = Vector3.new(1/0,1/0,1/0)
+bg.cframe = CFrame.new(NV, dir) * CFrame.Angles(math.pi/2.2,0.24,0)
+ 
+local joint1 = Joint1
+local joint2 = Joint2
+local joint3 = Joint3
+local joint4 = Joint4
+local joint5 = Joint5
+local j1,j1a = GetWeld(joint1)
+local j2,j2a = GetWeld(joint2)
+ 
+SetWeld(joint1,1,1, NV,NV, Vector3.new(j1.x,j1.y,j1.z), Vector3.new(j1a.x,math.pi/2,j1a.z))
+joint1.C1 = CFrame.new(0,1,0) * CFrame.Angles(0,math.pi/2,0)
+SetWeld(joint2,1,1, NV,NV, Vector3.new(j2.x,j2.y,j2.z), Vector3.new(j2a.x,math.pi/2,j2a.z))
+joint2.C1 = CFrame.new(0,1,0) * CFrame.Angles(0,math.pi/2,0)
+ 
+local j1,j1a = GetWeld(joint1)
+local j2,j2a = GetWeld(joint2)
+local j3,j3a = GetWeld(joint3)
+local j4,j4a = GetWeld(joint4)
+local j5,j5a = GetWeld(joint5)
+ 
+local count = 0
+local lastpos
+ 
+while Sliding == true do
+count = count + 1
+Hu.PlatformStand = true
+local hitz1, enz1 = RAY(Torsoz.Position+Vector3.new(0,0.03,0), dir *2.5)
+local hitz2, enz2 = RAY(Torsoz.Position-Vector3.new(0,0.2,0), dir *2.5)
+local ghitz, genz = RAY(Torsoz.Position, Vector3.new(0,-2.6,0))
+bv.velocity = dir*spd + Vector3.new(0,GravPoint,0)
+ 
+if count <= 5 then
+SetWeld(joint1,count,5, j1,j1a, Vector3.new(0.5,-0.8,-0.15), Vector3.new(0,(math.pi/2)+0.1,-0.4))
+SetWeld(joint2,count,5, j2,j2a, Vector3.new(-0.5,-1,0), Vector3.new(0,(math.pi/2)-0.4,0))
+SetWeld(joint3,count,5, j3,j3a, Vector3.new(1.5,0.5,0), Vector3.new(-0.7,-0.24,math.pi/5))
+SetWeld(joint4,count,5, j4,j4a, Vector3.new(-1.5,0.5,0), Vector3.new(-0.1,0,-math.pi/1.5))
+SetWeld(joint5,count,5, j5,j5a, Vector3.new(0,1,0), Vector3.new(-0.5,-0.2,0))
+end
+ 
+if (hitz1 ~= nil and hitz1.CanCollide == true) or (hitz2 ~= nil and  hitz2.CanCollide == true) then
+bv:remove()
+bg:remove()
+Sliding = "HitObject"
+end
+if ghitz ~= nil then
+GravPoint = 0
+Torsoz.CFrame = CFrame.new(genz, genz+dir) * CFrame.Angles(math.pi/2.2,0.24,0) + Vector3.new(0,0.7,0)
+spd = spd - 0.95
+else
+if GravPoint > -180 then
+GravPoint = GravPoint - 5.6
+end
+spd = spd - 0.36
+end
+if spd < 7 then
+Sliding = false
+end
+wait(0.02)
+end
+ 
+if Sliding == false then
+local j1,j1a = GetWeld(joint1)
+local j2,j2a = GetWeld(joint2)
+local j3,j3a = GetWeld(joint3)
+local j4,j4a = GetWeld(joint4)
+local j5,j5a = GetWeld(joint5)
+for i = 1, 4 do
+SetWeld(joint1,i,4, j1,j1a, Vector3.new(0.5,-1,0), Vector3.new(0,math.pi/2,0))
+SetWeld(joint2,i,4, j2,j2a, Vector3.new(-0.5,-1,0), Vector3.new(0,math.pi/2,0))
+SetWeld(joint3,i,4, j3,j3a, Vector3.new(1.5,0.5,0), NV)
+SetWeld(joint4,i,4, j4,j4a, Vector3.new(-1.5,0.5,0), NV)
+SetWeld(joint5,i,4, j5,j5a, Vector3.new(0,1,0), NV)
+local hitz, enz = RAY(Torsoz.Position, Vector3.new(0,-2.6,0))
+bg.cframe = CFrame.new(NV, dir) * CFrame.Angles((math.pi/2.2) - ((math.pi/2.2)/4*i),0.24 - (0.24/4*i),0)
+bv.velocity = dir*spd + Vector3.new(0,GravPoint,0)
+ 
+if hitz ~= nil then
+GravPoint = 0
+Torsoz.CFrame = CFrame.new(enz, enz+dir) * CFrame.Angles((math.pi/2.2) - ((math.pi/2.2)/4*i),0.24 - (0.24/4*i),0) + Vector3.new(0,0.7+(1.8/4*i),0)
+spd = spd - 0.95
+else
+if GravPoint > -180 then
+GravPoint = GravPoint - 5.6
+end
+spd = spd - 0.36
+end
+wait(0.02)
+end
+local hitz, enz = RAY(Torsoz.Position, Vector3.new(0,-2.6,0))
+Torsoz.CFrame = CFrame.new(enz, enz+dir) + Vector3.new(0,3,0)
+end
+bv:remove()
+bg:remove()
+SlideCooldown = 10
+Stand()
+end
+ 
+function KD(key)
+if pause.Value == false then
+if key == string.char(32) then
+Space = true
+ 
+local ghitz, genz = RAY(Torsoz.Position, Vector3.new(0,-3.7,0))
+local hitz, enz = RAY(Torsoz.Position+Vector3.new(0,1.1,0), Torsoz.CFrame.lookVector*2.3)
+local righthitz, rightenz
+local lefthitz, leftenz
+ 
+if HWallRunning == false then
+righthitz, rightenz = RAY(Torsoz.Position, ((Torsoz.CFrame * CFrame.new(1.5,0,-0.2)).p - Torsoz.CFrame.p).unit*3.9)
+lefthitz, leftenz = RAY(Torsoz.Position, ((Torsoz.CFrame * CFrame.new(-1.5,0,-0.2)).p - Torsoz.CFrame.p).unit*3.9)
+ 
+elseif HWallRunning == "Jumping" then
+righthitz, rightenz = RAY(Torsoz.Position, ((CFrame.new(Torsoz.Position, Torsoz.Position + HWRDir) * CFrame.new(1.5,0,-0.2)).p - Torsoz.Position).unit*3.9)
+lefthitz, leftenz = RAY(Torsoz.Position, ((CFrame.new(Torsoz.Position, Torsoz.Position + HWRDir) * CFrame.new(-1.5,0,-0.2)).p - Torsoz.Position).unit*3.9)
+ 
+end
+ 
+if Action == "Standing" and Shift == true and (hitz == nil or hitz.CanCollide == false) and (righthitz == nil or righthitz.CanCollide == false) and (lefthitz == nil or lefthitz.CanCollide == false) and (ghitz == nil or ghitz.CanCollide == false) and (Torsoz.Velocity.y > 6 and Torsoz.Velocity.y < 50) and DivingCooldown <= 0 then
+if stamina >= 10 then
+--if Vector3.new(Torsoz.Velocity.x,0,Torsoz.Velocity.z).magnitude > 12 then
+Dive()
+--end
+end
+end
+ 
+if hitz == nil and VWallRunning == "Falling" then
+VWallRunning = "BackflipFromFall"
+end
+ 
+if Shift == true and Torsoz.Velocity.y > -50 and Diving == false and DivingCooldown <= 0 then
+local hitz2, enz2 = RAY(Torsoz.Position, Vector3.new(0,-3.5,0))
+ 
+if hitz ~= nil then
+if Action == "Standing" and VWRCooldown == 0 then
+if hitz2 == nil or hitz2.CanCollide == false then
+VWR(hitz, enz)
+end
+end
+end
+ 
+if (HWallRunning == false or (HWallRunning == "Jumping" and (HWRLastPart ~= righthitz or HWRLastPart ~= lefthitz))) and HWRCooldown == 0 and VWallRunning == false then
+ 
+if (hitz == nil or HWallRunning == "Jumping") and ((righthitz ~= nil and righthitz.Parent:findFirstChild("Humanoid") == nil and righthitz.Parent.className ~= "Hat") or (lefthitz ~= nil and lefthitz.Parent:findFirstChild("Humanoid") == nil and lefthitz.Parent.className ~= "Hat")) then
+if hitz2 == nil or hitz2.CanCollide == false then
+local right = (rightenz - Torsoz.Position).magnitude
+local left = (leftenz - Torsoz.Position).magnitude
+if right < left then
+if HWallRunning == "Jumping" and HWRLastPart ~= righthitz then
+HWallRunning = false
+while Standing == false do
+wait(0.01)
+end
+print("2nd Right Activated!")
+HWallRun(righthitz, rightenz, -math.pi/2)
+else
+if hitz == nil then
+print("Right Activated")
+HWallRun(righthitz, rightenz, -math.pi/2)
+end
+end
+elseif left < right then
+if HWallRunning == "Jumping" and HWRLastPart ~= lefthitz then
+HWallRunning = false
+while Standing == false do
+wait(0.01)
+end
+print("2nd Left Activated!")
+HWallRun(lefthitz, leftenz, math.pi/2)
+else
+if hitz == nil then
+print("Left Activated")
+HWallRun(lefthitz, leftenz, math.pi/2)
+end
+end
+end
+end
+end
+end
+ 
+end
+ 
+if HWallRunning == true then
+HWallRunning = "Jumping"
+Action = "HWRJumping"
+end
+ 
+elseif key == string.char(48) then
+Shift = true
+elseif key == string.char(50) then
+if Action == "Standing" then
+Sit()
+elseif HWallRunning == true then
+HWRGravDrop = true
+end
+elseif key == string.char(52) then
+if Shift == true and Action == "Standing" and SlideCooldown == 0 and Vector3.new(Torsoz.Velocity.x,0,Torsoz.Velocity.z).magnitude > 15 and Torsoz.Velocity.y > -40 then
+print("Sliding")
+Slide()
+end
+elseif key == "a" then
+VWRLeft = true
+elseif key == "d" then
+VWRRight = true
+end
+end
+end
+ 
+function KU(key)
+if key == string.char(32) then
+Space = false
+elseif key == string.char(48) then
+Shift = false
+elseif key == string.char(50) then
+if Action == "Sitting" then
+Stand()
+end
+elseif key == string.char(52) then
+Sliding = false
+elseif key == "a" then
+VWRLeft = false
+elseif key == "d" then
+VWRRight = false
+end
+end
+ 
+mouse.KeyDown:connect(function(key) KD(key) end)
+mouse.KeyUp:connect(function(key) KU(key) end)
+ 
+Joint1 = Instance.new("Snap", Torsoz)
+GetWeld(Joint1)
+Joint2 = Instance.new("Snap", Torsoz)
+GetWeld(Joint2)
+Joint3 = Instance.new("Snap", Torsoz)
+GetWeld(Joint3)
+Joint4 = Instance.new("Snap", Torsoz)
+GetWeld(Joint4)
+Joint5 = Instance.new("Snap", Torsoz)
+GetWeld(Joint5)
+Stand()
+ 
+local animatebg = Instance.new("BodyGyro")
+animatebg.D = 100
+local GravAction = "Idle"
+local PrevGravAction = GravAction
+ 
+local prevrapos = (RA.CFrame * CFrame.new(0,-1,0)).p
+local prevlapos = (LA.CFrame * CFrame.new(0,-1,0)).p
+local hue = 0
+local recyclecount = 0
+local tickoffset = tick()
+local fadetab = {}
+local fadetab2 = {}
+local animatebgcount = 0
+ 
+for i = 1, 13 do
+local p = P:Clone()
+p.Name = "Part"..i
+local mesh = Instance.new("SpecialMesh", p)
+mesh.MeshId = "http://www.roblox.com/Asset/?id=9856898"
+mesh.TextureId = "http://www.roblox.com/Asset/?id=48358980"
+table.insert(fadetab, {p, mesh})
+end
+for i = 1, 13 do
+local p = P:Clone()
+p.Name = "Part"..i
+local mesh = Instance.new("SpecialMesh", p)
+mesh.MeshId = "http://www.roblox.com/Asset/?id=9856898"
+mesh.TextureId = "http://www.roblox.com/Asset/?id=48358980"
+table.insert(fadetab2, {p, mesh})
+end
+ 
+game:service("RunService").Stepped:connect(function()
+GravAction = "Idle"
+hue = hue + 3
+hue = hue % 360
+ 
+------------- anim angle changing --------
+if animangle > math.pi then
+animplus = false
+elseif animangle < -math.pi then
+animplus = true  
+end
+if animplus == true then
+animangle = animangle + animspeed
+elseif animplus == false then
+animangle = animangle - animspeed
+end
+ 
+local hitz, enz = RAY(Torsoz.Position, Vector3.new(0,-3.9,0))
+if Shift == true then
+Hu.WalkSpeed = sprint
+else
+Hu.WalkSpeed = 16
+end
+if (FOV >= 70 and FOV < 74) and Vector3.new(Torsoz.Velocity.x,0,Torsoz.Velocity.z).magnitude > 25 then
+FOV = FOV + 1
+elseif (FOV <= 74 and FOV > 70) and Vector3.new(Torsoz.Velocity.x,0,Torsoz.Velocity.z).magnitude < 20 then
+FOV = FOV - 1
+end
+if pause.Value == true then
+Hu.WalkSpeed = 0
+end
+if Sitting == true then
+local hitz2, enz2 = RAY(Torsoz.Position, Vector3.new(0,-2.2,0))
+Hu.PlatformStand = true
+if hitz2 == nil then
+Stand()
+end
+end
+if Diving == true then
+Hu.PlatformStand = true
+DivingBV.velocity = Vector3.new(DivingDir.x*(sprint+2),GravPoint,DivingDir.z*(sprint+2))
+DivingBG.cframe = CFrame.new(Torsoz.Position, Torsoz.Position+DivingBV.velocity) * CFrame.Angles(-math.pi/2,0,0)
+ 
+if GravPoint > -180 then
+GravPoint = GravPoint - 2
+end
+end
+if DivingCooldown > 0 then
+DivingCooldown = DivingCooldown - 1
+end
+if HWallRunning == true then
+if HWRGravDrop == false then
+GravPoint = GravPoint - 0.4
+else
+GravPoint = GravPoint - 2
+end
+elseif HWallRunning == "Jumping" then
+GravPoint = GravPoint - 1.7
+end
+----------------------------- stamina ----------------------------------------
+if Vector3.new(Torsoz.Velocity.x, 0, Torsoz.Velocity.z).magnitude > 18 and Action == "Standing" and Shift == true then
+if stamina > 0 then
+stamina = stamina - 0.5
+if stamina < 0 then
+Shift = false
+stamina = 0
+end
+else
+Shift = false
+stamina = 0
+end
+if Action == "Standing" then
+animspeed = 0.85
+SetWeld(Joint1,1,1, NV,NV, Vector3.new(0.5,-1,0), Vector3.new(-animangle/4.85,0,0))
+SetWeld(Joint2,1,1, NV,NV, Vector3.new(-0.5,-1,0), Vector3.new(animangle/4.85,0,0))
+SetWeld(Joint3,1,1, NV,NV, Vector3.new(1.5,0.5,0), Vector3.new(animangle/3.5,0,0))
+SetWeld(Joint4,1,1, NV,NV, Vector3.new(-1.5,0.5,0), Vector3.new(-animangle/3.5,0,0))
+end
+elseif Vector3.new(Torsoz.Velocity.x, 0, Torsoz.Velocity.z).magnitude > 12 and Action ~= "Sliding" then
+if stamina < maxstamina then
+stamina = stamina + 0.5
+if stamina > maxstamina then
+stamina = maxstamina
+end
+else
+stamina = maxstamina
+end
+if Action == "Standing" then
+animspeed = 0.65
+SetWeld(Joint1,1,1, NV,NV, Vector3.new(0.5,-1,0), Vector3.new(-animangle/7,0,0))
+SetWeld(Joint2,1,1, NV,NV, Vector3.new(-0.5,-1,0), Vector3.new(animangle/7,0,0))
+SetWeld(Joint3,1,1, NV,NV, Vector3.new(1.5,0.5,0), Vector3.new(animangle/5,0,0))
+SetWeld(Joint4,1,1, NV,NV, Vector3.new(-1.5,0.5,0), Vector3.new(-animangle/5,0,0))
+end
+elseif Vector3.new(Torsoz.Velocity.x, 0, Torsoz.Velocity.z).magnitude < 2 then
+animspeed = 0.1
+if Action == "Standing" then
+SetWeld(Joint1,1,1, NV,NV, Vector3.new(0.5,-1,0), Vector3.new(-animangle/38,0,0))
+SetWeld(Joint2,1,1, NV,NV, Vector3.new(-0.5,-1,0), Vector3.new(animangle/38,0,0))
+SetWeld(Joint3,1,1, NV,NV, Vector3.new(1.5,0.5,0), Vector3.new(animangle/30,0,0))
+SetWeld(Joint4,1,1, NV,NV, Vector3.new(-1.5,0.5,0), Vector3.new(-animangle/30,0,0))
+end
+if stamina < maxstamina then
+if Sitting == false then
+stamina = stamina + 0.65
+else
+stamina = stamina + 1.02
+end
+if stamina > maxstamina then
+stamina = maxstamina
+end
+else
+stamina = maxstamina
+end
+end
+ 
+if hitz == nil then
+if Torsoz.Velocity.y > 1 or (Torsoz.Velocity.y < -1 and Torsoz.Velocity.y > -90) then
+if Action == "Standing" then
+GravAction = "Rising"
+animspeed = 0.1
+SetWeld(Joint1,1,1, NV,NV, Vector3.new(0.5,-1,0), Vector3.new(-animangle/38,0,0))
+SetWeld(Joint2,1,1, NV,NV, Vector3.new(-0.5,-1,0), Vector3.new(animangle/38,0,0))
+SetWeld(Joint3,1,1, NV,NV, Vector3.new(1.5,0.5,0), Vector3.new((math.pi-0.2)+(animangle/30),0,0))
+SetWeld(Joint4,1,1, NV,NV, Vector3.new(-1.5,0.5,0), Vector3.new((math.pi-0.2)+(-animangle/30),0,0))
+if animatebg.Parent ~= nil then
+animatebg.Parent = Torsoz
+animatebg.maxTorque = Vector3.new(1/0,10000,1/0)
+local lokvec = Torsoz.CFrame.lookVector*100
+animatebg.cframe = CFrame.new(NV, Vector3.new(lokvec.x,0,lokvec.z))
+animatebg.Parent = nil
+end
+end
+end
+end
+ 
+if hitz == nil then
+local hitz2, enz2 = RAY(Torsoz.Position, Vector3.new(0,-6,0))
+if hitz2 == nil then
+if Torsoz.Velocity.y < -90 then
+if Action == "Standing" then
+GravAction = "Falling"
+animspeed = 1.1
+animatebg.Parent = Torsoz
+animatebg.maxTorque = Vector3.new(1/0,10000,1/0)
+local lokvec = Torsoz.CFrame.lookVector*100
+animatebg.cframe = CFrame.new(NV, Vector3.new(lokvec.x,0,lokvec.z)) * CFrame.Angles(-math.pi/11,animangle/70,0)
+SetWeld(Joint1,1,1, NV,NV, Vector3.new(0.45,-0.8,0), Vector3.new((animangle/27)-0.3,0,0.18))
+SetWeld(Joint2,1,1, NV,NV, Vector3.new(-0.45,-0.8,0), Vector3.new((-animangle/27)-0.3,0,-0.18))
+SetWeld(Joint3,1,1, NV,NV, Vector3.new(1.4,0.5,0), Vector3.new((math.pi+0.2)+(animangle/26),0,0.18))
+SetWeld(Joint4,1,1, NV,NV, Vector3.new(-1.4,0.5,0), Vector3.new((math.pi+0.2)+(-animangle/26),0,-0.18))
+end
+end
+elseif hitz2.CanCollide == true then
+if animatebg.Parent ~= nil then
+animatebg.Parent = Torsoz
+animatebg.maxTorque = Vector3.new(1/0,10000,1/0)
+local lokvec = Torsoz.CFrame.lookVector*100
+animatebg.cframe = CFrame.new(NV, Vector3.new(lokvec.x,0,lokvec.z))
+animatebg.Parent = nil
+end
+end
+end
+ 
+if GravAction == "Idle" and animatebg.Parent ~= nil then
+animatebg.Parent = nil
+end
+ 
+if math.abs(tickoffset - tick()) > 0.05 then
+tickoffset = tick()
+local flowcolor = HSV(hue, 0.7,1)
+recyclecount = (recyclecount % #fadetab) + 1
+if flow.Value > 25 then
+local lapos = (LA.CFrame * CFrame.new(0,-1,0)).p
+local rapos = (RA.CFrame * CFrame.new(0,-1,0)).p
+local p = fadetab[recyclecount]
+p[1].Parent = m
+p[1].CFrame = CFrame.new((lapos+prevlapos)/2, lapos)
+p[2].Scale = Vector3.new(0.5,0.5,(lapos-prevlapos).magnitude*2)
+p[2].VertexColor = Vector3.new(flowcolor.r,flowcolor.g,flowcolor.b)
+p[1].Transparency = math.abs((flow.Value/120) - 0.8)
+p[1].Transparency = p[1].Transparency + (1/#fadetab)
+local p = fadetab2[recyclecount]
+p[1].Parent = m
+p[1].CFrame = CFrame.new((rapos+prevrapos)/2, rapos)
+p[2].Scale = Vector3.new(0.5,0.5,(rapos-prevrapos).magnitude*2)
+p[2].VertexColor = Vector3.new(flowcolor.r,flowcolor.g,flowcolor.b)
+p[1].Transparency = math.abs((flow.Value/120) - 0.8)
+p[1].Transparency = p[1].Transparency + (1/#fadetab)
+end
+ 
+for i, v in pairs(fadetab) do
+if v[1].Transparency < 0.9 then
+v[1].Transparency = v[1].Transparency + (1/#fadetab)
+fadetab2[i][1].Transparency = fadetab2[i][1].Transparency + (1/#fadetab)
+elseif v[1].Transparency ~= 1 then
+v[1].Transparency = 1
+v[1].Position = Vector3.new(50000,0,0)
+fadetab2[i][1].Transparency = 1
+fadetab2[i][1].Position = Vector3.new(50000,0,0)
+end
+end
+ 
+prevrapos = (RA.CFrame * CFrame.new(0,-1,0)).p
+prevlapos = (LA.CFrame * CFrame.new(0,-1,0)).p
+end
+ 
+if flow.Value > 140 then
+if char.Parent ~= nil then
+char:remove()
+end
+end
+ 
+if flowcooldown > 0 then
+flowcooldown = flowcooldown - 1
+end
+if HWRCooldown > 0 then
+HWRCooldown = HWRCooldown - 1
+end
+if VWRCooldown > 0 then
+if hitz ~= nil and VWRCooldown > 0 then
+VWRCooldown = VWRCooldown - 1
+end
+end
+if SlideCooldown > 0 then
+SlideCooldown = SlideCooldown - 1
+end
+ 
+if Action == "HWallRunning" or Action == "VWallRunning" then
+flow.Value = flow.Value + 0.24
+if flow.Value > 100 then
+flow.Value = 100
+end
+flowcooldown = 40
+elseif Action == "Diving" then
+flowcooldown = 30
+elseif Action == "Sliding" then
+flowcooldown = 15
+elseif Action == "Standing" or Action == "Sitting" then
+if flow.Value > 0 and flowcooldown <= 0 then
+flow.Value = flow.Value - 0.37
+if flow.Value < 0 then
+flow.Value = 0
+end
+end
+end
+ 
+cam.FieldOfView = FOV
+prevanimbgcount = animatebgcount
+sprint = defsprint + ((flow.Value/100)*2.4)
+PrevGravAction = GravAction
+Calculate()
+end)
+end)
+
+Floppa.Name = "Floppa"
+Floppa.Parent = FEScripts
+Floppa.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Floppa.Position = UDim2.new(0.494285733, 0, 0.152703464, 0)
+Floppa.Size = UDim2.new(0, 176, 0, 50)
+Floppa.ZIndex = 2
+Floppa.Font = Enum.Font.PatrickHand
+Floppa.Text = "Block / Floppa Be A Square Thing Like Floppa Or An Block"
+Floppa.TextColor3 = Color3.fromRGB(0, 0, 0)
+Floppa.TextScaled = true
+Floppa.TextSize = 40.000
+Floppa.TextWrapped = true
+Floppa.MouseButton1Down:connect(function()
+    --[[
+    FE floppa
+    made by MyWorld#4430
+    discord.gg/pYVHtSJmEY
+    shirt: 
+    https://www.roblox.com/catalog/9582295098/floppashirt
+    (the script will work if you dont use the shirt too)
+]]
+
+if "floppa says MyWorlds reanimate is good" then
+    --reanimate by MyWorld#4430 discord.gg/pYVHtSJmEY
+    local Vector3_101 = Vector3.new(1, 0, 1)
+    local netless_Y = Vector3.new(0, 25.1, 0)
+    local function getNetlessVelocity(realPartVelocity) --edit this if you have a better netless method
+        local netlessVelocity = realPartVelocity * Vector3_101
+        local mag = netlessVelocity.Magnitude
+        if mag > 0.1 then
+            netlessVelocity *= 100 / mag
+        end
+        netlessVelocity += netless_Y
+        return netlessVelocity
+    end
+    local simradius = "shp" --simulation radius (net bypass) method
+    --"shp" - sethiddenproperty
+    --"ssr" - setsimulationradius
+    --false - disable
+    local noclipAllParts = true --set it to true if you want noclip
+    local flingpart = "HumanoidRootPart" --the part that will be used to fling (ctrl + F "fling function")
+    local antiragdoll = true --removes hingeConstraints and ballSocketConstraints from your character
+    local newanimate = false --disables the animate script and enables after reanimation
+    local discharscripts = true --disables all localScripts parented to your character before reanimation
+    local R15toR6 = true --tries to convert your character to r6 if its r15
+    local hatcollide = false --makes hats cancollide (credit to ShownApe) (works only with reanimate method 0)
+    local humState16 = true --enables collisions for limbs before the humanoid dies (using hum:ChangeState)
+    local addtools = false --puts all tools from backpack to character and lets you hold them after reanimation
+    local hedafterneck = true --disable aligns for head and enable after neck is removed
+    local loadtime = game:GetService("Players").RespawnTime + 0.5 --anti respawn delay
+    local method = 3 --reanimation method
+    --methods:
+    --0 - breakJoints (takes [loadtime] seconds to laod)
+    --1 - limbs
+    --2 - limbs + anti respawn
+    --3 - limbs + breakJoints after [loadtime] seconds
+    --4 - remove humanoid + breakJoints
+    --5 - remove humanoid + limbs
+    local alignmode = 2 --AlignPosition mode
+    --modes:
+    --1 - AlignPosition rigidity enabled true
+    --2 - 2 AlignPositions rigidity enabled both true and false
+    --3 - AlignPosition rigidity enabled false
+    
+    local lp = game:GetService("Players").LocalPlayer
+    local rs = game:GetService("RunService")
+    local stepped = rs.Stepped
+    local heartbeat = rs.Heartbeat
+    local renderstepped = rs.RenderStepped
+    local sg = game:GetService("StarterGui")
+    local ws = game:GetService("Workspace")
+    local cf = CFrame.new
+    local v3 = Vector3.new
+    local v3_0 = v3(0, 0, 0)
+    local inf = math.huge
+    
+    local c = lp.Character
+    
+    if not (c and c.Parent) then
+    	return
+    end
+    
+    c.Destroying:Connect(function()
+    	c = nil
+    end)
+    
+    local function gp(parent, name, className)
+    	if typeof(parent) == "Instance" then
+    		for i, v in pairs(parent:GetChildren()) do
+    			if (v.Name == name) and v:IsA(className) then
+    				return v
+    			end
+    		end
+    	end
+    	return nil
+    end
+    
+    local function align(Part0, Part1)
+    	Part0.CustomPhysicalProperties = PhysicalProperties.new(0.0001, 0.0001, 0.0001, 0.0001, 0.0001)
+    
+    	local att0 = Instance.new("Attachment", Part0)
+    	att0.Orientation = v3_0
+    	att0.Position = v3_0
+    	att0.Name = "att0_" .. Part0.Name
+    	local att1 = Instance.new("Attachment", Part1)
+    	att1.Orientation = v3_0
+    	att1.Position = v3_0
+    	att1.Name = "att1_" .. Part1.Name
+    
+    	if (alignmode == 1) or (alignmode == 2) then
+    		local ape = Instance.new("AlignPosition", att0)
+    		ape.ApplyAtCenterOfMass = false
+    		ape.MaxForce = inf
+    		ape.MaxVelocity = inf
+    		ape.ReactionForceEnabled = false
+    		ape.Responsiveness = 200
+    		ape.Attachment1 = att1
+    		ape.Attachment0 = att0
+    		ape.Name = "AlignPositionRtrue"
+    		ape.RigidityEnabled = true
+    	end
+    
+    	if (alignmode == 2) or (alignmode == 3) then
+    		local apd = Instance.new("AlignPosition", att0)
+    		apd.ApplyAtCenterOfMass = false
+    		apd.MaxForce = inf
+    		apd.MaxVelocity = inf
+    		apd.ReactionForceEnabled = false
+    		apd.Responsiveness = 200
+    		apd.Attachment1 = att1
+    		apd.Attachment0 = att0
+    		apd.Name = "AlignPositionRfalse"
+    		apd.RigidityEnabled = false
+    	end
+    
+    	local ao = Instance.new("AlignOrientation", att0)
+    	ao.MaxAngularVelocity = inf
+    	ao.MaxTorque = inf
+    	ao.PrimaryAxisOnly = false
+    	ao.ReactionTorqueEnabled = false
+    	ao.Responsiveness = 200
+    	ao.Attachment1 = att1
+    	ao.Attachment0 = att0
+    	ao.RigidityEnabled = false
+    
+    	if type(getNetlessVelocity) == "function" then
+    	    local realVelocity = v3_0
+            local steppedcon = stepped:Connect(function()
+                Part0.Velocity = realVelocity
+            end)
+            local heartbeatcon = heartbeat:Connect(function()
+                realVelocity = Part0.Velocity
+                Part0.Velocity = getNetlessVelocity(realVelocity)
+            end)
+            Part0.Destroying:Connect(function()
+                Part0 = nil
+                steppedcon:Disconnect()
+                heartbeatcon:Disconnect()
+            end)
+        end
+    end
+    
+    local function respawnrequest()
+    	local ccfr = ws.CurrentCamera.CFrame
+    	local c = lp.Character
+    	lp.Character = nil
+    	lp.Character = c
+    	local con = nil
+    	con = ws.CurrentCamera.Changed:Connect(function(prop)
+    	    if (prop ~= "Parent") and (prop ~= "CFrame") then
+    	        return
+    	    end
+    	    ws.CurrentCamera.CFrame = ccfr
+    	    con:Disconnect()
+        end)
+    end
+    
+    local destroyhum = (method == 4) or (method == 5)
+    local breakjoints = (method == 0) or (method == 4)
+    local antirespawn = (method == 0) or (method == 2) or (method == 3)
+    
+    hatcollide = hatcollide and (method == 0)
+    
+    addtools = addtools and gp(lp, "Backpack", "Backpack")
+    
+    local fenv = getfenv()
+    local shp = fenv.sethiddenproperty or fenv.set_hidden_property or fenv.set_hidden_prop or fenv.sethiddenprop
+    local ssr = fenv.setsimulationradius or fenv.set_simulation_radius or fenv.set_sim_radius or fenv.setsimradius or fenv.set_simulation_rad or fenv.setsimulationrad
+    
+    if shp and (simradius == "shp") then
+    	spawn(function()
+    		while c and heartbeat:Wait() do
+    			shp(lp, "SimulationRadius", inf)
+    		end
+    	end)
+    elseif ssr and (simradius == "ssr") then
+    	spawn(function()
+    		while c and heartbeat:Wait() do
+    			ssr(inf)
+    		end
+    	end)
+    end
+    
+    antiragdoll = antiragdoll and function(v)
+    	if v:IsA("HingeConstraint") or v:IsA("BallSocketConstraint") then
+    		v.Parent = nil
+    	end
+    end
+    
+    if antiragdoll then
+    	for i, v in pairs(c:GetDescendants()) do
+    		antiragdoll(v)
+    	end
+    	c.DescendantAdded:Connect(antiragdoll)
+    end
+    
+    if antirespawn then
+    	respawnrequest()
+    end
+    
+    if method == 0 then
+    	wait(loadtime)
+    	if not c then
+    		return
+    	end
+    end
+    
+    if discharscripts then
+    	for i, v in pairs(c:GetChildren()) do
+    		if v:IsA("LocalScript") then
+    			v.Disabled = true
+    		end
+    	end
+    elseif newanimate then
+    	local animate = gp(c, "Animate", "LocalScript")
+    	if animate and (not animate.Disabled) then
+    		animate.Disabled = true
+    	else
+    		newanimate = false
+    	end
+    end
+    
+    if addtools then
+    	for i, v in pairs(addtools:GetChildren()) do
+    		if v:IsA("Tool") then
+    			v.Parent = c
+    		end
+    	end
+    end
+    
+    pcall(function()
+    	settings().Physics.AllowSleep = false
+    	settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
+    end)
+    
+    local OLDscripts = {}
+    
+    for i, v in pairs(c:GetDescendants()) do
+    	if v.ClassName == "Script" then
+    		table.insert(OLDscripts, v)
+    	end
+    end
+    
+    local scriptNames = {}
+    
+    for i, v in pairs(c:GetDescendants()) do
+    	if v:IsA("BasePart") then
+    		local newName = tostring(i)
+    		local exists = true
+    		while exists do
+    			exists = false
+    			for i, v in pairs(OLDscripts) do
+    				if v.Name == newName then
+    					exists = true
+    				end
+    			end
+    			if exists then
+    				newName = newName .. "_"    
+    			end
+    		end
+    		table.insert(scriptNames, newName)
+    		Instance.new("Script", v).Name = newName
+    	end
+    end
+    
+    c.Archivable = true
+    local hum = c:FindFirstChildOfClass("Humanoid")
+    if hum then
+    	for i, v in pairs(hum:GetPlayingAnimationTracks()) do
+    		v:Stop()
+    	end
+    end
+    local cl = c:Clone()
+    if hum and humState16 then
+        hum:ChangeState(Enum.HumanoidStateType.Physics)
+        if destroyhum then
+            wait(1.6)
+        end
+    end
+    if hum and hum.Parent and destroyhum then
+        hum:Destroy()
+    end
+    
+    if not c then
+        return
+    end
+    
+    local head = gp(c, "Head", "BasePart")
+    local torso = gp(c, "Torso", "BasePart") or gp(c, "UpperTorso", "BasePart")
+    local root = gp(c, "HumanoidRootPart", "BasePart")
+    if hatcollide and c:FindFirstChildOfClass("Accessory") then
+        local anything = c:FindFirstChildOfClass("BodyColors") or gp(c, "Health", "Script")
+        if not (torso and root and anything) then
+            return
+        end
+        torso:Destroy()
+        root:Destroy()
+        if shp then
+            for i,v in pairs(c:GetChildren()) do
+                if v:IsA("Accessory") then
+                    shp(v, "BackendAccoutrementState", 0)
+                end 
+            end
+        end
+        anything:Destroy()
+    end
+    
+    for i, v in pairs(cl:GetDescendants()) do
+    	if v:IsA("BasePart") then
+    		v.Transparency = 1
+    		v.Anchored = false
+    	end
+    end
+    
+    local model = Instance.new("Model", c)
+    model.Name = model.ClassName
+    
+    model.Destroying:Connect(function()
+    	model = nil
+    end)
+    
+    for i, v in pairs(c:GetChildren()) do
+    	if v ~= model then
+    		if addtools and v:IsA("Tool") then
+    			for i1, v1 in pairs(v:GetDescendants()) do
+    				if v1 and v1.Parent and v1:IsA("BasePart") then
+    					local bv = Instance.new("BodyVelocity", v1)
+    					bv.Velocity = v3_0
+    					bv.MaxForce = v3(1000, 1000, 1000)
+    					bv.P = 1250
+    					bv.Name = "bv_" .. v.Name
+    				end
+    			end
+    		end
+    		if v:IsA("CharacterMesh") then
+    		    v:Destroy()
+    		else
+    		    v.Parent = model
+    	    end
+    	end
+    end
+    
+    if breakjoints then
+    	model:BreakJoints()
+    else
+    	if head and torso then
+    		for i, v in pairs(model:GetDescendants()) do
+    			if v:IsA("Weld") or v:IsA("Snap") or v:IsA("Glue") or v:IsA("Motor") or v:IsA("Motor6D") then
+    				local save = false
+    				if (v.Part0 == torso) and (v.Part1 == head) then
+    					save = true
+    				end
+    				if (v.Part0 == head) and (v.Part1 == torso) then
+    					save = true
+    				end
+    				if save then
+    					if hedafterneck then
+    						hedafterneck = v
+    					end
+    				else
+    					v:Destroy()
+    				end
+    			end
+    		end
+    	end
+    	if method == 3 then
+    		spawn(function()
+    			wait(loadtime)
+    			if model then
+    				model:BreakJoints()
+    			end
+    		end)
+    	end
+    end
+    
+    cl.Parent = c
+    for i, v in pairs(cl:GetChildren()) do
+    	v.Parent = c
+    end
+    cl:Destroy()
+    
+    local noclipmodel = (noclipAllParts and c) or model
+    local noclipcon = nil
+    local function uncollide()
+    	if noclipmodel then
+    		for i, v in pairs(noclipmodel:GetDescendants()) do
+    		    if v:IsA("BasePart") then
+    			    v.CanCollide = false
+    		    end
+    		end
+    	else
+    		noclipcon:Disconnect()
+    	end
+    end
+    noclipcon = stepped:Connect(uncollide)
+    uncollide()
+    
+    for i, scr in pairs(model:GetDescendants()) do
+    	if (scr.ClassName == "Script") and table.find(scriptNames, scr.Name) then
+    		local Part0 = scr.Parent
+    		if Part0:IsA("BasePart") then
+    			for i1, scr1 in pairs(c:GetDescendants()) do
+    				if (scr1.ClassName == "Script") and (scr1.Name == scr.Name) and (not scr1:IsDescendantOf(model)) then
+    					local Part1 = scr1.Parent
+    					if (Part1.ClassName == Part0.ClassName) and (Part1.Name == Part0.Name) then
+    						align(Part0, Part1)
+    						break
+    					end
+    				end
+    			end
+    		end
+    	end
+    end
+    
+    if (typeof(hedafterneck) == "Instance") and head then
+    	local aligns = {}
+    	local con = nil
+    	con = hedafterneck.Changed:Connect(function(prop)
+    	    if (prop == "Parent") and not hedafterneck.Parent then
+    	        con:Disconnect()
+        		for i, v in pairs(aligns) do
+        			v.Enabled = true
+        		end
+    		end
+    	end)
+    	for i, v in pairs(head:GetDescendants()) do
+    		if v:IsA("AlignPosition") or v:IsA("AlignOrientation") then
+    			i = tostring(i)
+    			aligns[i] = v
+    			v.Destroying:Connect(function()
+    			    aligns[i] = nil
+    			end)
+    			v.Enabled = false
+    		end
+    	end
+    end
+    
+    for i, v in pairs(c:GetDescendants()) do
+    	if v and v.Parent then
+    		if v.ClassName == "Script" then
+    			if table.find(scriptNames, v.Name) then
+    				v:Destroy()
+    			end
+    		elseif not v:IsDescendantOf(model) then
+    			if v:IsA("Decal") then
+    				v.Transparency = 1
+    			elseif v:IsA("ForceField") then
+    				v.Visible = false
+    			elseif v:IsA("Sound") then
+    				v.Playing = false
+    			elseif v:IsA("BillboardGui") or v:IsA("SurfaceGui") or v:IsA("ParticleEmitter") or v:IsA("Fire") or v:IsA("Smoke") or v:IsA("Sparkles") then
+    				v.Enabled = false
+    			end
+    		end
+    	end
+    end
+    
+    if newanimate then
+    	local animate = gp(c, "Animate", "LocalScript")
+    	if animate then
+    		animate.Disabled = false
+    	end
+    end
+    
+    if addtools then
+    	for i, v in pairs(c:GetChildren()) do
+    		if v:IsA("Tool") then
+    			v.Parent = addtools
+    		end
+    	end
+    end
+    
+    local hum0 = model:FindFirstChildOfClass("Humanoid")
+    if hum0 then
+        hum0.Destroying:Connect(function()
+            hum0 = nil
+        end)
+    end
+    
+    local hum1 = c:FindFirstChildOfClass("Humanoid")
+    if hum1 then
+        hum1.Destroying:Connect(function()
+            hum1 = nil
+        end)
+    end
+    
+    if hum1 then
+    	ws.CurrentCamera.CameraSubject = hum1
+    	local camSubCon = nil
+    	local function camSubFunc()
+    		camSubCon:Disconnect()
+    		if c and hum1 then
+    			ws.CurrentCamera.CameraSubject = hum1
+    		end
+    	end
+    	camSubCon = renderstepped:Connect(camSubFunc)
+    	if hum0 then
+    		hum0.Changed:Connect(function(prop)
+    			if hum1 and (prop == "Jump") then
+    				hum1.Jump = hum0.Jump
+    			end
+    		end)
+    	else
+    		respawnrequest()
+    	end
+    end
+    
+    local rb = Instance.new("BindableEvent", c)
+    rb.Event:Connect(function()
+    	rb:Destroy()
+    	sg:SetCore("ResetButtonCallback", true)
+    	if destroyhum then
+    		c:BreakJoints()
+    		return
+    	end
+    	if hum0 and (hum0.Health > 0) then
+    		model:BreakJoints()
+    		hum0.Health = 0
+    	end
+    	if antirespawn then
+    	    respawnrequest()
+    	end
+    end)
+    sg:SetCore("ResetButtonCallback", rb)
+    
+    spawn(function()
+    	while c do
+    		if hum0 and hum1 then
+    			hum1.Jump = hum0.Jump
+    		end
+    		wait()
+    	end
+    	sg:SetCore("ResetButtonCallback", true)
+    end)
+    
+    R15toR6 = R15toR6 and hum1 and (hum1.RigType == Enum.HumanoidRigType.R15)
+    if R15toR6 then
+        local part = gp(c, "HumanoidRootPart", "BasePart") or gp(c, "UpperTorso", "BasePart") or gp(c, "LowerTorso", "BasePart") or gp(c, "Head", "BasePart") or c:FindFirstChildWhichIsA("BasePart")
+    	if part then
+    	    local cfr = part.CFrame
+    		local R6parts = { 
+    			head = {
+    				Name = "Head",
+    				Size = v3(2, 1, 1),
+    				R15 = {
+    					Head = 0
+    				}
+    			},
+    			torso = {
+    				Name = "Torso",
+    				Size = v3(2, 2, 1),
+    				R15 = {
+    					UpperTorso = 0.2,
+    					LowerTorso = -0.8
+    				}
+    			},
+    			root = {
+    				Name = "HumanoidRootPart",
+    				Size = v3(2, 2, 1),
+    				R15 = {
+    					HumanoidRootPart = 0
+    				}
+    			},
+    			leftArm = {
+    				Name = "Left Arm",
+    				Size = v3(1, 2, 1),
+    				R15 = {
+    					LeftHand = -0.85,
+    					LeftLowerArm = -0.2,
+    					LeftUpperArm = 0.4
+    				}
+    			},
+    			rightArm = {
+    				Name = "Right Arm",
+    				Size = v3(1, 2, 1),
+    				R15 = {
+    					RightHand = -0.85,
+    					RightLowerArm = -0.2,
+    					RightUpperArm = 0.4
+    				}
+    			},
+    			leftLeg = {
+    				Name = "Left Leg",
+    				Size = v3(1, 2, 1),
+    				R15 = {
+    					LeftFoot = -0.85,
+    					LeftLowerLeg = -0.15,
+    					LeftUpperLeg = 0.6
+    				}
+    			},
+    			rightLeg = {
+    				Name = "Right Leg",
+    				Size = v3(1, 2, 1),
+    				R15 = {
+    					RightFoot = -0.85,
+    					RightLowerLeg = -0.15,
+    					RightUpperLeg = 0.6
+    				}
+    			}
+    		}
+    		for i, v in pairs(c:GetChildren()) do
+    			if v:IsA("BasePart") then
+    				for i1, v1 in pairs(v:GetChildren()) do
+    					if v1:IsA("Motor6D") then
+    						v1.Part0 = nil
+    					end
+    				end
+    			end
+    		end
+    		part.Archivable = true
+    		for i, v in pairs(R6parts) do
+    			local part = part:Clone()
+    			part:ClearAllChildren()
+    			part.Name = v.Name
+    			part.Size = v.Size
+    			part.CFrame = cfr
+    			part.Anchored = false
+    			part.Transparency = 1
+    			part.CanCollide = false
+    			for i1, v1 in pairs(v.R15) do
+    				local R15part = gp(c, i1, "BasePart")
+    				local att = gp(R15part, "att1_" .. i1, "Attachment")
+    				if R15part then
+    					local weld = Instance.new("Weld", R15part)
+    					weld.Name = "Weld_" .. i1
+    					weld.Part0 = part
+    					weld.Part1 = R15part
+    					weld.C0 = cf(0, v1, 0)
+    					weld.C1 = cf(0, 0, 0)
+    					R15part.Massless = true
+    					R15part.Name = "R15_" .. i1
+    					R15part.Parent = part
+    					if att then
+    						att.Parent = part
+    						att.Position = v3(0, v1, 0)
+    					end
+    				end
+    			end
+    			part.Parent = c
+    			R6parts[i] = part
+    		end
+    		local R6joints = {
+    			neck = {
+    				Parent = R6parts.torso,
+    				Name = "Neck",
+    				Part0 = R6parts.torso,
+    				Part1 = R6parts.head,
+    				C0 = cf(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0),
+    				C1 = cf(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+    			},
+    			rootJoint = {
+    				Parent = R6parts.root,
+    				Name = "RootJoint" ,
+    				Part0 = R6parts.root,
+    				Part1 = R6parts.torso,
+    				C0 = cf(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0),
+    				C1 = cf(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+    			},
+    			rightShoulder = {
+    				Parent = R6parts.torso,
+    				Name = "Right Shoulder",
+    				Part0 = R6parts.torso,
+    				Part1 = R6parts.rightArm,
+    				C0 = cf(1, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0),
+    				C1 = cf(-0.5, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+    			},
+    			leftShoulder = {
+    				Parent = R6parts.torso,
+    				Name = "Left Shoulder",
+    				Part0 = R6parts.torso,
+    				Part1 = R6parts.leftArm,
+    				C0 = cf(-1, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+    				C1 = cf(0.5, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+    			},
+    			rightHip = {
+    				Parent = R6parts.torso,
+    				Name = "Right Hip",
+    				Part0 = R6parts.torso,
+    				Part1 = R6parts.rightLeg,
+    				C0 = cf(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0),
+    				C1 = cf(0.5, 1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+    			},
+    			leftHip = {
+    				Parent = R6parts.torso,
+    				Name = "Left Hip" ,
+    				Part0 = R6parts.torso,
+    				Part1 = R6parts.leftLeg,
+    				C0 = cf(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+    				C1 = cf(-0.5, 1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+    			}
+    		}
+    		for i, v in pairs(R6joints) do
+    			local joint = Instance.new("Motor6D")
+    			for prop, val in pairs(v) do
+    				joint[prop] = val
+    			end
+    			R6joints[i] = joint
+    		end
+    		hum1.RigType = Enum.HumanoidRigType.R6
+    		hum1.HipHeight = 0
+    	end
+    end
+    
+    --fling function
+    --usage: fling([part or CFrame or Vector3], [fling duration (seconds)], [rotation velocity (Vector3)])
+    
+    local flingpart0 = gp(model, flingpart, "BasePart")
+    local flingpart1 = gp(c, flingpart, "BasePart")
+    
+    local fling = function() end
+    if flingpart0 and flingpart1 then
+        flingpart0.Destroying:Connect(function()
+            flingpart0 = nil
+            fling = function() end
+        end)
+        flingpart1.Destroying:Connect(function()
+            flingpart1 = nil
+            fling = function() end
+        end)
+        --flingpart1.Archivable = true
+        local att0 = gp(flingpart0, "att0_" .. flingpart0.Name, "Attachment")
+        local att1 = gp(flingpart1, "att1_" .. flingpart1.Name, "Attachment")
+        if att0 and att1 then
+            fling = function(target, duration, rotVelocity)
+                if (typeof(target) == "Instance" and target:IsA("BasePart")) or (typeof(target) == "CFrame") then
+                    target = target.Position
+                elseif typeof(target) ~= "Vector3" then
+                    return
+                end
+                if type(duration) ~= number then
+                    duration = tonumber(duration) or 0.5
+                end
+                if typeof(rotVelocity) ~= "Vector3" then
+                    rotVelocity = v3(20000, 20000, 20000)
+                end
+                if not (target and flingpart0 and flingpart1 and att0 and att1) then
+                    return
+                end
+                local flingpart = flingpart0:Clone()
+                flingpart.Transparency = 1
+                flingpart.Size = v3(0.01, 0.01, 0.01)
+                flingpart.CanCollide = false
+                flingpart.Name = "flingpart_" .. flingpart0.Name
+                flingpart.Anchored = true
+                flingpart.Destroying:Connect(function()
+                    flingpart = nil
+                end)
+                flingpart.Parent = flingpart1
+                if flingpart0.Transparency > 0.5 then
+                    flingpart0.Transparency = 0.5
+                end
+                att1.Parent = flingpart
+                for i, v in pairs(att0:GetChildren()) do
+                    if v:IsA("AlignOrientation") then
+                        v.Enabled = false
+                    end
+                end
+                local con = nil
+                con = heartbeat:Connect(function()
+                    if target and flingpart and flingpart0 and flingpart1 and att0 and att1 then
+                        flingpart0.RotVelocity = rotVelocity
+                        flingpart.Position = target
+                    else
+                        con:Disconnect()
+                    end
+                end)
+                local steppedRotVel = v3(
+                    ((target.X > 0) and -1) or 1,
+                    ((target.Y > 0) and -1) or 1,
+                    ((target.Z > 0) and -1) or 1
+                )
+                local con = nil
+                con = stepped:Connect(function()
+                    if target and flingpart and flingpart0 and flingpart1 and att0 and att1 then
+                        flingpart0.RotVelocity = steppedRotVel
+                        flingpart.Position = target
+                    else
+                        con:Disconnect()
+                    end
+                end)
+                wait(duration)
+                target = nil
+                if not (flingpart and flingpart0 and flingpart1 and att0 and att1) then
+                    return
+                end
+                flingpart0.RotVelocity = v3_0
+                att1.Parent = flingpart1
+                for i, v in pairs(att0:GetChildren()) do
+                    if v:IsA("AlignOrientation") then
+                        v.Enabled = true
+                    end
+                end
+                flingpart:Destroy()
+            end
+        end
+    end
+end
+
+wait()
+
+local c = game:GetService("Players").LocalPlayer.Character
+
+local function gp(parent, name, className)
+	if typeof(parent) == "Instance" then
+		for i, v in pairs(parent:GetChildren()) do
+			if (v.Name == name) and v:IsA(className) then
+				return v
+			end
+		end
+	end
+	return nil
+end
+
+local head = gp(c, "Head", "BasePart")
+if not head then return print("head not found") end
+
+local torso = gp(c, "Torso", "BasePart")
+if not torso then return print("torso not found") end
+
+local humanoidRootPart = gp(c, "HumanoidRootPart", "BasePart")
+if not humanoidRootPart then return print("humanoid root part not found") end
+
+local leftArm = gp(c, "Left Arm", "BasePart")
+if not leftArm then return print("left arm not found") end
+
+local rightArm = gp(c, "Right Arm", "BasePart")
+if not rightArm then return print("right arm not found") end
+
+local leftLeg = gp(c, "Left Leg", "BasePart")
+if not leftLeg then return print("left leg not found") end
+
+local rightLeg = gp(c, "Right Leg", "BasePart")
+if not rightLeg then return print("right leg not found") end
+
+--find rig joints
+
+local neck = gp(torso, "Neck", "Motor6D")
+if not neck then return print("neck not found") end
+
+local rootJoint = gp(humanoidRootPart, "RootJoint", "Motor6D")
+if not rootJoint then return print("root joint not found") end
+
+local leftShoulder = gp(torso, "Left Shoulder", "Motor6D")
+if not leftShoulder then return print("left shoulder not found") end
+
+local rightShoulder = gp(torso, "Right Shoulder", "Motor6D")
+if not rightShoulder then return print("right shoulder not found") end
+
+local leftHip = gp(torso, "Left Hip", "Motor6D")
+if not leftHip then return print("left hip not found") end
+
+local rightHip = gp(torso, "Right Hip", "Motor6D")
+if not rightHip then return print("right hip not found") end
+
+local cf, euler = CFrame.new, CFrame.fromEulerAnglesXYZ
+neck.C0 = cf(0, -0.5, 0.5) * euler(-1.5882496193148399, 0, -3.1590459461097367)
+rootJoint.C0 = cf(0, -3, -0.5) * euler(-1.5882496193148399, 0, -3.1590459461097367)
+leftShoulder.C0 = cf(0, 0.5, 1) * euler(0, -1.5882496193148399, 0)
+rightShoulder.C0 = cf(0, 0.5, 1) * euler(0, 1.5707963267948966, 0)
+leftHip.C0 = cf(-1, 0.9, 0.5) * euler(1.5707963267948966, -1.0471975511965976, 1.5707963267948966)
+rightHip.C0 = cf(0, -0.8, 0.5) * euler(1.5707963267948966, 1.0471975511965976, 1.5707963267948966)
+
+for i, v in pairs(c:GetChildren()) do
+    if v:IsA("Accessory") then
+        v:Destroy()
+    end
+end
+
+local hum1 = c:FindFirstChildOfClass("Humanoid")
+if hum1 then
+    game:GetService("Workspace").CurrentCamera.CameraSubject = hum1
+    hum1.HipHeight = 1
+    hum1.WalkSpeed = 14
+    hum1.JumpPower = 0
+    hum1.CameraOffset = Vector3.new(0, -3, 0)
+end
+end)
+
+ExtendBody.Name = "ExtendBody"
+ExtendBody.Parent = FEScripts
+ExtendBody.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+ExtendBody.Position = UDim2.new(0.00285714283, 0, 0.306077689, 0)
+ExtendBody.Size = UDim2.new(0, 177, 0, 50)
+ExtendBody.ZIndex = 2
+ExtendBody.Font = Enum.Font.PatrickHand
+ExtendBody.Text = "2x / Extend Your Body"
+ExtendBody.TextColor3 = Color3.fromRGB(0, 0, 0)
+ExtendBody.TextScaled = true
+ExtendBody.TextSize = 40.000
+ExtendBody.TextWrapped = true
+ExtendBody.MouseButton1Down:connect(function()
+    --made by Vidal#5057
+
+--Remake Fe Extendo ( but not the best :c ) 
+
+function noplsmesh(hat)
+for i,v in next, workspace[game.Players.LocalPlayer.Name][hat]:GetDescendants() do
+if v:IsA('Mesh') or v:IsA('SpecialMesh') then
+v:Remove()
+end
+end
+end
+local character = game.Players.LocalPlayer.Character
+local mode = 1
+
+
+game:GetService('RunService').Heartbeat:Connect(function()
+    for i,v in pairs(character:GetChildren()) do
+        if v:IsA("BasePart") then
+            v.Velocity = Vector3.new(30,0,0)
+            v.CFrame = v.CFrame
+        end
+    end
+end)
+
+game:GetService('RunService').Heartbeat:Connect(function()
+    for i,v in pairs(character.Humanoid:GetAccessories()) do 
+        if not v.Handle:FindFirstChild("AccessoryWeld") then 
+            v.Handle.Velocity = Vector3.new(0,35,0)
+        end
+    end
+end)
+
+sethiddenproperty(game.Players.LocalPlayer,"MaximumSimulationRadius",math.huge)
+sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",99999999999999999999)
+ 
+-- // Uses Mizt's bypass  --
+ 
+Bypass = "death"
+loadstring(game:GetObjects("rbxassetid://5325226148")[1].Source)()
+
+e = Instance.new("BodyVelocity",game.Players.LocalPlayer.Character.HumanoidRootPart)
+e.Velocity = Vector3.new(0,-27.5,0)
+e.P = math.huge
+e.MaxForce = Vector3.new(0,3000,0)
+ 
+local playerss = workspace.non
+
+local IsDead = false
+local StateMover = true
+local bbv,bullet
+if Bypass == "death" then
+	bullet = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+	bullet.Transparency = 1
+	bullet.Massless = true
+	if bullet:FindFirstChildOfClass("Attachment") then
+		for _,v in pairs(bullet:GetChildren()) do
+			if v:IsA("Attachment") then
+				v:Destroy()
+			end
+		end
+	end
+	bbv = Instance.new("BodyPosition",bullet)
+    bbv.Position = playerss["Right Arm"].CFrame.p
+end
+ 
+if Bypass == "death" then
+coroutine.wrap(function()
+	while true do
+		if not playerss or not playerss:FindFirstChildOfClass("Humanoid") or playerss:FindFirstChildOfClass("Humanoid").Health <= 0 then IsDead = true; return end
+		if StateMover then
+			bbv.Position = playerss["Torso"].CFrame.p
+    		bullet.Position = playerss["Torso"].CFrame.p
+		end
+		game:GetService("RunService").RenderStepped:wait()
+	end
+end)()
+end
+ 
+bbav = Instance.new("BodyAngularVelocity",bullet)
+    bbav.MaxTorque = Vector3.new(math.huge,math.huge,math.huge)
+    bbav.P = 100000000000000000000000000000
+    bbav.AngularVelocity = Vector3.new(10000000000000000000000000000000,100000000000000000000000000,100000000000000000)
+
+local Highlight = Instance.new("SelectionBox")
+Highlight.Adornee = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+Highlight.LineThickness=0.05
+Highlight.Color3 = Color3.fromRGB(30,255,30)
+Highlight.Parent = game.Players.LocalPlayer.Character["HumanoidRootPart"]
+Highlight.Name = "RAINBOW"
+
+hrp = Highlight
+
+spawn(function()
+while true do
+srv.Stepped:Wait()
+if ded then break end
+hrp.Color3 = Color3.new(255/255,0/255,0/255)
+for i = 0,255,10 do
+wait()
+hrp.Color3 = Color3.new(255/255,i/255,0/255)
+end
+for i = 255,0,-10 do
+wait()
+hrp.Color3 = Color3.new(i/255,255/255,0/255)
+end
+for i = 0,255,10 do
+wait()
+hrp.Color3 = Color3.new(0/255,255/255,i/255)
+end
+for i = 255,0,-10 do
+wait()
+hrp.Color3 = Color3.new(0/255,i/255,255/255)
+end
+for i = 0,255,10 do
+wait()
+hrp.Color3 = Color3.new(i/255,0/255,255/255)
+end
+for i = 255,0,-10 do
+wait()
+hrp.Color3 = Color3.new(255/255,0/255,i/255)
+end
+end
+end)
+
+IT = Instance.new
+CF = CFrame.new
+VT = Vector3.new
+RAD = math.rad
+C3 = Color3.new
+UD2 = UDim2.new
+BRICKC = BrickColor.new
+ANGLES = CFrame.Angles
+EULER = CFrame.fromEulerAnglesXYZ
+COS = math.cos
+ACOS = math.acos
+SIN = math.sin
+ASIN = math.asin
+ABS = math.abs
+MRANDOM = math.random
+FLOOR = math.floor
+
+speed = 1
+sine = 1
+srv = game:GetService('RunService')
+
+reanim = playerss
+
+function hatset(yes,part,c1,c0,nm)
+reanim[yes].Handle.AccessoryWeld.Part1=reanim[part]
+reanim[yes].Handle.AccessoryWeld.C1=c1 or CFrame.new()
+reanim[yes].Handle.AccessoryWeld.C0=c0 or CFrame.new()
+if nm==true then
+noplsmesh(yes)
+end
+end
+
+--put the hat script converted here do not put it in loop or it will make ur camera bugged.
+hatset('Hat1','Left Leg',CFrame.new(),reanim['Hat1'].Handle.AccessoryWeld.C0:Lerp(CF(0.5+0*math.cos(sine/13),-0.15+0*math.cos(sine/13),2+0*math.cos(sine/13))*ANGLES(RAD(100+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(-25+0*math.cos(sine/13))),1),true)
+hatset('Pink Hair','Right Leg',CFrame.new(),reanim['Pink Hair'].Handle.AccessoryWeld.C0:Lerp(CF(-0.5+0*math.cos(sine/13),-0.15+0*math.cos(sine/13),2+0*math.cos(sine/13))*ANGLES(RAD(100+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(25+0*math.cos(sine/13))),1),true)
+hatset('LavanderHair','Right Arm',CFrame.new(),reanim['LavanderHair'].Handle.AccessoryWeld.C0:Lerp(CF(-0.5+0*math.cos(sine/13),0.3+0*math.cos(sine/13),1.8+0*math.cos(sine/13))*ANGLES(RAD(75+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(35+0*math.cos(sine/13))),1),true)
+hatset('Kate Hair','Left Arm',CFrame.new(),reanim['Kate Hair'].Handle.AccessoryWeld.C0:Lerp(CF(0.5+0*math.cos(sine/13),0.3+0*math.cos(sine/13),1.8+0*math.cos(sine/13))*ANGLES(RAD(75+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(-35+0*math.cos(sine/13))),1),true)
+
+RJ = reanim.HumanoidRootPart.RootJoint
+RS = reanim.Torso['Right Shoulder']
+LS = reanim.Torso['Left Shoulder']
+RH = reanim.Torso['Right Hip']
+LH = reanim.Torso['Left Hip']
+Root = reanim.HumanoidRootPart
+NECK = reanim.Torso.Neck
+NECK.C0 = CF(0,1,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+NECK.C1 = CF(0,-0.5,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+RJ.C1 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+RJ.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+RS.C1 = CF(0,0.5,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+LS.C1 = CF(0,0.5,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+RH.C1 = CF(0.5,1,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+LH.C1 = CF(-0.5,1,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+RH.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+LH.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+RS.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+LS.C0 = CF(0,0,0)*ANGLES(RAD(0),RAD(0),RAD(0))
+
+coroutine.wrap(function()
+while true do -- anim changer
+if HumanDied then break end
+sine = sine + speed
+local rlegray = Ray.new(reanim["Right Leg"].Position + Vector3.new(0, 0.5, 0), Vector3.new(0, -2, 0))
+local rlegpart, rlegendPoint = workspace:FindPartOnRay(rlegray, char)
+local llegray = Ray.new(reanim["Left Leg"].Position + Vector3.new(0, 0.5, 0), Vector3.new(0, -2, 0))
+local llegpart, llegendPoint = workspace:FindPartOnRay(llegray, char)
+local rightvector = (Root.Velocity * Root.CFrame.rightVector).X + (Root.Velocity * Root.CFrame.rightVector).Z
+local lookvector = (Root.Velocity * Root.CFrame.lookVector).X + (Root.Velocity * Root.CFrame.lookVector).Z
+if lookvector > reanim.Humanoid.WalkSpeed then
+lookvector = reanim.Humanoid.WalkSpeed
+end
+if lookvector < -reanim.Humanoid.WalkSpeed then
+lookvector = -reanim.Humanoid.WalkSpeed
+end
+if rightvector > reanim.Humanoid.WalkSpeed then
+rightvector = reanim.Humanoid.WalkSpeed
+end
+if rightvector < -reanim.Humanoid.WalkSpeed then
+rightvector = -reanim.Humanoid.WalkSpeed
+end
+local lookvel = lookvector / reanim.Humanoid.WalkSpeed
+local rightvel = rightvector / reanim.Humanoid.WalkSpeed
+if Root.Velocity.y > 1 then -- jump
+--jump clerp here
+elseif Root.Velocity.y < -1 then -- fall
+--fall clerp here
+elseif Root.Velocity.Magnitude < 2 then -- idle
+--idle clerp here
+reanim['Hat1'].Handle.AccessoryWeld.C0 =  reanim['Hat1'].Handle.AccessoryWeld.C0:Lerp(CF(0.5+0*math.cos(sine/13),-0.15+0*math.cos(sine/13),2+0*math.cos(sine/13))*ANGLES(RAD(100+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(-25+0*math.cos(sine/13))),1)
+reanim['Pink Hair'].Handle.AccessoryWeld.C0 = reanim['Pink Hair'].Handle.AccessoryWeld.C0:Lerp(CF(-0.5+0*math.cos(sine/13),-0.15+0*math.cos(sine/13),2+0*math.cos(sine/13))*ANGLES(RAD(100+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(25+0*math.cos(sine/13))),1)
+reanim['LavanderHair'].Handle.AccessoryWeld.C0 = reanim['LavanderHair'].Handle.AccessoryWeld.C0:Lerp(CF(-0.5+0*math.cos(sine/13),0.3+0*math.cos(sine/13),1.8+0*math.cos(sine/13))*ANGLES(RAD(75+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(35+0*math.cos(sine/13))),1)
+reanim['Kate Hair'].Handle.AccessoryWeld.C0 = reanim['Kate Hair'].Handle.AccessoryWeld.C0:Lerp(CF(0.5+0*math.cos(sine/13),0.3+0*math.cos(sine/13),1.8+0*math.cos(sine/13))*ANGLES(RAD(75+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(-35+0*math.cos(sine/13))),1)
+
+NECK.C0 = NECK.C0:Lerp(CF(0+0*math.cos(sine/13),1+0*math.cos(sine/13),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+RJ.C0 = RJ.C0:Lerp(CF(0+0*math.cos(sine/18),2+0*math.cos(sine/18),0+0*math.cos(sine/18))*ANGLES(RAD(-15+0*math.cos(sine/18)),RAD(0+0*math.cos(sine/18)),RAD(0+0*math.cos(sine/18))),.3)
+RS.C0 = RS.C0:Lerp(CF(1.5+0*math.cos(sine/18),0.6+0*math.cos(sine/18),0+0*math.cos(sine/18))*ANGLES(RAD(25+0*math.cos(sine/18)),RAD(0+0*math.cos(sine/18)),RAD(45+8*math.cos(sine/18))),.3)
+LS.C0 = LS.C0:Lerp(CF(-1.5+0*math.cos(sine/18),0.6+0*math.cos(sine/18),0+0*math.cos(sine/18))*ANGLES(RAD(25+0*math.cos(sine/18)),RAD(0+0*math.cos(sine/18)),RAD(-45+-8*math.cos(sine/18))),.3)
+RH.C0 = RH.C0:Lerp(CF(1+0*math.cos(sine/13),-1+0*math.cos(sine/13),0+0*math.cos(sine/13))*ANGLES(RAD(25+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(35+0*math.cos(sine/13))),.3)
+LH.C0 = LH.C0:Lerp(CF(-1+0*math.cos(sine/13),-1+0*math.cos(sine/13),0+0*math.cos(sine/13))*ANGLES(RAD(25+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(-35+0*math.cos(sine/13))),.3)
+
+
+elseif Root.Velocity.Magnitude < 20 then -- walk
+--walk clerp here
+reanim['Hat1'].Handle.AccessoryWeld.C0 = reanim['Hat1'].Handle.AccessoryWeld.C0:Lerp(CF(0+0*math.cos(sine/13),-0.5+0*math.cos(sine/13),2+0*math.cos(sine/13))*ANGLES(RAD(115+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+reanim['Pink Hair'].Handle.AccessoryWeld.C0 = reanim['Pink Hair'].Handle.AccessoryWeld.C0:Lerp(CF(0+0*math.cos(sine/13),-0.5+0*math.cos(sine/13),2+0*math.cos(sine/13))*ANGLES(RAD(115+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+reanim['LavanderHair'].Handle.AccessoryWeld.C0 = reanim['LavanderHair'].Handle.AccessoryWeld.C0:Lerp(CF(0+0*math.cos(sine/13),0.5+0*math.cos(sine/13),2+0*math.cos(sine/13))*ANGLES(RAD(65+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+reanim['Kate Hair'].Handle.AccessoryWeld.C0 = reanim['Kate Hair'].Handle.AccessoryWeld.C0:Lerp(CF(0+0*math.cos(sine/13),0.5+0*math.cos(sine/13),2+0*math.cos(sine/13))*ANGLES(RAD(65+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+
+NECK.C0 = NECK.C0:Lerp(CF(0+0*math.cos(sine/13),1+0*math.cos(sine/13),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+RJ.C0 = RJ.C0:Lerp(CF(0+0*math.cos(sine/13),2+0.01*math.cos(sine/13),0+0*math.cos(sine/13))*ANGLES(RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+RS.C0 = RS.C0:Lerp(CF(1.5+0*math.cos(sine/13),0.5+0*math.cos(sine/13),0+0*math.cos(sine/13))*ANGLES(RAD(0+-35*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+LS.C0 = LS.C0:Lerp(CF(-1.5+0*math.cos(sine/13),0.5+0*math.cos(sine/13),0+0*math.cos(sine/13))*ANGLES(RAD(0+35*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+RH.C0 = RH.C0:Lerp(CF(1+0*math.cos(sine/13),-1+0*math.cos(sine/13),0+0*math.cos(sine/13))*ANGLES(RAD(0+35*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+LH.C0 = LH.C0:Lerp(CF(-1+0*math.cos(sine/13),-1+0*math.cos(sine/13),0+0*math.cos(sine/13))*ANGLES(RAD(0+-35*math.cos(sine/13)),RAD(0+0*math.cos(sine/13)),RAD(0+0*math.cos(sine/13))),.3)
+
+elseif Root.Velocity.Magnitude > 20 then -- run
+--run clerp here
+end
+srv.RenderStepped:Wait()
+end
+end)()
+--Created using Nexo Animator :D
+--Me pican los cocos
+end)
+
+AmongUs.Name = "AmongUs"
+AmongUs.Parent = FEScripts
+AmongUs.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+AmongUs.Position = UDim2.new(0.491428554, 0, 0.306077689, 0)
+AmongUs.Size = UDim2.new(0, 177, 0, 50)
+AmongUs.ZIndex = 2
+AmongUs.Font = Enum.Font.PatrickHand
+AmongUs.Text = "Among Us F9 For Controls"
+AmongUs.TextColor3 = Color3.fromRGB(0, 0, 0)
+AmongUs.TextScaled = true
+AmongUs.TextSize = 40.000
+AmongUs.TextWrapped = true
+AmongUs.MouseButton1Down:connect(function()
+    print("Among Us Key's")
+    print("C for Sit")
+    print("Q for acting dead")
+    print("Click For Looking Up (CAN FLING)")
+    print("F for flying")
+   local netboost = 1000 --velocity 
+--netboost usage: 
+--set to false to disable
+--set to a vector3 value if you dont want the velocity to change
+--set to a number to change the velocity in real time with magnitude equal to the number
+local idleMag = 0.005 --used only in case netboost is set to a number value
+--if magnitude of the real velocity of a part is lower than this
+--then the fake velocity is being set to Vector3.new(0, netboost, 0)
+--the lower value the less you jitter but you might loose network ownership
+local simradius = "shp" --simulation radius (net bypass) method
+--"shp" - sethiddenproperty
+--"ssr" - setsimulationradius
+--false - disable
+local antiragdoll = true --removes hingeConstraints and ballSocketConstraints from your character
+local newanimate = false --disables the animate script and enables after reanimation
+local discharscripts = true --disables all localScripts parented to your character before reanimation
+local R15toR6 = true --tries to convert your character to r6 if its r15
+local addtools = false --puts all tools from backpack to character and lets you hold them after reanimation
+local loadtime = game:GetService("Players").RespawnTime + 0.5 --anti respawn delay
+local method = 3 --reanimation method
+--methods:
+--0 - breakJoints (takes [loadtime] seconds to laod)
+--1 - limbs
+--2 - limbs + anti respawn
+--3 - limbs + breakJoints after [loadtime] seconds
+--4 - remove humanoid + breakJoints
+--5 - remove humanoid + limbs
+local alignmode = 2 --AlignPosition mode
+--modes:
+--1 - AlignPosition rigidity enabled true
+--2 - 2 AlignPositions rigidity enabled both true and false
+--3 - AlignPosition rigidity enabled false
+local hedafterneck = true --disable aligns for head and enable after neck is removed
+
+local lp = game:GetService("Players").LocalPlayer
+local rs = game:GetService("RunService")
+local stepped = rs.Stepped
+local heartbeat = rs.Heartbeat
+local renderstepped = rs.RenderStepped
+local sg = game:GetService("StarterGui")
+local ws = game:GetService("Workspace")
+local cf = CFrame.new
+local v3 = Vector3.new
+local v3_0 = v3(0, 0, 0)
+local inf = math.huge
+
+local c = lp.Character
+
+if not (c and c.Parent) then
+    return
+end
+
+for i, v in pairs(c:GetDescendants()) do
+    if v:IsA("CharacterMesh") or v:IsA("SpecialMesh") then
+        v:Destroy()
+    end
+end
+
+c:GetPropertyChangedSignal("Parent"):Connect(function()
+    if not (c and c.Parent) then
+        c = nil
+    end
+end)
+
+local function gp(parent, name, className)
+	local ret = nil
+	pcall(function()
+		for i, v in pairs(parent:GetChildren()) do
+			if (v.Name == name) and v:IsA(className) then
+				ret = v
+				break
+			end
+		end
+	end)
+	return ret
+end
+
+local function align(Part0, Part1)
+	Part0.CustomPhysicalProperties = PhysicalProperties.new(0.0001, 0.0001, 0.0001, 0.0001, 0.0001)
+
+	local att0 = Instance.new("Attachment", Part0)
+	att0.Orientation = v3_0
+	att0.Position = v3_0
+	att0.Name = "att0_" .. Part0.Name
+	local att1 = Instance.new("Attachment", Part1)
+	att1.Orientation = v3_0
+	att1.Position = v3_0
+	att1.Name = "att1_" .. Part1.Name
+
+	if (alignmode == 1) or (alignmode == 2) then
+    	local ape = Instance.new("AlignPosition", att0)
+    	ape.ApplyAtCenterOfMass = false
+    	ape.MaxForce = inf
+    	ape.MaxVelocity = inf
+    	ape.ReactionForceEnabled = false
+    	ape.Responsiveness = 200
+    	ape.Attachment1 = att1
+    	ape.Attachment0 = att0
+    	ape.Name = "AlignPositionRtrue"
+    	ape.RigidityEnabled = true
+	end
+
+	if (alignmode == 2) or (alignmode == 3) then
+    	local apd = Instance.new("AlignPosition", att0)
+    	apd.ApplyAtCenterOfMass = false
+    	apd.MaxForce = inf
+    	apd.MaxVelocity = inf
+    	apd.ReactionForceEnabled = false
+    	apd.Responsiveness = 200
+    	apd.Attachment1 = att1
+    	apd.Attachment0 = att0
+    	apd.Name = "AlignPositionRfalse"
+    	apd.RigidityEnabled = false
+    end
+
+	local ao = Instance.new("AlignOrientation", att0)
+	ao.MaxAngularVelocity = inf
+	ao.MaxTorque = inf
+	ao.PrimaryAxisOnly = false
+	ao.ReactionTorqueEnabled = false
+	ao.Responsiveness = 200
+	ao.Attachment1 = att1
+	ao.Attachment0 = att0
+	ao.RigidityEnabled = false
+
+    if netboost then
+        Part0:GetPropertyChangedSignal("Parent"):Connect(function()
+            if not (Part0 and Part0.Parent) then
+                Part0 = nil
+            end
+        end)
+        spawn(function()
+            if typeof(netboost) == "Vector3" then
+    	        local vel = v3_0
+    	        local rotvel = v3_0
+            	while Part0 do
+                    Part0.Velocity = vel
+                    Part0.RotVelocity = rotvel
+                    heartbeat:Wait()
+                    if Part0 then
+                        vel = Part0.Velocity
+                        Part0.Velocity = netboost
+                        Part0.RotVelocity = v3_0
+                        stepped:Wait()
+                    end
+                end
+        	elseif typeof(netboost) == "number" then
+    	        local vel = v3_0
+    	        local rotvel = v3_0
+            	while Part0 do
+                    Part0.Velocity = vel
+                    Part0.RotVelocity = rotvel
+                    heartbeat:Wait()
+                    if Part0 then
+                        local newvel = vel
+                        local mag = newvel.Magnitude
+                        if mag < idleMag then
+                            newvel = v3(0, netboost, 0)
+                        else
+                            local multiplier = netboost / mag
+                            newvel *= v3(multiplier,  multiplier, multiplier)
+                        end
+                        vel = Part0.Velocity
+                        rotvel = Part0.RotVelocity
+                        Part0.Velocity = newvel
+                        Part0.RotVelocity = v3_0
+                        stepped:Wait()
+                    end
+                end
+        	end
+        end)
+    end
+end
+
+local function respawnrequest()
+    local c = lp.Character
+    local ccfr = ws.CurrentCamera.CFrame
+	local fc = Instance.new("Model")
+	local nh = Instance.new("Humanoid", fc)
+	lp.Character = fc
+	nh.Health = 0
+	lp.Character = c
+	fc:Destroy()
+    local con = nil
+    local function confunc()
+        con:Disconnect()
+        ws.CurrentCamera.CFrame = ccfr
+    end
+    con = renderstepped:Connect(confunc)
+end
+
+local destroyhum = (method == 4) or (method == 5)
+local breakjoints = (method == 0) or (method == 4)
+local antirespawn = (method == 0) or (method == 2) or (method == 3)
+
+addtools = addtools and gp(lp, "Backpack", "Backpack")
+
+if simradius == "shp" then
+    local shp = sethiddenproperty or set_hidden_property or set_hidden_prop or sethiddenprop
+    if shp then
+        spawn(function()
+            while c and heartbeat:Wait() do
+                shp(lp, "SimulationRadius", inf)
+            end
+        end)
+    end
+elseif simradius == "ssr" then
+    local ssr = setsimulationradius or set_simulation_radius or set_sim_radius or setsimradius or set_simulation_rad or setsimulationrad
+    if ssr then
+        spawn(function()
+            while c and heartbeat:Wait() do
+                ssr(inf)
+            end
+        end)
+    end
+end
+
+antiragdoll = antiragdoll and function(v)
+    if v:IsA("HingeConstraint") or v:IsA("BallSocketConstraint") then
+        v.Parent = nil
+    end
+end
+
+if antiragdoll then
+    for i, v in pairs(c:GetDescendants()) do
+        antiragdoll(v)
+    end
+    c.DescendantAdded:Connect(antiragdoll)
+end
+
+if antirespawn then
+    respawnrequest()
+end
+
+if method == 0 then
+	wait(loadtime)
+	if not c then
+	    return
+	end
+end
+
+if discharscripts then
+    for i, v in pairs(c:GetChildren()) do
+        if v:IsA("LocalScript") then
+            v.Disabled = true
+        end
+    end
+elseif newanimate then
+    local animate = gp(c, "Animate", "LocalScript")
+    if animate and (not animate.Disabled) then
+        animate.Disabled = true
+    else
+        newanimate = false
+    end
+end
+
+local hum = c:FindFirstChildOfClass("Humanoid")
+if hum then
+    for i, v in pairs(hum:GetPlayingAnimationTracks()) do
+	    v:Stop()
+    end
+end
+
+if addtools then
+    for i, v in pairs(addtools:GetChildren()) do
+        if v:IsA("Tool") then
+            v.Parent = c
+        end
+    end
+end
+
+pcall(function()
+    settings().Physics.AllowSleep = false
+    settings().Physics.PhysicsEnvironmentalThrottle = Enum.EnviromentalPhysicsThrottle.Disabled
+end)
+
+local OLDscripts = {}
+
+for i, v in pairs(c:GetDescendants()) do
+	if v.ClassName == "Script" then
+		table.insert(OLDscripts, v)
+	end
+end
+
+local scriptNames = {}
+
+for i, v in pairs(c:GetDescendants()) do
+	if v:IsA("BasePart") then
+	    local newName = tostring(i)
+	    local exists = true
+	    while exists do
+		    exists = false
+		    for i, v in pairs(OLDscripts) do
+		        if v.Name == newName then
+		            exists = true
+		        end
+		    end
+		    if exists then
+		        newName = newName .. "_"    
+		    end
+	    end
+        table.insert(scriptNames, newName)
+		Instance.new("Script", v).Name = newName
+	end
+end
+
+c.Archivable = true
+local cl = c:Clone()
+for i, v in pairs(cl:GetDescendants()) do
+    pcall(function()
+        v.Transparency = 1
+        v.Anchored = false
+    end)
+end
+
+local model = Instance.new("Model", c)
+model.Name = model.ClassName
+
+model:GetPropertyChangedSignal("Parent"):Connect(function()
+    if not (model and model.Parent) then
+        model = nil
+    end
+end)
+
+for i, v in pairs(c:GetChildren()) do
+	if v ~= model then
+	    if destroyhum and v:IsA("Humanoid") then
+	        v:Destroy()
+	    else
+	        if addtools and v:IsA("Tool") then
+	            for i1, v1 in pairs(v:GetDescendants()) do
+	                if v1 and v1.Parent and v1:IsA("BasePart") then
+	                    local bv = Instance.new("BodyVelocity", v1)
+	                    bv.Velocity = v3_0
+	                    bv.MaxForce = v3(1000, 1000, 1000)
+	                    bv.P = 1250
+	                    bv.Name = "bv_" .. v.Name
+	                end
+	            end
+	        end
+		    v.Parent = model
+	    end
+	end
+end
+local head = gp(model, "Head", "BasePart")
+local torso = gp(model, "Torso", "BasePart") or gp(model, "UpperTorso", "BasePart")
+if breakjoints then
+    model:BreakJoints()
+else
+    if head and torso then
+        for i, v in pairs(model:GetDescendants()) do
+            if v:IsA("Weld") or v:IsA("Snap") or v:IsA("Glue") or v:IsA("Motor") or v:IsA("Motor6D") then
+                local save = false
+                if (v.Part0 == torso) and (v.Part1 == head) then
+                    save = true
+                end
+                if (v.Part0 == head) and (v.Part1 == torso) then
+                    save = true
+                end
+                if save then
+                    if hedafterneck then
+                        hedafterneck = v
+                    end
+                else
+                    v:Destroy()
+                end
+            end
+        end
+    end
+    if method == 3 then
+        spawn(function()
+            wait(loadtime)
+            if model then
+                model:BreakJoints()
+            end
+        end)
+    end
+end
+
+cl.Parent = c
+for i, v in pairs(cl:GetChildren()) do
+	v.Parent = c
+end
+cl:Destroy()
+
+local modelDes = {}
+for i, v in pairs(model:GetDescendants()) do
+    if v:IsA("BasePart") then
+        i = tostring(i)
+        local con = nil
+        con = v:GetPropertyChangedSignal("Parent"):Connect(function()
+            if not (v and v.Parent) then
+                con:Disconnect()
+                modelDes[i] = nil
+            end
+        end)
+        modelDes[i] = v
+    end
+end
+local modelcolcon = nil
+local function modelcolf()
+    if model then
+        for i, v in pairs(modelDes) do
+			v.CanCollide = false
+		end
+    else
+        modelcolcon:Disconnect()
+    end
+end
+modelcolcon = stepped:Connect(modelcolf)
+modelcolf()
+
+for i, scr in pairs(model:GetDescendants()) do
+	if (scr.ClassName == "Script") and table.find(scriptNames, scr.Name) then
+		local Part0 = scr.Parent
+		if Part0:IsA("BasePart") then
+			for i1, scr1 in pairs(c:GetDescendants()) do
+				if (scr1.ClassName == "Script") and (scr1.Name == scr.Name) and (not scr1:IsDescendantOf(model)) then
+					local Part1 = scr1.Parent
+					if (Part1.ClassName == Part0.ClassName) and (Part1.Name == Part0.Name) then
+						align(Part0, Part1)
+						break
+					end
+				end
+			end
+		end
+	end
+end
+
+if (typeof(hedafterneck) == "Instance") and head and head.Parent then
+    local aligns = {}
+    for i, v in pairs(head:GetDescendants()) do
+        if v:IsA("AlignPosition") or v:IsA("AlignOrientation") then
+            table.insert(aligns, v)
+            v.Enabled = false
+        end
+    end
+    spawn(function()
+        while c and hedafterneck and hedafterneck.Parent do
+            stepped:Wait()
+        end
+        if not (c and head and head.Parent) then
+            return
+        end
+        for i, v in pairs(aligns) do
+            pcall(function()
+                v.Enabled = true
+            end)
+        end
+    end)
+end
+
+for i, v in pairs(c:GetDescendants()) do
+	if v and v.Parent then
+		if v.ClassName == "Script" then
+			if table.find(scriptNames, v.Name) then
+				v:Destroy()
+			end
+		elseif not v:IsDescendantOf(model) then
+			if v:IsA("Decal") then
+			    v.Transparency = 1
+			elseif v:IsA("ForceField") then
+			    v.Visible = false
+			elseif v:IsA("Sound") then
+			    v.Playing = false
+			elseif v:IsA("BillboardGui") or v:IsA("SurfaceGui") or v:IsA("ParticleEmitter") or v:IsA("Fire") or v:IsA("Smoke") or v:IsA("Sparkles") then
+				v.Enabled = false
+			end
+		end
+	end
+end
+
+if newanimate then
+    local animate = gp(c, "Animate", "LocalScript")
+    if animate then
+        animate.Disabled = false
+    end
+end
+
+if addtools then
+    for i, v in pairs(c:GetChildren()) do
+        if v:IsA("Tool") then
+            v.Parent = addtools
+        end
+    end
+end
+
+local hum0 = model:FindFirstChildOfClass("Humanoid")
+local hum1 = c:FindFirstChildOfClass("Humanoid")
+if hum1 then
+    ws.CurrentCamera.CameraSubject = hum1
+    local camSubCon = nil
+    local function camSubFunc()
+        camSubCon:Disconnect()
+        if c and hum1 and (hum1.Parent == c) then
+            ws.CurrentCamera.CameraSubject = hum1
+        end
+    end
+    camSubCon = renderstepped:Connect(camSubFunc)
+	if hum0 then
+		hum0.Changed:Connect(function(prop)
+			if (prop == "Jump") and hum1 and hum1.Parent then
+				hum1.Jump = hum0.Jump
+			end
+		end)
+	else
+	    lp.Character = nil
+	    lp.Character = c
+	end
+end
+
+local rb = Instance.new("BindableEvent", c)
+rb.Event:Connect(function()
+	rb:Destroy()
+	sg:SetCore("ResetButtonCallback", true)
+	if destroyhum then
+	    c:BreakJoints()
+	    return
+	end
+	if antirespawn then
+	    if hum0 and hum0.Parent and (hum0.Health > 0) then
+	        model:BreakJoints()
+	        hum0.Health = 0
+	    end
+		respawnrequest()
+	else
+	    if hum0 and hum0.Parent and (hum0.Health > 0) then
+	        model:BreakJoints()
+	        hum0.Health = 0
+	    end
+	end
+end)
+sg:SetCore("ResetButtonCallback", rb)
+
+spawn(function()
+	while c do
+		if hum0 and hum0.Parent and hum1 and hum1.Parent then
+            hum1.Jump = hum0.Jump
+        end
+		wait()
+	end
+	sg:SetCore("ResetButtonCallback", true)
+end)
+
+R15toR6 = R15toR6 and hum1 and (hum1.RigType == Enum.HumanoidRigType.R15)
+if R15toR6 then
+	local cfr = nil
+	pcall(function()
+		cfr = gp(c, "HumanoidRootPart", "BasePart").CFrame
+	end)
+	if cfr then
+		local R6parts = { 
+			head = {
+				Name = "Head",
+				Size = v3(2, 1, 1),
+				R15 = {
+					Head = 0
+				}
+			},
+			torso = {
+				Name = "Torso",
+				Size = v3(2, 2, 1),
+				R15 = {
+					UpperTorso = 0.2,
+					LowerTorso = -0.8
+				}
+			},
+			root = {
+				Name = "HumanoidRootPart",
+				Size = v3(2, 2, 1),
+				R15 = {
+					HumanoidRootPart = 0
+				}
+			},
+			leftArm = {
+				Name = "Left Arm",
+				Size = v3(1, 2, 1),
+				R15 = {
+					LeftHand = -0.85,
+					LeftLowerArm = -0.2,
+					LeftUpperArm = 0.4
+				}
+			},
+			rightArm = {
+				Name = "Right Arm",
+				Size = v3(1, 2, 1),
+				R15 = {
+					RightHand = -0.85,
+					RightLowerArm = -0.2,
+					RightUpperArm = 0.4
+				}
+			},
+			leftLeg = {
+				Name = "Left Leg",
+				Size = v3(1, 2, 1),
+				R15 = {
+					LeftFoot = -0.85,
+					LeftLowerLeg = -0.15,
+					LeftUpperLeg = 0.6
+				}
+			},
+			rightLeg = {
+				Name = "Right Leg",
+				Size = v3(1, 2, 1),
+				R15 = {
+					RightFoot = -0.85,
+					RightLowerLeg = -0.15,
+					RightUpperLeg = 0.6
+				}
+			}
+		}
+		for i, v in pairs(c:GetChildren()) do
+			if v:IsA("BasePart") then
+				for i1, v1 in pairs(v:GetChildren()) do
+					if v1:IsA("Motor6D") then
+						v1.Part0 = nil
+					end
+				end
+			end
+		end
+		for i, v in pairs(R6parts) do
+			local part = Instance.new("Part")
+			part.Name = v.Name
+			part.Size = v.Size
+			part.CFrame = cfr
+			part.Anchored = false
+			part.Transparency = 1
+			part.CanCollide = false
+			for i1, v1 in pairs(v.R15) do
+				local R15part = gp(c, i1, "BasePart")
+				local att = gp(R15part, "att1_" .. i1, "Attachment")
+				if R15part then
+					local weld = Instance.new("Weld", R15part)
+					weld.Name = "Weld_" .. i1
+					weld.Part0 = part
+					weld.Part1 = R15part
+					weld.C0 = cf(0, v1, 0)
+					weld.C1 = cf(0, 0, 0)
+					R15part.Massless = true
+					R15part.Name = "R15_" .. i1
+					R15part.Parent = part
+				    if att then
+				        att.Parent = part
+				        att.Position = v3(0, v1, 0)
+				    end
+				end
+			end
+			part.Parent = c
+			R6parts[i] = part
+		end
+		local R6joints = {
+			neck = {
+				Parent = R6parts.torso,
+				Name = "Neck",
+				Part0 = R6parts.torso,
+				Part1 = R6parts.head,
+				C0 = cf(0, 1, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0),
+				C1 = cf(0, -0.5, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+			},
+			rootJoint = {
+				Parent = R6parts.root,
+				Name = "RootJoint" ,
+				Part0 = R6parts.root,
+				Part1 = R6parts.torso,
+				C0 = cf(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0),
+				C1 = cf(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, -0)
+			},
+			rightShoulder = {
+				Parent = R6parts.torso,
+				Name = "Right Shoulder",
+				Part0 = R6parts.torso,
+				Part1 = R6parts.rightArm,
+				C0 = cf(1, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0),
+				C1 = cf(-0.5, 0.5, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+			},
+			leftShoulder = {
+				Parent = R6parts.torso,
+				Name = "Left Shoulder",
+				Part0 = R6parts.torso,
+				Part1 = R6parts.leftArm,
+				C0 = cf(-1, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+				C1 = cf(0.5, 0.5, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+			},
+			rightHip = {
+				Parent = R6parts.torso,
+				Name = "Right Hip",
+				Part0 = R6parts.torso,
+				Part1 = R6parts.rightLeg,
+				C0 = cf(1, -1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0),
+				C1 = cf(0.5, 1, 0, 0, 0, 1, 0, 1, -0, -1, 0, 0)
+			},
+			leftHip = {
+				Parent = R6parts.torso,
+				Name = "Left Hip" ,
+				Part0 = R6parts.torso,
+				Part1 = R6parts.leftLeg,
+				C0 = cf(-1, -1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0),
+				C1 = cf(-0.5, 1, 0, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+			}
+		}
+		for i, v in pairs(R6joints) do
+			local joint = Instance.new("Motor6D")
+			for prop, val in pairs(v) do
+				joint[prop] = val
+			end
+			R6joints[i] = joint
+		end
+		hum1.RigType = Enum.HumanoidRigType.R6
+		hum1.HipHeight = 0
+	end
+end
+
+wait()
+if not c then
+    return
+end
+
+local venttoggle = false
+local vented = false
+local mode2 = false
+local attack = false
+local modetoggle = false
+local dead = false
+local dtoggle = false
+local sittoggle = false
+local sit = false
+local sine = 0
+local mouse = lp:GetMouse()
+
+local joints = {
+    ["RootJoint"] = "",
+    ["Neck"] = "",
+    ["Right Hip"] = "",
+    ["Left Hip"] = "",
+    ["Left Shoulder"] = "",
+    ["Right Shoulder"] = ""
+}
+
+for i, v in pairs(c:GetDescendants()) do
+    if v:IsA("Motor6D") and (joints[v.Name] == "") and (not v:IsDescendantOf(model)) then
+        joints[v.Name] = v
+    end
+end
+
+for i, v in pairs(joints) do
+    if v and (v ~= "") then
+        v.C0 = cf(0, 0, 0)
+        v.C1 = cf(0, 0, 0)
+    else
+        return
+    end
+end
+
+local Root = gp(c, "HumanoidRootPart", "BasePart")
+if not Root then
+    return
+end
+
+local function replace(a)
+    local b, c = a.Part0, a.Part1
+    a.Part1, a.Part0 = b, c
+end
+
+replace(joints["Left Shoulder"])
+replace(joints["Right Shoulder"])
+replace(joints["Left Hip"])
+replace(joints["Right Hip"])
+
+for i, v in pairs(c:GetChildren()) do
+    if v:IsA("Accessory") then
+        v:Destroy()
+    end
+end
+
+joints.Neck.C0 = cf(0, 0.3, -0.5)
+
+mouse.Button1Down:Connect(function()
+    if not (kill or mode2 or dead) then
+        attack = true
+        vented = false
+        hum1.WalkSpeed = 0
+        wait(0.5)
+        hum1.WalkSpeed = 16
+        attack = false
+    end
+end)
+
+mouse.KeyDown:Connect(function(key)
+    if not c then 
+        return 
+    end
+    key = key:lower()
+    if k == "e" then
+        if not venttoggle then
+            modetoggle = false
+            mode2 = false
+            venttoggle = true
+            vented = true
+            hum1.WalkSpeed = 100
+            position = "ventidle"
+        elseif venttoggle then
+            venttoggle = false
+            vented = false
+            hum1.WalkSpeed = 16
+        end
+    elseif key == "f" then
+        if not modetoggle then
+            venttoggle = false
+            vented = false
+            modetoggle = true
+            mode2 = true
+            sittoggle = false
+            sit = false
+            hum1.WalkSpeed = 60
+        elseif modetoggle then
+            modetoggle = false
+            mode2 = false
+            hum1.WalkSpeed = 16
+        end
+    elseif key == "q" then
+        if dtoggle == false then
+            venttoggle = false
+            vented = false
+            modetoggle = false
+            mode2 = false
+            dtoggle = true
+            dead = true
+            sittoggle = false
+            sit = false
+            hum1.WalkSpeed = 0
+        elseif dtoggle == true then
+            dtoggle = false
+            dead = false
+            hum1.WalkSpeed = 16
+        end
+    elseif key == "c" then
+        if sittoggle == false then
+            venttoggle = false
+            vented = false
+            modetoggle = false
+            mode2 = false
+            dtoggle = false
+            dead = false
+            sittoggle = true
+            sit = true
+            hum1.WalkSpeed = 0
+        elseif sittoggle == true then
+            sittoggle = false
+            sit = false
+            hum1.WalkSpeed = 16
+        end
+    end
+end)
+
+local pose = "idle"
+while stepped:Wait() and c do
+    if attack then
+        pose = "attack"
+    elseif dead then
+        pose = "dead"
+    elseif sit then
+        pose = "sit"
+    elseif mode2 then
+        if Root.Velocity.Magnitude < 2 then
+            pose = "idle2"
+        elseif Root.Velocity.Magnitude > 20 then
+            pose = "walk2"
+        end
+    else
+        if Root.Velocity.y > 1 then
+            pose = "jump"
+        elseif Root.Velocity.y < -1 then
+            pose = "fall"
+        elseif Root.Velocity.Magnitude < 2 then
+            pose = "idle"
+        elseif Root.Velocity.Magnitude < 20 then
+            pose = "walk"
+        elseif Root.Velocity.Magnitude > 20 then
+            pose = "run"
+        end 
+    end
+    sine += 1
+    if pose == "idle" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + 0.3 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 10 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 2 + 0.3 * math.sin(sine/12), 0.3 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 10 * math.sin(sine/12)), math.rad(20 + 0 * math.sin(sine/12)), math.rad(-3 + 0 * math.sin(sine/12))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 2 + 0.3 * math.sin(sine/12), 0.3 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 10 * math.sin(sine/12)), math.rad(-20 + 0 * math.sin(sine/12)), math.rad(3 + 0 * math.sin(sine/12))),0.1)
+    elseif pose == "walk" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + 0.3 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-10 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 2 + 0.3 * math.sin(sine/12), 0.3 + 0.3 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 30 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 2 + 0.3 * math.sin(sine/12), 0.3 + -0.3 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + -30 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+    elseif pose == "jump" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(15 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 1 + 0 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(10 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+    elseif pose == "fall" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(15 + 10 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(-10 + 0 * math.sin(sine/12))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 1 + 0 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(10 + 5 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(10 + 0 * math.sin(sine/12))),0.1)
+    elseif pose == "vent" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + -8 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 1.5 + 0 * math.sin(sine/12), 1 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(26.02 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+    elseif pose == "ventidle" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), -20 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 1.5 + 0 * math.sin(sine/12), 1 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(26.02 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+    elseif pose == "idle2" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/20), 3 + 0.3 * math.sin(sine/20), 0 + 0 * math.sin(sine/20)) * CFrame.Angles(math.rad(0 + 20 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/20), 1 + 0 * math.sin(sine/20), 1 + 0 * math.sin(sine/20)) * CFrame.Angles(math.rad(20 + -20 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/20), 2 + 0 * math.sin(sine/20), 0.5 + -0.5 * math.sin(sine/20)) * CFrame.Angles(math.rad(10 + -20 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20))),0.1)
+    elseif pose == "walk2" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/20), 3 + 0.3 * math.sin(sine/20), 0 + 0 * math.sin(sine/20)) * CFrame.Angles(math.rad(-60 + 10 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.4 + 0 * math.sin(sine/20), 2 + 0 * math.sin(sine/20), 0.3 + 0 * math.sin(sine/20)) * CFrame.Angles(math.rad(0 + -10 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20)), math.rad(-5 + 0 * math.sin(sine/20))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/20), 1 + 0 * math.sin(sine/20), 0.5 + 0 * math.sin(sine/20)) * CFrame.Angles(math.rad(0 + -20 * math.sin(sine/20)), math.rad(0 + 0 * math.sin(sine/20)), math.rad(5 + 0 * math.sin(sine/20))),0.1)
+    elseif pose == "attack" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/5), 0 + 0 * math.sin(sine/5), 0 + 0 * math.sin(sine/5)) * CFrame.Angles(math.rad(30 + 0 * math.sin(sine/5)), math.rad(0 + 0 * math.sin(sine/5)), math.rad(0 + 0 * math.sin(sine/5))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.4 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(30 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(-4 + 0 * math.sin(sine/12))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.4 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(30 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(4 + 0 * math.sin(sine/12))),0.1)
+    elseif pose == "sit" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/5), -1.8 + 0 * math.sin(sine/5), 0 + 0 * math.sin(sine/5)) * CFrame.Angles(math.rad(10 + 0 * math.sin(sine/5)), math.rad(0 + 0 * math.sin(sine/5)), math.rad(0 + 0 * math.sin(sine/5))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.4 + 0 * math.sin(sine/12), 1 + 0 * math.sin(sine/12), -1 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-90 + 0 * math.sin(sine/12)), math.rad(10 + 0 * math.sin(sine/12)), math.rad(-4 + 0 * math.sin(sine/12))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.4 + 0 * math.sin(sine/12), 1 + 0 * math.sin(sine/12), -1 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-90 + 0 * math.sin(sine/12)), math.rad(-10 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+    elseif pose == "dead" then
+        joints["RootJoint"].C0 = joints["RootJoint"].C0:lerp(CFrame.new(0 + 0 * math.sin(sine/5), -2.5 + 0 * math.sin(sine/5), -1 + 0 * math.sin(sine/5)) * CFrame.Angles(math.rad(-90 + 0 * math.sin(sine/5)), math.rad(0 + 0 * math.sin(sine/5)), math.rad(0 + 0 * math.sin(sine/5))),0.1)
+        joints["Right Hip"].C0 = joints["Right Hip"].C0:lerp(CFrame.new(-0.4 + 0 * math.sin(sine/12), 3 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(-4 + 0 * math.sin(sine/12))),0.1)
+        joints["Left Hip"].C0 = joints["Left Hip"].C0:lerp(CFrame.new(0.4 + 0 * math.sin(sine/12), 3 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(4 + 0 * math.sin(sine/12))),0.1)
+    end
+    joints["Right Shoulder"].C0 = joints["Right Shoulder"].C0:lerp(CFrame.new(-0.4 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12), -0.8 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+    joints["Left Shoulder"].C0 = joints["Left Shoulder"].C0:lerp(CFrame.new(0.4 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12), -0.8 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+end
+end)
+
+Invisibility.Name = "Invisibility"
+Invisibility.Parent = FEScripts
+Invisibility.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Invisibility.Position = UDim2.new(0, 0, 0.465586841, 0)
+Invisibility.Size = UDim2.new(0, 172, 0, 50)
+Invisibility.ZIndex = 2
+Invisibility.Font = Enum.Font.PatrickHand
+Invisibility.Text = "Invisibility Keybind = E"
+Invisibility.TextColor3 = Color3.fromRGB(0, 0, 0)
+Invisibility.TextScaled = true
+Invisibility.TextSize = 40.000
+Invisibility.TextWrapped = true
+Invisibility.MouseButton1Down:connect(function()
+    --[[Invisibility Toggle
+
+You can find the orginal concept here: https://v3rmillion.net/showthread.php?tid=544634
+
+This method clones the character locally, teleports the real character to a safe location, then sets the character to the clone.
+Basically, your real character is in the sky while you are on the ground.
+
+
+Because of the way this works, games with a decent anti-cheat will fuck this up.
+If you turn it off, you have to go to a safe place before going invisible.
+
+Written by: BitingTheDust ; https://v3rmillion.net/member.php?action=profile&uid=1628149
+]]
+--Settings:
+local ScriptStarted = false
+local Keybind = "E" --Set to whatever you want, has to be the name of a KeyCode Enum.
+local Transparency = true --Will make you slightly transparent when you are invisible. No reason to disable.
+local NoClip = false --Will make your fake character no clip.
+
+local Player = game:GetService("Players").LocalPlayer
+local RealCharacter = Player.Character or Player.CharacterAdded:Wait()
+
+local IsInvisible = false
+
+RealCharacter.Archivable = true
+local FakeCharacter = RealCharacter:Clone()
+local Part
+Part = Instance.new("Part", workspace)
+Part.Anchored = true
+Part.Size = Vector3.new(200, 1, 200)
+Part.CFrame = CFrame.new(0, -500, 0) --Set this to whatever you want, just far away from the map.
+Part.CanCollide = true
+FakeCharacter.Parent = workspace
+FakeCharacter.HumanoidRootPart.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
+
+for i, v in pairs(RealCharacter:GetChildren()) do
+  if v:IsA("LocalScript") then
+      local clone = v:Clone()
+      clone.Disabled = true
+      clone.Parent = FakeCharacter
+  end
+end
+if Transparency then
+  for i, v in pairs(FakeCharacter:GetDescendants()) do
+      if v:IsA("BasePart") then
+          v.Transparency = 0.7
+      end
+  end
+end
+local CanInvis = true
+function RealCharacterDied()
+  CanInvis = false
+  RealCharacter:Destroy()
+  RealCharacter = Player.Character
+  CanInvis = true
+  isinvisible = false
+  FakeCharacter:Destroy()
+  workspace.CurrentCamera.CameraSubject = RealCharacter.Humanoid
+
+  RealCharacter.Archivable = true
+  FakeCharacter = RealCharacter:Clone()
+  Part:Destroy()
+  Part = Instance.new("Part", workspace)
+  Part.Anchored = true
+  Part.Size = Vector3.new(200, 1, 200)
+  Part.CFrame = CFrame.new(9999, 9999, 9999) --Set this to whatever you want, just far away from the map.
+  Part.CanCollide = true
+  FakeCharacter.Parent = workspace
+  FakeCharacter.HumanoidRootPart.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
+
+  for i, v in pairs(RealCharacter:GetChildren()) do
+      if v:IsA("LocalScript") then
+          local clone = v:Clone()
+          clone.Disabled = true
+          clone.Parent = FakeCharacter
+      end
+  end
+  if Transparency then
+      for i, v in pairs(FakeCharacter:GetDescendants()) do
+          if v:IsA("BasePart") then
+              v.Transparency = 0.7
+          end
+      end
+  end
+ RealCharacter.Humanoid.Died:Connect(function()
+ RealCharacter:Destroy()
+ FakeCharacter:Destroy()
+ end)
+ Player.CharacterAppearanceLoaded:Connect(RealCharacterDied)
+end
+RealCharacter.Humanoid.Died:Connect(function()
+ RealCharacter:Destroy()
+ FakeCharacter:Destroy()
+ end)
+Player.CharacterAppearanceLoaded:Connect(RealCharacterDied)
+local PseudoAnchor
+game:GetService "RunService".RenderStepped:Connect(
+  function()
+      if PseudoAnchor ~= nil then
+          PseudoAnchor.CFrame = Part.CFrame * CFrame.new(0, 5, 0)
+      end
+       if NoClip then
+      FakeCharacter.Humanoid:ChangeState(11)
+       end
+  end
+)
+
+PseudoAnchor = FakeCharacter.HumanoidRootPart
+local function Invisible()
+  if IsInvisible == false then
+      local StoredCF = RealCharacter.HumanoidRootPart.CFrame
+      RealCharacter.HumanoidRootPart.CFrame = FakeCharacter.HumanoidRootPart.CFrame
+      FakeCharacter.HumanoidRootPart.CFrame = StoredCF
+      RealCharacter.Humanoid:UnequipTools()
+      Player.Character = FakeCharacter
+      workspace.CurrentCamera.CameraSubject = FakeCharacter.Humanoid
+      PseudoAnchor = RealCharacter.HumanoidRootPart
+      for i, v in pairs(FakeCharacter:GetChildren()) do
+          if v:IsA("LocalScript") then
+              v.Disabled = false
+          end
+      end
+
+      IsInvisible = true
+  else
+      local StoredCF = FakeCharacter.HumanoidRootPart.CFrame
+      FakeCharacter.HumanoidRootPart.CFrame = RealCharacter.HumanoidRootPart.CFrame
+     
+      RealCharacter.HumanoidRootPart.CFrame = StoredCF
+     
+      FakeCharacter.Humanoid:UnequipTools()
+      Player.Character = RealCharacter
+      workspace.CurrentCamera.CameraSubject = RealCharacter.Humanoid
+      PseudoAnchor = FakeCharacter.HumanoidRootPart
+      for i, v in pairs(FakeCharacter:GetChildren()) do
+          if v:IsA("LocalScript") then
+              v.Disabled = true
+          end
+      end
+      IsInvisible = false
+  end
+end
+
+game:GetService("UserInputService").InputBegan:Connect(
+  function(key, gamep)
+      if gamep then
+          return
+      end
+      if key.KeyCode.Name:lower() == Keybind:lower() and CanInvis and RealCharacter and FakeCharacter then
+          if RealCharacter:FindFirstChild("HumanoidRootPart") and FakeCharacter:FindFirstChild("HumanoidRootPart") then
+              Invisible()
+          end
+      end
+  end
+)
+local Sound = Instance.new("Sound",game:GetService("SoundService"))
+Sound.SoundId = "rbxassetid://232127604"
+Sound:Play()
+game:GetService("StarterGui"):SetCore("SendNotification",{["Title"] = "Invisible Toggle Loaded",["Text"] = "Press "..Keybind.." to become change visibility.",["Duration"] = 20,["Button1"] = "Okay."})
+end)
+
+ChatScripts.Name = "ChatScripts"
+ChatScripts.Parent = MainFrame
+ChatScripts.Active = true
+ChatScripts.BackgroundColor3 = Color3.fromRGB(55, 125, 255)
+ChatScripts.Position = UDim2.new(0, 0, 0.10154552, 0)
+ChatScripts.Size = UDim2.new(0, 350, 0, 327)
+ChatScripts.Visible = false
+
+Trashtalk.Name = "Trashtalk"
+Trashtalk.Parent = ChatScripts
+Trashtalk.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Trashtalk.Position = UDim2.new(0.557142854, 0, 0.0421032347, 0)
+Trashtalk.Size = UDim2.new(0, 135, 0, 50)
+Trashtalk.ZIndex = 2
+Trashtalk.Font = Enum.Font.PatrickHand
+Trashtalk.Text = "TrashTalk Keybind = Q"
+Trashtalk.TextColor3 = Color3.fromRGB(0, 0, 0)
+Trashtalk.TextScaled = true
+Trashtalk.TextSize = 40.000
+Trashtalk.TextWrapped = true
+Trashtalk.MouseButton1Down:connect(function()
+	local words = {
+		'L',
+		'KID',
+		'bozo',
+		'clown',
+		'bozo + clown + orphan + kid + homeless',
+		'Huge L',
+		'Imagine',
+		'Gay',
+		'Adopted',
+		'who u talking to?',
+		'Imao',
+		'nobody cares',
+		'did i even ask',
+		'since when did i ask lol',
+		'FAT',
+		'trash can',
+		'lol',
+		'could you please stg feu',
+		'elephant',
+		'dog',
+		'skeleton',
+		'bro tryna find a orphan website with home page',
+	}
+
+	local player = game.Players.LocalPlayer
+	local keybind = 'q'
+
+	local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+	player:GetMouse().KeyDown:connect(function(key)
+		if key == keybind then
+			event:FireServer(words[math.random(#words)], "All")
+		end
+	end)
+end)
+
+EmojiTrashTalk.Name = "EmojiTrashTalk"
+EmojiTrashTalk.Parent = ChatScripts
+EmojiTrashTalk.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+EmojiTrashTalk.Position = UDim2.new(0.0590000004, 0, 0.0419999994, 0)
+EmojiTrashTalk.Size = UDim2.new(0, 135, 0, 50)
+EmojiTrashTalk.ZIndex = 2
+EmojiTrashTalk.Font = Enum.Font.PatrickHand
+EmojiTrashTalk.Text = "Emoji TrashTalk Keybind = L"
+EmojiTrashTalk.TextColor3 = Color3.fromRGB(0, 0, 0)
+EmojiTrashTalk.TextScaled = true
+EmojiTrashTalk.TextSize = 40.000
+EmojiTrashTalk.TextWrapped = true
+EmojiTrashTalk.MouseButton1Down:connect(function()
+	local words = {
+		'🤡',
+		'🗿',
+		'🗿🗿🗿',
+		'🤡🤡🤡',
+		'😐',
+		'😐😐😐',
+		'🗑️',
+		'🗑️🗑️🗑️',
+		'🚮🚮🚮',
+		'🚮',
+		'😹',
+		'😹😹😹',
+
+	}
+
+
+	local player = game.Players.LocalPlayer
+	local keybind = 'l'
+
+	local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+	player:GetMouse().KeyDown:connect(function(key)
+		if key == keybind then
+			event:FireServer(words[math.random(#words)], "All")
+		end
+	end)
+end)
+
+CAP.Name = "CAP"
+CAP.Parent = ChatScripts
+CAP.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+CAP.Position = UDim2.new(0.304714292, 0, 0.246892959, 0)
+CAP.Size = UDim2.new(0, 135, 0, 50)
+CAP.ZIndex = 2
+CAP.Font = Enum.Font.PatrickHand
+CAP.Text = "Cap Keybind = Z"
+CAP.TextColor3 = Color3.fromRGB(0, 0, 0)
+CAP.TextScaled = true
+CAP.TextSize = 40.000
+CAP.TextWrapped = true
+CAP.MouseButton1Down:connect(function()
+	local words = {
+		'CAP DETECTED',
+		'100% CAP',
+		'I hear Cap',
+		'CAPINATOR',
+		'cap.',
+		'why you keep capping',
+		'bruh ultra cap',
+		'i always hear cap in my ears',
+		'i cant stop hearing caps',
+		'imagine capping lol',
+		'i hate caps.',
+		'ultimate cap',
+
+	}
+
+
+	local player = game.Players.LocalPlayer
+	local keybind = 'z'
+
+	local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+	player:GetMouse().KeyDown:connect(function(key)
+		if key == keybind then
+			event:FireServer(words[math.random(#words)], "All")
+		end
+	end)
+end)
+
+hideframe.Name = "hideframe"
+hideframe.Parent = MainlyGui
+hideframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+hideframe.Position = UDim2.new(0, 0, 0.402860552, 0)
+hideframe.Size = UDim2.new(0, 199, 0, 49)
+
+HIDEGUIBUTTON.Name = "HIDEGUIBUTTON"
+HIDEGUIBUTTON.Parent = hideframe
+HIDEGUIBUTTON.BackgroundColor3 = Color3.fromRGB(193, 255, 222)
+HIDEGUIBUTTON.Position = UDim2.new(-0.000505968928, 0, -0.00333333015, 0)
+HIDEGUIBUTTON.Size = UDim2.new(0, 200, 0, 50)
+HIDEGUIBUTTON.ZIndex = 2
+HIDEGUIBUTTON.Font = Enum.Font.SourceSans
+HIDEGUIBUTTON.Text = "HIDE GUI"
+HIDEGUIBUTTON.TextColor3 = Color3.fromRGB(0, 0, 0)
+HIDEGUIBUTTON.TextScaled = true
+HIDEGUIBUTTON.TextSize = 14.000
+HIDEGUIBUTTON.TextWrapped = true
+
+-- Scripts:
+local function LZMC_fake_script() -- MainButton.MainButtonScript 
+	local script = Instance.new('LocalScript', MainButton)
+
+	script.Parent.MouseButton1Click:connect(function()
+		script.Parent.Parent.Main.Visible = true
+		script.Parent.Parent.FEScripts.Visible = false
+		script.Parent.Parent.ChatScripts.Visible = false
+		script.Parent.Parent.AboutThisScript.Visible = false
+	end)
+end
+coroutine.wrap(LZMC_fake_script)()
+local function QLEBXTS_fake_script() -- FEScriptsButton.FEScriptsButtonScript 
+	local script = Instance.new('LocalScript', FEScriptsButton)
+
+	script.Parent.MouseButton1Click:connect(function()
+		script.Parent.Parent.Main.Visible = false
+		script.Parent.Parent.FEScripts.Visible = true
+		script.Parent.Parent.ChatScripts.Visible = false
+		script.Parent.Parent.AboutThisScript.Visible = false
+	end)
+end
+coroutine.wrap(QLEBXTS_fake_script)()
+local function LWTXR_fake_script() -- AboutThisScriptButton.AboutThisScriptButtonScript 
+	local script = Instance.new('LocalScript', AboutThisScriptButton)
+
+	script.Parent.MouseButton1Click:connect(function()
+		script.Parent.Parent.Main.Visible = false
+		script.Parent.Parent.FEScripts.Visible = false
+		script.Parent.Parent.ChatScripts.Visible = false
+		script.Parent.Parent.AboutThisScript.Visible = true
+	end)
+end
+coroutine.wrap(LWTXR_fake_script)()
+local function GLXAV_fake_script() -- ChatScriptsButton.ChatScriptsButtonScript 
+	local script = Instance.new('LocalScript', ChatScriptsButton)
+
+	script.Parent.MouseButton1Click:connect(function()
+		script.Parent.Parent.Main.Visible = false
+		script.Parent.Parent.FEScripts.Visible = false
+		script.Parent.Parent.ChatScripts.Visible = true
+		script.Parent.Parent.AboutThisScript.Visible = false
+	end)
+end
+coroutine.wrap(GLXAV_fake_script)()
+local function RBBRGC_fake_script() -- HIDEGUIBUTTON.HIDEGUIBUTTONSCRIPT 
+	local script = Instance.new('LocalScript', HIDEGUIBUTTON)
+
+	local player = game.Players.LocalPlayer
+
+	script.Parent.MouseButton1Click:connect(function()
+		if player.PlayerGui.MainlyGui.MainFrame.Visible == true  then
+			player.PlayerGui.MainlyGui.MainFrame.Visible = false
+			player.PlayerGui.MainlyGui.HIDEFRAME["HIDEGUIBUTTON"].Text = "SHOW GUI"
+		else
+			player.PlayerGui.MainlyGui.MainFrame.Visible = true
+			player.PlayerGui.MainlyGui.HIDEFRAME["HIDEGUIBUTTON"].Text = "HIDE GUI"
+		end
+	end)
+end
+coroutine.wrap(RBBRGC_fake_script)()
+
+print("THIS IS BANNABLE YOU MUST BE CAREFUL IF U DIDNT PRESS F9 UR DEAD GETTING BANNED")
