@@ -75,7 +75,7 @@ Main.Size = UDim2.new(0, 350, 0, 326)
 Main.Visible = false
 
 rejoin.Name = "rejoin"
-rejoin.Parent = game.StarterGui.MainlyGui.MainFrame.Main
+rejoin.Parent = Main
 rejoin.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
 rejoin.Position = UDim2.new(0.0685714483, 0, 0.585218787, 0)
 rejoin.Size = UDim2.new(0, 135, 0, 50)
@@ -87,15 +87,9 @@ rejoin.TextScaled = true
 rejoin.TextSize = 40.000
 rejoin.TextWrapped = true
 rejoin.MouseButton:connect(function()
-    local ts = game:GetService("TeleportService")
-
+local ts = game:GetService("TeleportService")
 local p = game:GetService("Players").LocalPlayer
-
- 
-
 ts:Teleport(game.PlaceId, p)
-
-
 end)
 
 InfJump.Name = "InfJump"
