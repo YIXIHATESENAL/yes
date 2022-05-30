@@ -1,0 +1,850 @@
+-- Gui to Lua press f9
+-- Version: 3.2
+
+-- Instances:
+
+local MainlyGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local QuandaleDingleGui = Instance.new("TextLabel")
+local Main = Instance.new("Frame")
+local InfJump = Instance.new("TextButton")
+local Noclip = Instance.new("TextButton")
+local WalkSpeed = Instance.new("TextButton")
+local JumpPower = Instance.new("TextButton")
+local InstantReset = Instance.new("TextButton")
+local Fly = Instance.new("TextButton")
+local FEScripts = Instance.new("Frame")
+local Tall = Instance.new("TextButton")
+local MainButton = Instance.new("TextButton")
+local FEScriptsButton = Instance.new("TextButton")
+local AboutThisScript = Instance.new("Frame")
+local IMPORTANT = Instance.new("TextLabel")
+local VARSION = Instance.new("TextLabel")
+local Announcements = Instance.new("TextLabel")
+local AboutThisScriptButton = Instance.new("TextButton")
+local ChatScriptsButton = Instance.new("TextButton")
+local ChatScripts = Instance.new("Frame")
+local Trashtalk = Instance.new("TextButton")
+local EmojiTrashTalk = Instance.new("TextButton")
+local FAX = Instance.new("TextButton")
+local BTOOLS = Instance.new("TextButton")
+local walkspeedorjumppower = Instance.new("TextButton")
+local ChatBypass = Instance.new("TextButton")
+local Parkour = Instance.new("TextButton")
+local Floppa = Instance.new("TextButton")
+local ExtendBody = Instance.new("TextButton")
+local AmongUs = Instance.new("TextButton")
+local Invisibility = Instance.new("TextButton")
+local CAP = Instance.new("TextButton")
+local hideframe = Instance.new("Frame")
+local HIDEGUIBUTTON = Instance.new("TextButton")
+
+--Properties:
+
+MainlyGui.Name = "MainlyGui"
+MainlyGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+MainlyGui.ResetOnSpawn = false
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = MainlyGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(134, 187, 255)
+MainFrame.Position = UDim2.new(0.499661177, 0, 0.125441551, 0)
+MainFrame.Size = UDim2.new(0, 350, 0, 532)
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+QuandaleDingleGui.Name = "QuandaleDingleGui"
+QuandaleDingleGui.Parent = MainFrame
+QuandaleDingleGui.BackgroundColor3 = Color3.fromRGB(86, 44, 255)
+QuandaleDingleGui.Size = UDim2.new(0, 350, 0, 55)
+QuandaleDingleGui.Font = Enum.Font.FredokaOne
+QuandaleDingleGui.Text = "Guandale Dingle Gui"
+QuandaleDingleGui.TextColor3 = Color3.fromRGB(0, 0, 0)
+QuandaleDingleGui.TextScaled = true
+QuandaleDingleGui.TextSize = 50.000
+QuandaleDingleGui.TextWrapped = true
+
+Main.Name = "Main"
+Main.Parent = MainFrame
+Main.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
+Main.Position = UDim2.new(0, 0, 0.103383459, 0)
+Main.Size = UDim2.new(0, 350, 0, 326)
+Main.Visible = false
+
+InfJump.Name = "InfJump"
+InfJump.Parent = Main
+InfJump.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+InfJump.Position = UDim2.new(0.0714285746, 0, 0.0237546079, 0)
+InfJump.Size = UDim2.new(0, 135, 0, 50)
+InfJump.ZIndex = 2
+InfJump.Font = Enum.Font.PatrickHand
+InfJump.Text = "Infinite Jump"
+InfJump.TextColor3 = Color3.fromRGB(0, 0, 0)
+InfJump.TextSize = 40.000
+InfJump.MouseButton1Down:connect(function()
+	local Player = game:GetService'Players'.LocalPlayer;
+	local UIS = game:GetService'UserInputService';
+
+	_G.JumpHeight = 50;
+
+	function Action(Object, Function) if Object ~= nil then Function(Object); end end
+
+	UIS.InputBegan:connect(function(UserInput)
+		if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+			Action(Player.Character.Humanoid, function(self)
+				if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+					Action(self.Parent.HumanoidRootPart, function(self)
+						self.Velocity = Vector3.new(0, _G.JumpHeight, 0);
+					end)
+				end
+			end)
+		end
+	end)
+end)
+
+
+
+Noclip.Name = "Noclip"
+Noclip.Parent = Main
+Noclip.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Noclip.Position = UDim2.new(0.54285717, 0, 0.0237546079, 0)
+Noclip.Size = UDim2.new(0, 135, 0, 50)
+Noclip.ZIndex = 2
+Noclip.TextScaled = true
+Noclip.Font = Enum.Font.PatrickHand
+Noclip.Text = "Noclip keybind = E"
+Noclip.TextColor3 = Color3.fromRGB(0, 0, 0)
+Noclip.TextSize = 40.000
+Noclip.MouseButton1Down:connect(function()
+	game:GetService('RunService').Stepped:connect(function()
+		if noclip then
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		end
+	end)
+	plr = game.Players.LocalPlayer
+	mouse = plr:GetMouse()
+	mouse.KeyDown:connect(function(key)
+
+		if key == "e" then
+			noclip = not noclip
+			game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+		end
+	end)
+	noclip.Text = "Loaded!"
+	noclip.TextColor3 = Color3.fromRGB(0, 255, 50)
+	wait(2)
+	noclip.TextColor3 = Color3.fromRGB(0, 0, 0)
+	noclip.Text = "NoClip"
+end)
+BTOOLS.Name = "BTOOLS"
+BTOOLS.Parent = Main
+BTOOLS.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+BTOOLS.Position = UDim2.new(0.305714309, 0, 0.585218787, 0)
+BTOOLS.Size = UDim2.new(0, 135, 0, 50)
+BTOOLS.ZIndex = 2
+BTOOLS.Font = Enum.Font.PatrickHand
+BTOOLS.Text = "BTOOLS"
+BTOOLS.TextColor3 = Color3.fromRGB(0, 0, 0)
+BTOOLS.TextSize = 40.000
+BTOOLS.MouseButton1Down:connect(function()
+local tool1 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool2 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool3 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool4 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+local tool5 = Instance.new("HopperBin",game.Players.LocalPlayer.Backpack)
+tool1.BinType = "Clone"
+tool2.BinType = "GameTool"
+tool3.BinType = "Hammer"
+tool4.BinType = "Script"
+tool5.BinType = "Grab"
+end)
+
+walkspeedorjumppower.Name = "walkspeedorjumppower"
+walkspeedorjumppower.Parent = Main
+walkspeedorjumppower.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+walkspeedorjumppower.Position = UDim2.new(0.305714309, 0, 0.213381365, 0)
+walkspeedorjumppower.Size = UDim2.new(0, 135, 0, 50)
+walkspeedorjumppower.ZIndex = 2
+walkspeedorjumppower.Font = Enum.Font.PatrickHand
+walkspeedorjumppower.Text = "WalkSpeed And JumpPower GUI"
+walkspeedorjumppower.TextColor3 = Color3.fromRGB(0, 0, 0)
+walkspeedorjumppower.TextScaled = true
+walkspeedorjumppower.TextSize = 40.000
+walkspeedorjumppower.TextWrapped = true
+walkspeedorjumppower.MouseButton1Down:connect(function()
+    -- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local WALKSPEEDANDJUMPPOWER = Instance.new("ScreenGui")
+local WallMainFrame = Instance.new("Frame")
+local WalkSpeedBox = Instance.new("TextBox")
+local WalkSpeedButton = Instance.new("TextButton")
+local JumpPowerBox = Instance.new("TextBox")
+local JumpPowerButton = Instance.new("TextButton")
+local HideFrame = Instance.new("Frame")
+local Hidewalkspeedgui = Instance.new("TextButton")
+
+--Properties:
+
+WALKSPEEDANDJUMPPOWER.Name = "WALKSPEEDANDJUMPPOWER"
+WALKSPEEDANDJUMPPOWER.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+WALKSPEEDANDJUMPPOWER.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+WallMainFrame.Name = "WallMainFrame"
+WallMainFrame.Parent = WALKSPEEDANDJUMPPOWER
+WallMainFrame.BackgroundColor3 = Color3.fromRGB(128, 124, 255)
+WallMainFrame.Position = UDim2.new(0.788488388, 0, 0.390444815, 0)
+WallMainFrame.Size = UDim2.new(0, 278, 0, 320)
+WallMainFrame.Active = true
+WallMainFrame.Draggable = true
+
+WalkSpeedBox.Name = "WalkSpeedBox"
+WalkSpeedBox.Parent = WallMainFrame
+WalkSpeedBox.BackgroundColor3 = Color3.fromRGB(255, 235, 82)
+WalkSpeedBox.Position = UDim2.new(0.140287772, 0, 0.634375036, 0)
+WalkSpeedBox.Size = UDim2.new(0, 200, 0, 50)
+WalkSpeedBox.Font = Enum.Font.SciFi
+WalkSpeedBox.Text = "Walk Speed"
+WalkSpeedBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+WalkSpeedBox.TextSize = 40.000
+WalkSpeedBox.TextWrapped = true
+
+WalkSpeedButton.Name = "WalkSpeedButton"
+WalkSpeedButton.Parent = WallMainFrame
+WalkSpeedButton.BackgroundColor3 = Color3.fromRGB(255, 42, 117)
+WalkSpeedButton.Position = UDim2.new(0.194244608, 0, 0.815625012, 0)
+WalkSpeedButton.Size = UDim2.new(0, 170, 0, 50)
+WalkSpeedButton.Font = Enum.Font.FredokaOne
+WalkSpeedButton.Text = "Submit"
+WalkSpeedButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+WalkSpeedButton.TextSize = 40.000
+
+JumpPowerBox.Name = "JumpPowerBox"
+JumpPowerBox.Parent = WallMainFrame
+JumpPowerBox.BackgroundColor3 = Color3.fromRGB(255, 235, 82)
+JumpPowerBox.Position = UDim2.new(0.140287772, 0, 0.10937506, 0)
+JumpPowerBox.Size = UDim2.new(0, 200, 0, 50)
+JumpPowerBox.Font = Enum.Font.SciFi
+JumpPowerBox.Text = "Jump Power"
+JumpPowerBox.TextColor3 = Color3.fromRGB(0, 0, 0)
+JumpPowerBox.TextSize = 40.000
+
+JumpPowerButton.Name = "JumpPowerButton"
+JumpPowerButton.Parent = WallMainFrame
+JumpPowerButton.BackgroundColor3 = Color3.fromRGB(255, 42, 117)
+JumpPowerButton.Position = UDim2.new(0.194244608, 0, 0.300000012, 0)
+JumpPowerButton.Size = UDim2.new(0, 170, 0, 50)
+JumpPowerButton.Font = Enum.Font.FredokaOne
+JumpPowerButton.Text = "Submit"
+JumpPowerButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+JumpPowerButton.TextSize = 40.000
+
+HideFrame.Name = "HideFrame"
+HideFrame.Parent = WALKSPEEDANDJUMPPOWER
+HideFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HideFrame.Position = UDim2.new(0, 0, 0.719934106, 0)
+HideFrame.Size = UDim2.new(0, 128, 0, 36)
+
+Hidewalkspeedgui.Name = "Hidewalkspeedgui"
+Hidewalkspeedgui.Parent = HideFrame
+Hidewalkspeedgui.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Hidewalkspeedgui.Size = UDim2.new(0, 176, 0, 36)
+Hidewalkspeedgui.Font = Enum.Font.FredokaOne
+Hidewalkspeedgui.Text = "hide speed/power gui"
+Hidewalkspeedgui.TextColor3 = Color3.fromRGB(0, 0, 0)
+Hidewalkspeedgui.TextScaled = true
+Hidewalkspeedgui.TextSize = 14.000
+Hidewalkspeedgui.TextWrapped = true
+
+
+
+-- Scripts:
+
+WalkSpeedButton.MouseButton1Click:connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = tostring(WallMainFrame.WalkSpeedBox.Text)
+end)
+JumpPowerButton.MouseButton1Click:connect(function()
+	game.Players.LocalPlayer.Character.Humanoid.JumpPower = tostring(WallMainFrame.JumpPowerBox.Text)
+end)
+
+local function dawgdawg_fake_script()
+	local script = Instance.new('LocalScript', Hidewalkspeedgui)
+	
+	local player = game.Players.LocalPlayer
+
+	script.Parent.MouseButton1Click:connect(function()
+		if player.PlayerGui.WALKSPEEDANDJUMPPOWER.WallMainFrame.Visible == true then
+			player.PlayerGui.WALKSPEEDANDJUMPPOWER.WallMainFrame.Visible = false
+			player.PlayerGui.WALKSPEEDANDJUMPPOWER.HideFrame["Hidewalkspeedgui"].Text = "SHOW Speed/Jump GUI"
+		else
+			player.PlayerGui.WALKSPEEDANDJUMPPOWER.WallMainFrame.Visible = true
+			player.PlayerGui.WALKSPEEDANDJUMPPOWER.HideFrame["Hidewalkspeedgui"].Text = "HIDE Speed/Jump GUI"
+		end
+	end)
+end
+WALKSPEEDANDJUMPPOWER.ResetOnSpawn = true
+coroutine.wrap(dawgdawg_fake_script)()
+end)
+
+InstantReset.Name = "InstantReset"
+InstantReset.Parent = Main
+InstantReset.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+InstantReset.Position = UDim2.new(0.54285717, 0, 0.388899773, 0)
+InstantReset.Size = UDim2.new(0, 135, 0, 50)
+InstantReset.ZIndex = 2
+InstantReset.Font = Enum.Font.PatrickHand
+InstantReset.Text = "Click This Once Then Press R without even esc+r+entering for instant reset"
+InstantReset.TextColor3 = Color3.fromRGB(0, 0, 0)
+InstantReset.TextScaled = true
+InstantReset.TextSize = 40.000
+InstantReset.TextWrapped = true
+InstantReset.MouseButton1Down:connect(function()
+	local player = game.Players.LocalPlayer
+	local mouse = player:GetMouse()
+	local char = player.Character
+	local h = char:WaitForChild("Humanoid")
+	mouse.KeyUp:connect(function(key)
+		if key == "r" then
+			h.Health = 0
+		end
+	end)
+end)
+
+
+
+Fly.Name = "Fly"
+Fly.Parent = Main
+Fly.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Fly.Position = UDim2.new(0.0685714558, 0, 0.388899773, 0)
+Fly.Size = UDim2.new(0, 135, 0, 50)
+Fly.ZIndex = 2
+Fly.Font = Enum.Font.PatrickHand
+Fly.Text = "Fly"
+Fly.TextColor3 = Color3.fromRGB(0, 0, 0)
+Fly.TextSize = 40.000
+Fly.MouseButton1Down:connect(function()
+	repeat wait() 
+	until game.Players.LocalPlayer and game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:findFirstChild("Head") and game.Players.LocalPlayer.Character:findFirstChild("Humanoid") 
+	local mouse = game.Players.LocalPlayer:GetMouse() 
+	repeat wait() until mouse
+	local plr = game.Players.LocalPlayer 
+	local torso = plr.Character.Head 
+	local flying = false
+	local deb = true 
+	local ctrl = {f = 0, b = 0, l = 0, r = 0} 
+	local lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+	local maxspeed = 400 
+	local speed = 5000 
+
+	function Fly() 
+		local bg = Instance.new("BodyGyro", torso) 
+		bg.P = 9e4 
+		bg.maxTorque = Vector3.new(9e9, 9e9, 9e9) 
+		bg.cframe = torso.CFrame 
+		local bv = Instance.new("BodyVelocity", torso) 
+		bv.velocity = Vector3.new(0,0.1,0) 
+		bv.maxForce = Vector3.new(9e9, 9e9, 9e9) 
+		repeat wait() 
+			plr.Character.Humanoid.PlatformStand = true 
+			if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then 
+				speed = speed+.5+(speed/maxspeed) 
+				if speed > maxspeed then 
+					speed = maxspeed 
+				end 
+			elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then 
+				speed = speed-1 
+				if speed < 0 then 
+					speed = 0 
+				end 
+			end 
+			if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then 
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+				lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r} 
+			elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then 
+				bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed 
+			else 
+				bv.velocity = Vector3.new(0,0.1,0) 
+			end 
+			bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0) 
+		until not flying 
+		ctrl = {f = 0, b = 0, l = 0, r = 0} 
+		lastctrl = {f = 0, b = 0, l = 0, r = 0} 
+		speed = 0 
+		bg:Destroy() 
+		bv:Destroy() 
+		plr.Character.Humanoid.PlatformStand = false 
+	end 
+	mouse.KeyDown:connect(function(key) 
+		if key:lower() == "f" then 
+			if flying then flying = false 
+			else 
+				flying = true 
+				Fly() 
+			end 
+		elseif key:lower() == "w" then 
+			ctrl.f = 1 
+		elseif key:lower() == "s" then 
+			ctrl.b = -1 
+		elseif key:lower() == "a" then 
+			ctrl.l = -1 
+		elseif key:lower() == "d" then 
+			ctrl.r = 1 
+		end 
+	end) 
+	mouse.KeyUp:connect(function(key) 
+		if key:lower() == "w" then 
+			ctrl.f = 0 
+		elseif key:lower() == "s" then 
+			ctrl.b = 0 
+		elseif key:lower() == "a" then 
+			ctrl.l = 0 
+		elseif key:lower() == "d" then 
+			ctrl.r = 0 
+		end 
+	end)
+	Fly()
+	fly.Text = "Loaded!"
+	fly.TextColor3 = Color3.fromRGB(0, 255, 50)
+	wait(2)
+	fly.TextColor3 = Color3.fromRGB(0, 0, 0)
+	fly.Text = "Fly"
+end)
+
+FEScripts.Name = "FEScripts"
+FEScripts.Parent = MainFrame
+FEScripts.BackgroundColor3 = Color3.fromRGB(112, 114, 255)
+FEScripts.Position = UDim2.new(0, 0, 0.103383459, 0)
+FEScripts.Size = UDim2.new(0, 350, 0, 326)
+FEScripts.Visible = false
+
+Tall.Name = "Tall"
+Tall.Parent = FEScripts
+Tall.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Tall.Position = UDim2.new(-0.00285714283, 0, -0.000670778216, 0)
+Tall.Size = UDim2.new(0, 351, 0, 50)
+Tall.ZIndex = 2
+Tall.Font = Enum.Font.PatrickHand
+Tall.Text = "TALL[R15 ALL MAX only 0 PORPOTIONS"
+Tall.TextColor3 = Color3.fromRGB(0, 0, 0)
+Tall.TextScaled = true
+Tall.TextSize = 40.000
+Tall.TextWrapped = true
+Tall.MouseButton1Down:connect(function()
+	--Shit ass script made by failedmite57926
+
+	local LocalPlayer = game:GetService("Players").LocalPlayer
+	local Character = LocalPlayer.Character
+	local Humanoid = Character:FindFirstChildOfClass("Humanoid")
+
+	function rm()
+		for i,v in pairs(Character:GetDescendants()) do
+			if v:IsA("BasePart") then
+				if v.Name == "Handle" or v.Name == "Head" then
+					if Character.Head:FindFirstChild("OriginalSize") then
+						Character.Head.OriginalSize:Destroy()
+					end
+				else
+					for i,cav in pairs(v:GetDescendants()) do
+						if cav:IsA("Attachment") then
+							if cav:FindFirstChild("OriginalPosition") then
+								cav.OriginalPosition:Destroy()  
+							end
+						end
+					end
+					v:FindFirstChild("OriginalSize"):Destroy()
+					if v:FindFirstChild("AvatarPartScaleType") then
+						v:FindFirstChild("AvatarPartScaleType"):Destroy()
+					end
+				end
+			end
+		end
+	end
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("BodyProportionScale"):Destroy()
+	wait(1)
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("BodyHeightScale"):Destroy()
+	wait(1)
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("BodyWidthScale"):Destroy()
+	wait(1)
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("BodyDepthScale"):Destroy()
+	wait(1)
+
+	rm()
+	wait(0.5)
+	Humanoid:FindFirstChild("HeadScale"):Destroy()
+	wait(1)
+end)
+
+MainButton.Name = "MainButton"
+MainButton.Parent = MainFrame
+MainButton.BackgroundColor3 = Color3.fromRGB(165, 255, 228)
+MainButton.Position = UDim2.new(0, 0, 0.905121088, 0)
+MainButton.Size = UDim2.new(0, 175, 0, 50)
+MainButton.ZIndex = 2
+MainButton.Font = Enum.Font.PatrickHand
+MainButton.Text = "Main"
+MainButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+MainButton.TextScaled = true
+MainButton.TextSize = 40.000
+MainButton.TextWrapped = true
+
+FEScriptsButton.Name = "FEScriptsButton"
+FEScriptsButton.Parent = MainFrame
+FEScriptsButton.BackgroundColor3 = Color3.fromRGB(165, 255, 228)
+FEScriptsButton.Position = UDim2.new(0.5, 0, 0.905132413, 0)
+FEScriptsButton.Size = UDim2.new(0, 175, 0, 50)
+FEScriptsButton.ZIndex = 2
+FEScriptsButton.Font = Enum.Font.PatrickHand
+FEScriptsButton.Text = "FeScripts"
+FEScriptsButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+FEScriptsButton.TextScaled = true
+FEScriptsButton.TextSize = 40.000
+FEScriptsButton.TextWrapped = true
+
+AboutThisScript.Name = "AboutThisScript"
+AboutThisScript.Parent = MainFrame
+AboutThisScript.BackgroundColor3 = Color3.fromRGB(190, 255, 228)
+AboutThisScript.Position = UDim2.new(0, 0, 0.10154552, 0)
+AboutThisScript.Size = UDim2.new(0, 350, 0, 327)
+AboutThisScript.Visible = false
+
+IMPORTANT.Name = "IMPORTANT"
+IMPORTANT.Parent = AboutThisScript
+IMPORTANT.BackgroundColor3 = Color3.fromRGB(255, 44, 146)
+IMPORTANT.Size = UDim2.new(0, 350, 0, 67)
+IMPORTANT.Font = Enum.Font.SourceSans
+IMPORTANT.Text = "Made By Kazuya#8624 aka. TANGINAMO123"
+IMPORTANT.TextColor3 = Color3.fromRGB(0, 0, 0)
+IMPORTANT.TextScaled = true
+IMPORTANT.TextSize = 50.000
+IMPORTANT.TextWrapped = true
+
+VARSION.Name = "VARSION"
+VARSION.Parent = AboutThisScript
+VARSION.BackgroundColor3 = Color3.fromRGB(255, 44, 146)
+VARSION.Position = UDim2.new(0.319999993, 0, 0.275229365, 0)
+VARSION.Size = UDim2.new(0, 125, 0, 50)
+VARSION.Font = Enum.Font.SourceSans
+VARSION.Text = "V.1.0.0"
+VARSION.TextColor3 = Color3.fromRGB(0, 0, 0)
+VARSION.TextScaled = true
+VARSION.TextSize = 50.000
+VARSION.TextWrapped = true
+
+FAX.Name = "FAX"
+FAX.Parent = ChatScripts
+FAX.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+FAX.Position = UDim2.new(0.304714292, 0, 0.451785922, 0)
+FAX.Size = UDim2.new(0, 135, 0, 50)
+FAX.ZIndex = 2
+FAX.Font = Enum.Font.PatrickHand
+FAX.Text = "fax keybind = m"
+FAX.TextColor3 = Color3.fromRGB(0, 0, 0)
+FAX.TextScaled = true
+FAX.TextSize = 40.000
+FAX.TextWrapped = true
+FAX.MouseButton1Down:connect(function()
+	local words = {
+		'ur a legit fax dude',
+		'Legit FAX',
+		'fax on top',
+		'faxinator',
+		'fax',
+		'sheeesh fax',
+		'i just gotta say its FAX',
+		'All FAX',
+		'Fax Detected 100%',
+		'HUGE FAX DAWG',
+		'i hear a FAX',
+		'ultimate Fax',
+		'respect fax guy',
+
+	}
+
+
+	local player = game.Players.LocalPlayer
+	local keybind = 'm'
+
+	local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+	player:GetMouse().KeyDown:connect(function(key)
+		if key == keybind then
+			event:FireServer(words[math.random(#words)], "All")
+		end
+	end)
+end)
+
+Announcements.Name = "Announcements"
+Announcements.Parent = AboutThisScript
+Announcements.BackgroundColor3 = Color3.fromRGB(255, 44, 146)
+Announcements.Position = UDim2.new(0, 0, 0.519877672, 0)
+Announcements.Size = UDim2.new(0, 350, 0, 157)
+Announcements.Font = Enum.Font.SourceSans
+Announcements.Text = "NEW SCRIPTS BUTTON IN THE NEXT UPDATE ALOT OF SHITS AND IT WILL BE GOOD TRUST ME EXCEPT THE FUCKING ANTI BAN IT HAS NO ANTI BAN IF ITS DETECTED UR GG"
+Announcements.TextColor3 = Color3.fromRGB(0, 0, 0)
+Announcements.TextScaled = true
+Announcements.TextSize = 50.000
+Announcements.TextWrapped = true
+
+AboutThisScriptButton.Name = "AboutThisScriptButton"
+AboutThisScriptButton.Parent = MainFrame
+AboutThisScriptButton.BackgroundColor3 = Color3.fromRGB(165, 255, 228)
+AboutThisScriptButton.Position = UDim2.new(0, 0, 0.716953635, 0)
+AboutThisScriptButton.Size = UDim2.new(0, 350, 0, 50)
+AboutThisScriptButton.ZIndex = 2
+AboutThisScriptButton.Font = Enum.Font.PatrickHand
+AboutThisScriptButton.Text = "About the Script"
+AboutThisScriptButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+AboutThisScriptButton.TextSize = 55.000
+AboutThisScriptButton.TextWrapped = true
+
+ChatScriptsButton.Name = "ChatScriptsButton"
+ChatScriptsButton.Parent = MainFrame
+ChatScriptsButton.BackgroundColor3 = Color3.fromRGB(165, 255, 228)
+ChatScriptsButton.Position = UDim2.new(0, 0, 0.811136127, 0)
+ChatScriptsButton.Size = UDim2.new(0, 350, 0, 50)
+ChatScriptsButton.ZIndex = 2
+ChatScriptsButton.Font = Enum.Font.PatrickHand
+ChatScriptsButton.Text = "Chat Scripts/With\\ Keybinds"
+ChatScriptsButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+ChatScriptsButton.TextScaled = true
+ChatScriptsButton.TextSize = 40.000
+ChatScriptsButton.TextWrapped = true
+
+ChatScripts.Name = "ChatScripts"
+ChatScripts.Parent = MainFrame
+ChatScripts.Active = true
+ChatScripts.BackgroundColor3 = Color3.fromRGB(55, 125, 255)
+ChatScripts.Position = UDim2.new(0, 0, 0.10154552, 0)
+ChatScripts.Size = UDim2.new(0, 350, 0, 327)
+ChatScripts.Visible = false
+
+Trashtalk.Name = "Trashtalk"
+Trashtalk.Parent = ChatScripts
+Trashtalk.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+Trashtalk.Position = UDim2.new(0.557142854, 0, 0.0421032347, 0)
+Trashtalk.Size = UDim2.new(0, 135, 0, 50)
+Trashtalk.ZIndex = 2
+Trashtalk.Font = Enum.Font.PatrickHand
+Trashtalk.Text = "TrashTalk Keybind = Q"
+Trashtalk.TextColor3 = Color3.fromRGB(0, 0, 0)
+Trashtalk.TextScaled = true
+Trashtalk.TextSize = 40.000
+Trashtalk.TextWrapped = true
+Trashtalk.MouseButton1Down:connect(function()
+	local words = {
+		'L',
+		'KID',
+		'bozo',
+		'clown',
+		'bozo + clown + orphan + kid + homeless',
+		'Huge L',
+		'Imagine',
+		'Gay',
+		'Adopted',
+		'who u talking to?',
+		'Imao',
+		'nobody cares',
+		'did i even ask',
+		'since when did i ask lol',
+		'FAT',
+		'trash can',
+		'lol',
+		'could you please stg feu',
+		'elephant',
+		'dog',
+		'skeleton',
+		'bro tryna find a orphan website with home page',
+	}
+
+	local player = game.Players.LocalPlayer
+	local keybind = 'q'
+
+	local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+	player:GetMouse().KeyDown:connect(function(key)
+		if key == keybind then
+			event:FireServer(words[math.random(#words)], "All")
+		end
+	end)
+end)
+
+EmojiTrashTalk.Name = "EmojiTrashTalk"
+EmojiTrashTalk.Parent = ChatScripts
+EmojiTrashTalk.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+EmojiTrashTalk.Position = UDim2.new(0.0590000004, 0, 0.0419999994, 0)
+EmojiTrashTalk.Size = UDim2.new(0, 135, 0, 50)
+EmojiTrashTalk.ZIndex = 2
+EmojiTrashTalk.Font = Enum.Font.PatrickHand
+EmojiTrashTalk.Text = "Emoji TrashTalk Keybind = L"
+EmojiTrashTalk.TextColor3 = Color3.fromRGB(0, 0, 0)
+EmojiTrashTalk.TextScaled = true
+EmojiTrashTalk.TextSize = 40.000
+EmojiTrashTalk.TextWrapped = true
+EmojiTrashTalk.MouseButton1Down:connect(function()
+	local words = {
+		'🤡',
+		'🗿',
+		'🗿🗿🗿',
+		'🤡🤡🤡',
+		'😐',
+		'😐😐😐',
+		'🗑️',
+		'🗑️🗑️🗑️',
+		'🚮🚮🚮',
+		'🚮',
+		'😹',
+		'😹😹😹',
+
+	}
+
+
+	local player = game.Players.LocalPlayer
+	local keybind = 'l'
+
+	local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+	player:GetMouse().KeyDown:connect(function(key)
+		if key == keybind then
+			event:FireServer(words[math.random(#words)], "All")
+		end
+	end)
+end)
+
+CAP.Name = "CAP"
+CAP.Parent = ChatScripts
+CAP.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+CAP.Position = UDim2.new(0.304714292, 0, 0.246892959, 0)
+CAP.Size = UDim2.new(0, 135, 0, 50)
+CAP.ZIndex = 2
+CAP.Font = Enum.Font.PatrickHand
+CAP.Text = "Cap Keybind = Z"
+CAP.TextColor3 = Color3.fromRGB(0, 0, 0)
+CAP.TextScaled = true
+CAP.TextSize = 40.000
+CAP.TextWrapped = true
+CAP.MouseButton1Down:connect(function()
+	local words = {
+		'CAP DETECTED',
+		'100% CAP',
+		'I hear Cap',
+		'CAPINATOR',
+		'cap.',
+		'why you keep capping',
+		'bruh ultra cap',
+		'i always hear cap in my ears',
+		'i cant stop hearing caps',
+		'imagine capping lol',
+		'i hate caps.',
+		'ultimate cap',
+
+	}
+
+
+	local player = game.Players.LocalPlayer
+	local keybind = 'z'
+
+	local event = game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest
+
+	player:GetMouse().KeyDown:connect(function(key)
+		if key == keybind then
+			event:FireServer(words[math.random(#words)], "All")
+		end
+	end)
+end)
+
+hideframe.Name = "hideframe"
+hideframe.Parent = MainlyGui
+hideframe.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+hideframe.Position = UDim2.new(0, 0, 0.402860552, 0)
+hideframe.Size = UDim2.new(0, 199, 0, 49)
+
+HIDEGUIBUTTON.Name = "HIDEGUIBUTTON"
+HIDEGUIBUTTON.Parent = hideframe
+HIDEGUIBUTTON.BackgroundColor3 = Color3.fromRGB(193, 255, 222)
+HIDEGUIBUTTON.Position = UDim2.new(-0.000505968928, 0, -0.00333333015, 0)
+HIDEGUIBUTTON.Size = UDim2.new(0, 200, 0, 50)
+HIDEGUIBUTTON.ZIndex = 2
+HIDEGUIBUTTON.Font = Enum.Font.SourceSans
+HIDEGUIBUTTON.Text = "HIDE GUI"
+HIDEGUIBUTTON.TextColor3 = Color3.fromRGB(0, 0, 0)
+HIDEGUIBUTTON.TextScaled = true
+HIDEGUIBUTTON.TextSize = 14.000
+HIDEGUIBUTTON.TextWrapped = true
+
+-- Scripts:
+local function LZMC_fake_script() -- MainButton.MainButtonScript 
+	local script = Instance.new('LocalScript', MainButton)
+
+	script.Parent.MouseButton1Click:connect(function()
+		script.Parent.Parent.Main.Visible = true
+		script.Parent.Parent.FEScripts.Visible = false
+		script.Parent.Parent.ChatScripts.Visible = false
+		script.Parent.Parent.AboutThisScript.Visible = false
+	end)
+end
+coroutine.wrap(LZMC_fake_script)()
+local function QLEBXTS_fake_script() -- FEScriptsButton.FEScriptsButtonScript 
+	local script = Instance.new('LocalScript', FEScriptsButton)
+
+	script.Parent.MouseButton1Click:connect(function()
+		script.Parent.Parent.Main.Visible = false
+		script.Parent.Parent.FEScripts.Visible = true
+		script.Parent.Parent.ChatScripts.Visible = false
+		script.Parent.Parent.AboutThisScript.Visible = false
+	end)
+end
+coroutine.wrap(QLEBXTS_fake_script)()
+local function LWTXR_fake_script() -- AboutThisScriptButton.AboutThisScriptButtonScript 
+	local script = Instance.new('LocalScript', AboutThisScriptButton)
+
+	script.Parent.MouseButton1Click:connect(function()
+		script.Parent.Parent.Main.Visible = false
+		script.Parent.Parent.FEScripts.Visible = false
+		script.Parent.Parent.ChatScripts.Visible = false
+		script.Parent.Parent.AboutThisScript.Visible = true
+	end)
+end
+coroutine.wrap(LWTXR_fake_script)()
+local function GLXAV_fake_script() -- ChatScriptsButton.ChatScriptsButtonScript 
+	local script = Instance.new('LocalScript', ChatScriptsButton)
+
+	script.Parent.MouseButton1Click:connect(function()
+		script.Parent.Parent.Main.Visible = false
+		script.Parent.Parent.FEScripts.Visible = false
+		script.Parent.Parent.ChatScripts.Visible = true
+		script.Parent.Parent.AboutThisScript.Visible = false
+	end)
+end
+coroutine.wrap(GLXAV_fake_script)()
+local function RBBRGC_fake_script() -- HIDEGUIBUTTON.HIDEGUIBUTTONSCRIPT 
+	local script = Instance.new('LocalScript', HIDEGUIBUTTON)
+
+	local player = game.Players.LocalPlayer
+
+	script.Parent.MouseButton1Click:connect(function()
+		if player.PlayerGui.MainlyGui.MainFrame.Visible == true  then
+			player.PlayerGui.MainlyGui.MainFrame.Visible = false
+			player.PlayerGui.MainlyGui.HIDEFRAME["HIDEGUIBUTTON"].Text = "SHOW GUI"
+		else
+			player.PlayerGui.MainlyGui.MainFrame.Visible = true
+			player.PlayerGui.MainlyGui.HIDEFRAME["HIDEGUIBUTTON"].Text = "HIDE GUI"
+		end
+	end)
+end
+coroutine.wrap(RBBRGC_fake_script)()
+
+print("THIS IS BANNABLE YOU MUST BE CAREFUL IF U DIDNT PRESS F9 UR DEAD GETTING BANNED")
