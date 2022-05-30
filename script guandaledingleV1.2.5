@@ -20,6 +20,7 @@ local FEScriptsButton = Instance.new("TextButton")
 local AboutThisScript = Instance.new("Frame")
 local IMPORTANT = Instance.new("TextLabel")
 local VARSION = Instance.new("TextLabel")
+local rejoin = Instance.new("TextButton")
 local Announcements = Instance.new("TextLabel")
 local AboutThisScriptButton = Instance.new("TextButton")
 local ChatScriptsButton = Instance.new("TextButton")
@@ -72,6 +73,30 @@ Main.BackgroundColor3 = Color3.fromRGB(0, 85, 255)
 Main.Position = UDim2.new(0, 0, 0.103383459, 0)
 Main.Size = UDim2.new(0, 350, 0, 326)
 Main.Visible = false
+
+rejoin.Name = "rejoin"
+rejoin.Parent = game.StarterGui.MainlyGui.MainFrame.Main
+rejoin.BackgroundColor3 = Color3.fromRGB(70, 240, 255)
+rejoin.Position = UDim2.new(0.0685714483, 0, 0.585218787, 0)
+rejoin.Size = UDim2.new(0, 135, 0, 50)
+rejoin.ZIndex = 2
+rejoin.Font = Enum.Font.PatrickHand
+rejoin.Text = "Rejoin Server"
+rejoin.TextColor3 = Color3.fromRGB(0, 0, 0)
+rejoin.TextScaled = true
+rejoin.TextSize = 40.000
+rejoin.TextWrapped = true
+rejoin.MouseButton:connect(function()
+    local ts = game:GetService("TeleportService")
+
+local p = game:GetService("Players").LocalPlayer
+
+ 
+
+ts:Teleport(game.PlaceId, p)
+
+
+end)
 
 InfJump.Name = "InfJump"
 InfJump.Parent = Main
