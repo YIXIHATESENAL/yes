@@ -42,6 +42,19 @@ local CAP = Instance.new("TextButton")
 local hideframe = Instance.new("Frame")
 local HIDEGUIBUTTON = Instance.new("TextButton")
 
+--things--
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Made By Kazuya#8624" ,"All")
+wait(1)
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("V1.2.5" ,"All")
+
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "Guandale Dingle Gui V1.2.5";
+	Text = "Made By Kazuya#8624";
+	Icon = "rbxassetid://9791313968";
+	Duration = 20;
+	Button1 = "yes cool";
+	Button2 = "idc";
+})
 --Properties:
 
 MainlyGui.Name = "MainlyGui"
