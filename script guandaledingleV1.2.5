@@ -20,7 +20,6 @@ local FEScriptsButton = Instance.new("TextButton")
 local AboutThisScript = Instance.new("Frame")
 local IMPORTANT = Instance.new("TextLabel")
 local VARSION = Instance.new("TextLabel")
-local rejoin = Instance.new("TextButton")
 local Announcements = Instance.new("TextLabel")
 local AboutThisScriptButton = Instance.new("TextButton")
 local ChatScriptsButton = Instance.new("TextButton")
@@ -41,12 +40,9 @@ local Invisibility = Instance.new("TextButton")
 local CAP = Instance.new("TextButton")
 local hideframe = Instance.new("Frame")
 local HIDEGUIBUTTON = Instance.new("TextButton")
+local rejoin = Instance.new("TextButton")
 
 --things--
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Made By Kazuya#8624" ,"All")
-wait(1)
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("V1.2.5" ,"All")
-
 game:GetService("StarterGui"):SetCore("SendNotification", {
 	Title = "Guandale Dingle Gui V1.2.5";
 	Text = "Made By Kazuya#8624";
@@ -54,6 +50,15 @@ game:GetService("StarterGui"):SetCore("SendNotification", {
 	Duration = 20;
 	Button1 = "yes cool";
 	Button2 = "idc";
+})
+wait(5)
+game:GetService("StarterGui"):SetCore("SendNotification", {
+	Title = "ok";
+	Text = "why you use dis script";
+	Icon = "rbxassetid://9791313968";
+	Duration = 20;
+	Button1 = "because its cool";
+	Button2 = "testing it or sumthing";
 })
 --Properties:
 
@@ -99,10 +104,11 @@ rejoin.TextColor3 = Color3.fromRGB(0, 0, 0)
 rejoin.TextScaled = true
 rejoin.TextSize = 40.000
 rejoin.TextWrapped = true
-rejoin.MouseButton:connect(function()
+rejoin.MouseButton1Down:connect(function()
 local ts = game:GetService("TeleportService")
 local p = game:GetService("Players").LocalPlayer
 ts:Teleport(game.PlaceId, p)
+
 end)
 
 InfJump.Name = "InfJump"
@@ -135,8 +141,6 @@ InfJump.MouseButton1Down:connect(function()
 		end
 	end)
 end)
-
-
 
 Noclip.Name = "Noclip"
 Noclip.Parent = Main
@@ -219,7 +223,6 @@ local JumpPowerBox = Instance.new("TextBox")
 local JumpPowerButton = Instance.new("TextButton")
 local HideFrame = Instance.new("Frame")
 local Hidewalkspeedgui = Instance.new("TextButton")
-
 --Properties:
 
 WALKSPEEDANDJUMPPOWER.Name = "WALKSPEEDANDJUMPPOWER"
@@ -686,28 +689,29 @@ SaitamaFE.TextScaled = true
 SaitamaFE.TextSize = 20.000
 SaitamaFE.TextWrapped = true
 SaitamaFE.MouseButton1Down:connect(function()
-print('R6 only')
-print('needs 1 hat (random)')
-    print('Saitama Made by mugaga#2801 not me')
+print('Saitama Made by mugaga#2801')
 --Saitama
 --Made by mugaga#2801
 --For The Script To Execute You Need:
-print("R - Stop Barrage/Main Idle")
+--https://web.roblox.com/catalog/6470135113/Fan-Hand-Sign-Why-Dont-We-WDW
+print("R - Main Idle")
 print("E - Barrage")
 print("Click - Punch")
+print("R - Stop Barrage")
 print("HAT NEEDED - Why Don't We")
+print("R6 IS ALSO NEEDED - Saitama Script")
 for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
 if v:IsA("BasePart") and v.Name ~="HumanoidRootPart" then 
 game:GetService("RunService").Heartbeat:connect(function()
 v.Velocity = Vector3.new(0,35,0)
-wait(0.5)
+wait(1)
 end)
 end
 end
 
 game:GetService("StarterGui"):SetCore("SendNotification", { 
 	Title = "Notification";
-	Text = "Netless activated";
+	Text = "netless";
 	Icon = "rbxthumb://type=Asset&id=5107182114&w=150&h=150"})
 Duration = 16;
 local HatChar = game.Players.LocalPlayer.Character
@@ -792,7 +796,7 @@ if k == 'r' then-- first mode
 Mode='1'
 elseif k == 'e' then-- second mode
 Mode='2'
-elseif k == 'f' then-- third mode
+elseif k == 'c' then-- third mode
 Mode='3'
 end
 end)
@@ -801,7 +805,7 @@ end)
 
 attacklol=game.Players.LocalPlayer:GetMouse().Button1Down:Connect(function()
 Mode='Attack0'
-wait(1) -- Time Of Attack
+wait(10) -- Time Of Attack
 Mode='Attack1'
 end)
 
@@ -3653,7 +3657,7 @@ ExtendBody.Position = UDim2.new(0.00285714283, 0, 0.306077689, 0)
 ExtendBody.Size = UDim2.new(0, 177, 0, 50)
 ExtendBody.ZIndex = 2
 ExtendBody.Font = Enum.Font.PatrickHand
-ExtendBody.Text = "2x / Extend Your Body (not working) dont click or u will need to reset or rejoin"
+ExtendBody.Text = "2x / Extend Your Body"
 ExtendBody.TextColor3 = Color3.fromRGB(0, 0, 0)
 ExtendBody.TextScaled = true
 ExtendBody.TextSize = 40.000
@@ -5265,9 +5269,10 @@ print("Among Us")
 print("Parkour")
 print("Block/Floppa")
 print("Chat Bypass - actually real")
+print("Saitama R6 hat needed - Why Don't We")
 print("Anti-Fling Don't Use Any FE Scripts Except Tall,ChatBypass,Invisibillity")
 print("added Rejoin Too.")
-print("FE EXTENDO - R6 NEEDED")
+print("Extend Body - R6 NEEDED")
 print("<-----------------RULES------------->")
 print("THIS IS BANNABLE YOU MUST BE CAREFUL IF U DIDNT PRESS F9 UR DEAD GETTING BANNED")
 print("RULE 1# DONT SPAM SCRIPT WILL GET U BANNED")
